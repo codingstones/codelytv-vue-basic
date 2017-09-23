@@ -23,6 +23,7 @@ export default new VueRouter({
 
   routes: [
     { path: '/', component: load('Gigs') },
+    { path: '/gig', component: load('Gig') },
 
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found

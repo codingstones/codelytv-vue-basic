@@ -1,7 +1,10 @@
 <template>
   <div class="layout-padding row justify-center">
     <q-toolbar color="primary">
-      MOSICA
+      <q-toolbar-title>
+        MOSICA
+      </q-toolbar-title>
+      <q-btn flat>Info</q-btn>
     </q-toolbar>
 
     <div style="width: 100%">
@@ -23,9 +26,12 @@
     QList,
     QListHeader,
     QItem,
-    QToolbar
+    QBtn,
+    QToolbar,
+    QToolbarTitle
   } from 'quasar-framework'
 
+  import { mapState } from 'vuex'
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
   import { HttpClient } from '../services/HttpClient'
@@ -36,7 +42,9 @@
       QList,
       QListHeader,
       QItem,
-      QToolbar
+      QBtn,
+      QToolbar,
+      QToolbarTitle
     },
     props: {
       gigService: {
@@ -55,6 +63,9 @@
       goTo(gig) {
         console.log('Moviendo a página de concierto', gig)
       }
+    },
+    computed: {
+      ...mapState(['gigs'])
     }
   }
 </script>
