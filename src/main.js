@@ -11,7 +11,7 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 // require(`quasar/dist/quasar.ie.${__THEME}.css`)
 
 import Vue from 'vue'
-import Quasar from 'quasar'
+import Quasar from 'quasar-framework'
 import router from './router'
 
 Vue.config.productionTip = false

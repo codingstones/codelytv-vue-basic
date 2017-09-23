@@ -7,7 +7,7 @@
     <div style="width: 100%">
       <q-list>
         <div v-for="day in gigsByDay">
-        <q-list-header>{{day.day}}</q-list-header>
+          <q-list-header>{{day.day}}</q-list-header>
           <q-item v-for="gig in day.gigs" @click="goTo(gig)"
                   :key="gig.id" highlight>
             {{gig.title}} - {{gig.place}}
@@ -16,7 +16,6 @@
       </q-list>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -25,7 +24,7 @@
     QListHeader,
     QItem,
     QToolbar
-  } from 'quasar'
+  } from 'quasar-framework'
 
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
