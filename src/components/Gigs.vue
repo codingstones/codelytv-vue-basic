@@ -4,7 +4,7 @@
       <q-toolbar-title>
         MOSICA
       </q-toolbar-title>
-      <q-btn flat>Info</q-btn>
+      <q-btn flat @click="openInfo">Info</q-btn>
     </q-toolbar>
 
     <div style="width: 100%">
@@ -62,6 +62,10 @@
     methods: {
       goTo(gig) {
         console.log('Moviendo a página de concierto', gig)
+      },
+      openInfo() {
+        console.log('Opening info')
+        this.$router.push('gig')
       }
     },
     computed: {
