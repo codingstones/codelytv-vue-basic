@@ -29,6 +29,7 @@
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
   import { HttpClient } from '../services/HttpClient'
+  const gigService = new mosicaCore.GigService(HttpClient(fetchJsonp), new mosicaCore.Matcher())
 
   export default {
     components: {
@@ -37,9 +38,13 @@
       QItem,
       QToolbar
     },
+    props: {
+      gigService: {
+        default: () => gigService
+      }
+    },
     data () {
       return {
-        gigService: new mosicaCore.GigService(HttpClient(fetchJsonp), new mosicaCore.Matcher()),
         gigsByDay: []
       }
     },
