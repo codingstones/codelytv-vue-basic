@@ -4,6 +4,6 @@ export const HttpClient = (fetchClient) => {
   async function get (url) {
     const response = await fetchClient(url)
     const json = await response.json()
-    return {body: json}
+    return json.response
   }
 }

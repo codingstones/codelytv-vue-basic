@@ -20,12 +20,4 @@ describe('Gigs.vue', () => {
     wrapper.update()
     expect(wrapper.html()).toContain('rapsus')
   })
-
-  it('displays a list of gigs from backend (explicitly injected mock)', async () => {
-    const gigService = {retrieveNextGigs: () => Promise.resolve(sampleGigs)}
-    const wrapper = mount(Gigs, {propsData: {gigService}})
-    await Vue.nextTick()
-    wrapper.update()
-    expect(wrapper.html()).toContain('rapsus')
-  })
 })
