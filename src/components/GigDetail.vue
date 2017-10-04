@@ -5,7 +5,7 @@
     </q-toolbar>
 
     <div style="width: 100%">
-      UO
+      Detalle de un GIG
     </div>
   </div>
 </template>

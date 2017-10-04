@@ -1,4 +1,4 @@
-export const sampleGigs = [
+export const fakeGigsByDay2 = [
   {
     'day': 'Sábado, 20 de Agosto',
     'gigs': [
