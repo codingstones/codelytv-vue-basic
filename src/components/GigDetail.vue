@@ -5,7 +5,7 @@
     </q-toolbar>
 
     <div style="width: 100%">
-      Detalle de un GIG
+      Detalle del GIG {{this.$router.currentRoute.params.id}}
     </div>
   </div>
 </template>
@@ -19,10 +19,9 @@
     components: {
       QToolbar
     },
-    data () {
-      return {
-        gigsByDay: []
-      }
+    created() {
+      // We could mapState this route param with vuex-sync-router
+      console.log('Mostrando detalle de gig con id: ', this.$router.currentRoute.params.id)
     }
   }
 </script>

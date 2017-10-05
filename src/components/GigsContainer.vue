@@ -8,7 +8,8 @@
     </q-toolbar>
 
     <div style="width: 100%">
-      <q-list>
+      <LoadSpinner :isLoading="isLoading"/>
+      <q-list v-if="!isLoading">
         <div class='day' v-for="day in gigsByDay">
           <q-list-header>{{day.day}}</q-list-header>
           <q-item v-for="gig in day.gigs" @click="goTo(gig)"
@@ -53,15 +54,20 @@
     },
     data () {
       return {
-        gigsByDay: []
+        gigsByDay: [],
+        isLoading: false
       }
     },
     async created() {
+      this.isLoading = true
       this.gigsByDay = await this.gigService.retrieveNextGigs()
+      this.isLoading = false
     },
     methods: {
       goTo(gig) {
         console.log('Moviendo a página de concierto', gig)
+        // this.$router.push({ name: 'gig' + params: gig })
+        this.$router.push('gig/' + gig.id)
       },
       openInfo() {
         console.log('Opening info')

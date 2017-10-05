@@ -6,9 +6,9 @@
 </template>
 
 <script>
-/*
- * Root component
- */
+import { registerGlobalComponents } from './GlobalComponentsLoader'
+
+registerGlobalComponents()
 export default {}
 </script>
 
