@@ -1,12 +1,12 @@
 import { createRenderer } from 'vue-server-renderer'
 import { shallow, mount } from 'vue-test-utils'
-import { registerGlobalComponents } from './GlobalComponentsLoader';
+import { registerGlobalComponents } from './GlobalComponentsLoader'
 
-window['flushPromises'] = () =>  {
+window['flushPromises'] = () => {
   return new Promise(resolve => setImmediate(resolve))
 }
 
-window['keepsSnapshot'] = (component, props) =>  {
+window['keepsSnapshot'] = (component, props) => {
   const renderer = createRenderer()
   const wrapper = shallow(component, { propsData: props })
   renderer.renderToString(wrapper.vm, (err, str) => {
@@ -19,4 +19,4 @@ window['mountWithProps'] = (component, props) => {
   return mount(component, { propsData: props })
 }
 
-registerGlobalComponents();
+registerGlobalComponents()

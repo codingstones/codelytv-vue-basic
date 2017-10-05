@@ -11,14 +11,7 @@
 </template>
 
 <script>
-  import {
-    QToolbar
-  } from 'quasar-framework'
-
   export default {
-    components: {
-      QToolbar
-    },
     created() {
       // We could mapState this route param with vuex-sync-router
       console.log('Mostrando detalle de gig con id: ', this.$router.currentRoute.params.id)

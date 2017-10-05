@@ -23,15 +23,6 @@
 </template>
 
 <script>
-  import {
-    QList,
-    QListHeader,
-    QItem,
-    QBtn,
-    QToolbar,
-    QToolbarTitle
-  } from 'quasar-framework'
-
   import { mapState } from 'vuex'
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
@@ -39,14 +30,6 @@
   const gigService = new mosicaCore.GigService(HttpClient(fetchJsonp), new mosicaCore.Matcher())
 
   export default {
-    components: {
-      QList,
-      QListHeader,
-      QItem,
-      QBtn,
-      QToolbar,
-      QToolbarTitle
-    },
     props: {
       gigService: {
         default: () => gigService
