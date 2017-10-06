@@ -14,10 +14,6 @@ export default class DayListPage extends PageObject {
     return this.wrapper.findAll('.day').at(dayNumber).findAll('.q-item').wrappers.map((row) => row.text().trim())
   }
 
-  text() {
-    return this.wrapper.text()
-  }
-
   clickFirstGig() {
     return this.wrapper.find('.row').first().simulate('click')
   }

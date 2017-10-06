@@ -4,7 +4,10 @@ import { fakeGigsByDay } from '../../__mocks__/gigs-sample'
 import { fakeGigsByDay2 } from '../../__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPage'
 
-describe('Days with async load', () => {
+describe('Days', () => {
+  const FIRST_DAY_GIG_TEXTS = fakeGigsByDay[0].gigs.map(
+    gig => gig.title + ' - ' + gig.place)
+
   let page, wrapper
   beforeEach(async () => {
     wrapper = mount(Days)
@@ -16,16 +19,32 @@ describe('Days with async load', () => {
     page.matchSnapshot()
   })
 
-  it('displays a list of gigs from backend (jest manual mock)', async () => {
-    expect(wrapper.html()).toContain('Anarchy in the JS')
+  it('renders all gigs in the first day', async() => {
+    FIRST_DAY_GIG_TEXTS.map((text) => page.contains(text))
   })
 
-  it('shows days', async () => {
+  /* Different examples of more accurate tests that need
+  to explicitly run over the DOM structure
+  */
+
+  it('render days', async () => {
     const DAYS = fakeGigsByDay.map((day) => day.day)
     expect(page.dayTexts()).toEqual(DAYS)
   })
 
-  it('displays a list of gigs from backend (explicitly injected mock)', async () => {
+
+  it('render gigs for each day', async () => {
+    let expectedGigs
+    fakeGigsByDay.map((day, index) => {
+      expectedGigs = day.gigs.map((gig) => gig.title + ' - ' + gig.place)
+      expect(page.gigRowsFor(index)).toEqual(expectedGigs)
+    })
+  })
+
+  /* Test to demonstrate how to explicitly inject mosicaService as a prop
+  (less MAGIC than manual jest mock)
+   */
+  it('render days(explicitly injected mock)', async () => {
     const gigService = {retrieveNextGigs: () => Promise.resolve(fakeGigsByDay2)}
     const wrapper = mount(Days, {propsData: {gigService}})
     page = new DayListPage(wrapper)
@@ -33,12 +52,4 @@ describe('Days with async load', () => {
     expect(wrapper.html()).toContain('rapsus')
   })
 
-  it('shows gigs for each day', async () => {
-    //IS THIS TEST WORTHY? Maybe easier to unit-test components
-    let expectedGigs
-    fakeGigsByDay.map((day, index) => {
-      expectedGigs = day.gigs.map((gig) => gig.title + ' - ' + gig.place)
-      expect(page.gigRowsFor(index)).toEqual(expectedGigs)
-    })
-  })
 })

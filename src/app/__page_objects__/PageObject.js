@@ -12,6 +12,10 @@ export default class PageObject {
     return this.wrapper.text()
   }
 
+  contains(text) {
+    expect(this.text()).toContain(text)
+  }
+
   matchSnapshot() {
     expect(this.wrapper.html()).toMatchSnapshot()
   }

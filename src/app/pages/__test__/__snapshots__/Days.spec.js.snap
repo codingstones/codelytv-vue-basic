@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Days with async load matches full snapshot 1`] = `
+exports[`Days matches full snapshot 1`] = `
 <div class="layout-padding row justify-center">
     <div class="q-toolbar row no-wrap items-center relative-position q-toolbar-normal bg-primary">
         <div class="q-toolbar-title">
