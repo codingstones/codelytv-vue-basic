@@ -1,11 +1,9 @@
-export default class GigsContainerPO {
-  constructor(wrapper) {
-    this.wrapper = wrapper
-  }
+import PageObject from './PageObject';
 
-  async updateAsync() {
-    await flushPromises()
-    this.wrapper.update()
+export default class DayListPage extends PageObject {
+  constructor(wrapper) {
+    super(wrapper)
+    this.wrapper = wrapper
   }
 
   dayTexts() {

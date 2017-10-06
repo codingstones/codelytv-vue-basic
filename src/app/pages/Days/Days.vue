@@ -9,15 +9,9 @@
 
     <div style="width: 100%">
       <LoadSpinner :isLoading="isLoading"/>
-      <q-list v-if="!isLoading">
-        <div class='day' v-for="day in gigsByDay">
-          <q-list-header>{{day.day}}</q-list-header>
-          <q-item v-for="gig in day.gigs" @click="goTo(gig)"
-                  :key="gig.id" highlight>
-            {{gig.title}} - {{gig.place}}
-          </q-item>
-        </div>
-      </q-list>
+      <div class="day" v-for="day in gigsByDay" v-if="!isLoading">
+        <Day :day="day" :onClick="goTo"/>
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +20,7 @@
   import { mapState } from 'vuex'
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
-  import { HttpClient } from '../services/HttpClient'
+  import { HttpClient } from '../../services/HttpClient'
   const gigService = new mosicaCore.GigService(HttpClient(fetchJsonp), new mosicaCore.Matcher())
 
   export default {

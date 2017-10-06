@@ -1,4 +1,4 @@
-import LoadSpinner from '@/components/LoadSpinner.vue'
+import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 
 describe('LoadSpinner.vue', () => {
 

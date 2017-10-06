@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { registerGlobalComponents } from './GlobalComponentsLoader'
+import { registerGlobalComponents } from './app/GlobalComponentsLoader'
 
 registerGlobalComponents()
 export default {}

@@ -4,9 +4,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 function load (component) {
-  // '@' is aliased to src/components
-  return () => import(`@/${component}.vue`)
+  // '@' is aliased to src/
+  return () => import(`@/app/pages/${component}.vue`)
 }
+import Days from '@/app/pages/Days/Days.vue'
 
 export default new VueRouter({
   /*
@@ -22,7 +23,7 @@ export default new VueRouter({
    */
 
   routes: [
-    { path: '/', component: load('GigsContainer'), name: 'root' },
+    { path: '/', component: Days, name: 'root' },
     { path: '/gig/:id', component: load('GigDetail'), name: 'gig' },
     { path: '*', component: load('Error404') }
   ]

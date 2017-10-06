@@ -5,7 +5,7 @@
     </q-toolbar>
 
     <div style="width: 100%">
-      Detalle del GIG {{this.$router.currentRoute.params.id}}
+      DETAIL OF GIG {{this.$router.currentRoute.params.id}}
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
   export default {
     created() {
       // We could mapState this route param with vuex-sync-router
-      console.log('Mostrando detalle de gig con id: ', this.$router.currentRoute.params.id)
+      console.log('SHOWING DETAIL OF GIG WITH id: ', this.$router.currentRoute.params.id)
     }
   }
 </script>
