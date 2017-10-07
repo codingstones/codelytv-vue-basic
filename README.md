@@ -1,4 +1,4 @@
-# Quasar App
+# Mosica Quasar
 
 > A Quasar project
 
@@ -7,6 +7,9 @@
 ``` bash
 # install dependencies
 $ npm install
+
+# run tests
+$ jest --watch
 
 # serve with hot reload at localhost:8080
 $ quasar dev

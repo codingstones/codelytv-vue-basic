@@ -1,4 +1,4 @@
-import PageObject from './PageObject';
+import PageObject from './PageObject'
 
 export default class DayListPage extends PageObject {
   constructor(wrapper) {
@@ -15,10 +15,10 @@ export default class DayListPage extends PageObject {
   }
 
   clickFirstGig() {
-    return this.wrapper.find('.row').first().simulate('click')
+    this.wrapper.findAll('.q-item').at(0).trigger('click')
   }
 
   clickSecondGig() {
-    return this.wrapper.find('.row').at(1).simulate('click')
+    this.wrapper.findAll('.q-item').at(1).trigger('click')
   }
 }

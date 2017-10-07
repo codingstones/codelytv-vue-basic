@@ -4,6 +4,9 @@ import { fakeGigsByDay } from '../../__mocks__/gigs-sample'
 import { fakeGigsByDay2 } from '../../__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPage'
 
+jest.mock('../../services/MosicaRouter')
+import { navigateToGigSpy } from '../../services/__mocks__/MosicaRouterSpy'
+
 describe('Days', () => {
   const FIRST_DAY_GIG_TEXTS = fakeGigsByDay[0].gigs.map(
     gig => gig.title + ' - ' + gig.place)
@@ -23,6 +26,18 @@ describe('Days', () => {
     FIRST_DAY_GIG_TEXTS.map((text) => page.contains(text))
   })
 
+  fit('navigates to first gig detail', async () => {
+    const FIRST_GIG = fakeGigsByDay[0].gigs[0]
+    page.clickFirstGig()
+    expect(navigateToGigSpy).toHaveBeenCalledWith(FIRST_GIG.id)
+  })
+
+  fit('navigates to second gig detail', async () => {
+    const SECOND_GIG = fakeGigsByDay[0].gigs[1]
+    page.clickSecondGig()
+    expect(navigateToGigSpy).toHaveBeenCalledWith(SECOND_GIG.id)
+  })
+
   /* Different examples of more accurate tests that need
   to explicitly run over the DOM structure
   */
@@ -31,7 +46,6 @@ describe('Days', () => {
     const DAYS = fakeGigsByDay.map((day) => day.day)
     expect(page.dayTexts()).toEqual(DAYS)
   })
-
 
   it('render gigs for each day', async () => {
     let expectedGigs

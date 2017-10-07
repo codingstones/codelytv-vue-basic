@@ -1,4 +1,4 @@
-import {HttpClient} from './HttpClient'
+import {HttpClient} from '../HttpClient'
 import fetchJsonp from 'fetch-jsonp'
 
 const GIGS_URL = 'http://www.mosica.es/api/1/gigs'

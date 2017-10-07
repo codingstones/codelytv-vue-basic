@@ -21,6 +21,7 @@
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
   import { HttpClient } from '../../services/HttpClient'
+  import { MosicaRouter } from '../../services/MosicaRouter';
   const gigService = new mosicaCore.GigService(HttpClient(fetchJsonp), new mosicaCore.Matcher())
 
   export default {
@@ -32,19 +33,19 @@
     data () {
       return {
         gigsByDay: [],
-        isLoading: false
+        isLoading: false,
+        mosicaRouter: null
       }
     },
     async created() {
       this.isLoading = true
       this.gigsByDay = await this.gigService.retrieveNextGigs()
       this.isLoading = false
+      this.mosicaRouter = new MosicaRouter(this.$router)
     },
     methods: {
       goTo(gig) {
-        console.log('Moviendo a página de concierto', gig)
-        // this.$router.push({ name: 'gig' + params: gig })
-        this.$router.push('gig/' + gig.id)
+        this.mosicaRouter.navigateToGig(gig.id)
       },
       openInfo() {
         console.log('Opening info')
