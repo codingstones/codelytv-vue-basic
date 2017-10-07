@@ -21,4 +21,8 @@ export default class DayListPage extends PageObject {
   clickSecondGig() {
     this.wrapper.findAll('.q-item').at(1).trigger('click')
   }
+
+  setRouterSpy(routerSpy) {
+    this.wrapper.vm.mosicaRouter = routerSpy
+  }
 }
