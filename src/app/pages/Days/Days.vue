@@ -21,7 +21,7 @@
   import fetchJsonp from 'fetch-jsonp'
   import * as mosicaCore from 'mosica-core'
   import { HttpClient } from '../../services/HttpClient'
-  import { MosicaRouter } from '../../services/MosicaRouter';
+  import { MosicaRouter } from '../../services/MosicaRouter'
   const gigService = new mosicaCore.GigService(HttpClient(fetchJsonp), new mosicaCore.Matcher())
 
   export default {
