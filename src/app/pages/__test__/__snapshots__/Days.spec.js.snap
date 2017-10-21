@@ -5,7 +5,7 @@ exports[`Days matches full snapshot 1`] = `
     <div class="q-toolbar row no-wrap items-center relative-position q-toolbar-normal bg-primary">
         <div class="q-toolbar-title">
             MOSICA
-        </div> <button class="q-btn row inline flex-center q-focusable q-hoverable relative-position q-btn-rectangle q-btn-standard q-btn-flat"><div class="desktop-only q-focus-helper"></div><!----><span class="q-btn-inner row col flex-center"><!---->Info<!----></span></button></div>
+        </div> <button class="q-btn row inline flex-center q-focusable q-hoverable relative-position q-btn-rectangle q-btn-standard q-btn-flat"><div class="desktop-only q-focus-helper"></div> <!----> <span class="q-btn-inner row col flex-center"><!----> Info <!----></span></button></div>
     <div style="width: 100%;">
         <!---->
         <div class="day">

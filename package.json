@@ -40,7 +40,7 @@
     "mosica-core": "file:../mosica-core",
     "quasar-extras": "0.x",
     "quasar-framework": "^0.14.1",
-    "vue": "^2.4.4",
+    "vue": "^2.5.2",
     "vue-router": "^2.7.0",
     "vuex": "^2.4.0",
     "vuex-router-sync": "^4.3.2"
