@@ -27,21 +27,5 @@ exports[`New Gig matches full snapshot 1`] = `
       </span></span>
         </div>
     </div>
-    <div value=""><label>Date and time</label>
-        <div tabindex="0" class="q-if row no-wrap items-center relative-position q-datetime-input q-if-focusable text-primary" label="Date and time">
-            <!---->
-            <div class="q-if-inner col row no-wrap items-center relative-position">
-                <!---->
-                <!---->
-                <div class="col row items-center q-input-target justify-start"></div>
-                <!---->
-            </div> <i aria-hidden="true" class="q-if-control q-icon material-icons">arrow_drop_down</i>
-            <!---->
-        </div> <span><span class="label text-red" style="display: none;">
-      Date of birth is required.
-    </span><span class="label text-red" style="display: none;">
-      You cannot set a gig in a past date :(
-    </span></span>
-    </div>
 </div>
 `;

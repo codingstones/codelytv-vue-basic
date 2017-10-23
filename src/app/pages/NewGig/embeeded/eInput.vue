@@ -5,12 +5,15 @@
       <q-input required :error="invalidAndDirty"
              :value="value"
              @input="change($event)"/>
+        {{ validation.$dirty }}
+        {{ !validation[key] }}
       <transition-group name="slide-fade">
         <span class="label text-red"
               v-for="(key, index) in messageKeys"
-              v-show="!validation[key] && validation.$dirty"
+              v-if="!validation[key] && validation.$dirty"
               :key="index">
 
+          PPPP
           {{validationMessages[key]}}
         </span>
       </transition-group>
@@ -20,6 +23,7 @@
 
 <script type="text/javascript">
   export default {
+    name: 'eInput',
     props: {
       validation: {
         type: Object,

@@ -7,14 +7,14 @@
       :validation-messages="validationMessages.name"
       :value="name"
     ></e-input>
-    <e-date-time
-      format="YYYY/MM/DD - hh:mm"
-      label="Date and time"
-      v-model="dateTime"
-      :validation="$v.dateTime"
-      :validation-messages="validationMessages.dateTime"
-      :value="dateTime"
-    ></e-date-time>
+    <!--<e-date-time-->
+      <!--format="YYYY/MM/DD - hh:mm"-->
+      <!--label="Date and time"-->
+      <!--v-model="dateTime"-->
+      <!--:validation="$v.dateTime"-->
+      <!--:validation-messages="validationMessages.dateTime"-->
+      <!--:value="dateTime"-->
+    <!--&gt;</e-date-time>-->
   </div>
 </template>
 
@@ -53,12 +53,6 @@
             isFutureDatetime: 'You cannot set a gig in a past date :('
           }
         }
-      }
-    },
-    methods: {
-      change (value) {
-        this.validation.$touch()
-        this.$emit('input', value)
       }
     },
     components: {

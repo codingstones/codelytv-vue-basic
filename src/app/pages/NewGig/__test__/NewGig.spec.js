@@ -19,10 +19,9 @@ describe('New Gig', () => {
     page.matchSnapshot()
   })
 
-  it('when validating name', async () => {
-    console.log(page.text())
+  fit('when validating name', async () => {
 
-    page.writeName('abc')
+    await page.writeName('abc')
     expect(page.text()).toContain('Minimum 5 characters.')
   })
 })
