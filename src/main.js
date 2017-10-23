@@ -12,12 +12,14 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 
 import Vue from 'vue'
 import Quasar from 'quasar-framework'
+import Vuelidate from 'vuelidate'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import { store } from './vuex/store'
 
 Vue.config.productionTip = false
-Vue.use(Quasar) // Install Quasar Framework
+Vue.use(Quasar)
+Vue.use(Vuelidate)
 sync(store, router)
 
 if (__THEME === 'mat') {

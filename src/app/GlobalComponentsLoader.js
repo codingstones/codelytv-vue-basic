@@ -5,7 +5,10 @@ import {
   QItem,
   QBtn,
   QToolbar,
-  QToolbarTitle
+  QToolbarTitle,
+  QInput,
+  QField,
+  QDatetime
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import Gig from '@/app/pages/Days/Gig.vue'
@@ -21,4 +24,7 @@ export function registerGlobalComponents() {
   Vue.component('QBtn', QBtn)
   Vue.component('QToolbar', QToolbar)
   Vue.component('QToolbarTitle', QToolbarTitle)
+  Vue.component('QInput', QInput)
+  Vue.component('QField', QField)
+  Vue.component('QDatetime', QDatetime)
 }

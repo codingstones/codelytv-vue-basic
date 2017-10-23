@@ -8,6 +8,8 @@ function load (component) {
   return () => import(`@/app/pages/${component}.vue`)
 }
 import Days from '@/app/pages/Days/Days.vue'
+import EmbeededValidationsElements from '@/app/pages/NewGig/embeeded/embeeded'
+import NewGig from '@/app/pages/NewGig/NewGig'
 
 export default new VueRouter({
   /*
@@ -25,6 +27,8 @@ export default new VueRouter({
   routes: [
     { path: '/', component: Days, name: 'root' },
     { path: '/gig/:id', component: load('GigDetail'), name: 'gig' },
+    { path: '/form', component: EmbeededValidationsElements, name: 'embeeded' },
+    { path: '/newGig', component: NewGig, name: 'newGig' },
     { path: '*', component: load('Error404') }
   ]
 })
