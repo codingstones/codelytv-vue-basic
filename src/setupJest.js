@@ -5,13 +5,13 @@ window['flushPromises'] = () => {
   return new Promise(resolve => setImmediate(resolve))
 }
 
-window['keepsSnapshot'] = (component, props) => {
-  const wrapper = shallow(component, { propsData: props })
+window['keepsSnapshot'] = (component) => {
+  const wrapper = shallow(component)
   expect(wrapper.html()).toMatchSnapshot()
 }
 
-window['mountWithProps'] = (component, props) => {
-  return mount(component, { propsData: props })
+window['mountWithProps'] = (component, props, slots) => {
+  return mount(component, { propsData: props, slots })
 }
 
 window['shallowWithProps'] = (component, props) => {

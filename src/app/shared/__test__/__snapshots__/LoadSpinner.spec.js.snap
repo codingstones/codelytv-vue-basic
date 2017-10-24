@@ -2,8 +2,4 @@
 
 exports[`LoadSpinner.vue keeps snapshot when is NOT loading 1`] = `<!---->`;
 
-exports[`LoadSpinner.vue keeps snapshot when is loading 1`] = `
-<div class="spinner">
-    <p>Loading...</p>
-</div>
-`;
+exports[`LoadSpinner.vue keeps snapshot when is loading 1`] = `<!---->`;

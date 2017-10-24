@@ -1,9 +1,11 @@
 <template>
-  <q-btn color="primary" class="full-width" @click="onClick()">{{ label }}</q-btn>
+  <q-btn color="primary" class="full-width" @click="onClick()">
+    <slot></slot>
+  </q-btn>
 </template>
 
 <script>
   export default {
-    props: ['onClick', 'label']
+    props: ['onClick']
   }
 </script>

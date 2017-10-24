@@ -3,9 +3,11 @@ import FormButton from '@/app/shared/FormButton.vue'
 describe('FormButton.vue', () => {
 
   it('renders label', () => {
-    const wrapper = mountWithProps(FormButton, { label: 'SAVE' })
 
-    expect(wrapper.text()).toContain('SAVE')
+    const SLOT_CONTENT = '<p>Any text</p>'
+    const wrapper = mountWithProps(FormButton, { label: 'SAVE' }, {default: SLOT_CONTENT})
+
+    expect(wrapper.html()).toContain(SLOT_CONTENT)
   })
 
   it('renders label', () => {
