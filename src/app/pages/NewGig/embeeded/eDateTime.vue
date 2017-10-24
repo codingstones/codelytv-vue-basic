@@ -10,7 +10,7 @@
     ></q-datetime>
     <span class="label text-red"
           v-for="(key, index) in messageKeys"
-          v-show="!validation[key] && validation.$dirty"
+          v-if="!validation[key] && validation.$dirty"
           :key="index">
       {{validationMessages[key]}}
     </span>
@@ -19,6 +19,7 @@
 
 <script type="text/javascript">
   export default {
+    name: 'eDatetime',
     props: {
       format: {
         type: String
@@ -46,7 +47,6 @@
     },
     methods: {
       change (value) {
-        console.log(value)
         this.validation.$touch()
         this.$emit('input', value)
       }

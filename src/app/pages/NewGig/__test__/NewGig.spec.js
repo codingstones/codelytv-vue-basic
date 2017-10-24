@@ -45,16 +45,23 @@ describe('New Gig', () => {
   })
 
   describe('when validating datetime', () => {
+
     it('and datetime is cleared', async () => {
       page.dirtyValidation()
       await page.flushPromises()
       expect(page.text()).toContain('Date and time of gig are required.')
     })
 
-    it('and datetime is ', async () => {
-      page.dirtyValidation()
+    it('and datetime is in the past', async () => {
+      page.writeDatetime('1900/10/27')
       await page.flushPromises()
-      expect(page.text()).toContain('Date and time of gig are required.')
+      expect(page.text()).toContain('You cannot set a gig in a past date :(')
+    })
+
+    it('and datetime is in the future', async () => {
+      page.writeDatetime('3000/10/27')
+      await page.flushPromises()
+      expect(page.hasDatetimeError()).toBe(false)
     })
   })
 })

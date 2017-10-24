@@ -6,7 +6,7 @@
              :value="value"
              @input="change($event)"
               placeholder="gggg"/>
-        <span class="label text-red"
+        <span id='datetime-validation-error' class="label text-red"
               v-for="(key, index) in messageKeys"
               v-if="!validation[key] && validation.$dirty"
               :key="index">

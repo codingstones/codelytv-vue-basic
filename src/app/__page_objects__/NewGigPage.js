@@ -1,5 +1,6 @@
 import PageObject from './PageObject'
 import eInput from '../pages/NewGig/embeeded/eInput.vue'
+import eDateTime from '../pages/NewGig/embeeded/eDateTime.vue'
 
 export default class NewGigPage extends PageObject {
   constructor(wrapper) {
@@ -18,7 +19,23 @@ export default class NewGigPage extends PageObject {
     input.vm.change(name)
   }
 
-  async dirtyValidation() {
+  dirtyValidation() {
     this.wrapper.vm.$v.$touch()
+  }
+
+  writeDatetime(datetime) {
+    const edatetime = this.wrapper.find(eDateTime)
+    edatetime.vm.change(datetime)
+  }
+
+  // This does not work but it's interesting to review WHY in the video
+  writeDatetimeTry(datetime) {
+    let div = this.wrapper.find(eDateTime).find('.q-input-target')
+    div.element.innerHTML = datetime
+    div.trigger('input')
+  }
+
+  hasDatetimeError() {
+    return this.wrapper.find(eDateTime).hasClass('text-red')
   }
 }
