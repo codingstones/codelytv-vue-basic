@@ -15,7 +15,7 @@
       :value="dateTime"
     ></e-date-time>
 
-    <q-btn color="primary" class="full-width" @click="save()">WTF</q-btn>
+    <FormButton :onClick="save" label="Create Gig"></FormButton>
 
   </div>
 </template>
