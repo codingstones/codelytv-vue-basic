@@ -38,4 +38,8 @@ export default class NewGigPage extends PageObject {
   hasDatetimeError() {
     return this.wrapper.find(eDateTime).hasClass('text-red')
   }
+
+  hasNameError() {
+    return this.wrapper.find(eInput).hasClass('text-red')
+  }
 }
