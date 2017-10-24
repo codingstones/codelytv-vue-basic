@@ -19,12 +19,6 @@ describe('New Gig', () => {
   //   page.matchSnapshot()
   // })
 
-  // it('when validating name', async () => {
-  //
-  //   await page.writeName('abc')
-  //   expect(page.text()).toContain('Minimum 5 characters.')
-  // })
-
   describe('when validating name', () => {
 
     it('and name is empty', async () => {
@@ -46,6 +40,13 @@ describe('New Gig', () => {
     it('and name has 21 characters', () => {
       page.writeName(nameWithLength(21))
       expect(page.text()).toContain('Maximum 20 characters.')
+    })
+  })
+
+  describe('when validating datetime', () => {
+    it('and name is empty', async () => {
+      await page.dirtyValidation()
+      expect(page.text()).toContain('required')
     })
   })
 })

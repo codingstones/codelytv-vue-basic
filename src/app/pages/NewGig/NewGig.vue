@@ -6,14 +6,14 @@
       :validation="$v.name"
       :validation-messages="validationMessages.name"
     ></e-input>
-    <!--<e-date-time-->
-      <!--format="YYYY/MM/DD - hh:mm"-->
-      <!--label="Date and time"-->
-      <!--v-model="dateTime"-->
-      <!--:validation="$v.dateTime"-->
-      <!--:validation-messages="validationMessages.dateTime"-->
-      <!--:value="dateTime"-->
-    <!--&gt;</e-date-time>-->
+    <e-date-time
+      format="YYYY/MM/DD - hh:mm"
+      label="Date and time"
+      v-model="dateTime"
+      :validation="$v.dateTime"
+      :validation-messages="validationMessages.dateTime"
+      :value="dateTime"
+    ></e-date-time>
   </div>
 </template>
 

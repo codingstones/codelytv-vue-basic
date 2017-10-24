@@ -21,9 +21,4 @@ export default class NewGigPage extends PageObject {
   async dirtyValidation() {
     this.wrapper.vm.$v.$touch()
   }
-
-  propagateInput() {
-    let input = this.wrapper.find(eInput).find('input')
-    input.trigger('input')
-  }
 }

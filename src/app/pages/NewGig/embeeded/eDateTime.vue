@@ -8,14 +8,12 @@
                 :format="format"
                 @input="change($event)"
     ></q-datetime>
-    <transition-group name="slide-fade">
-      <span class="label text-red"
-            v-for="(key, index) in messageKeys"
-            v-show="!validation[key] && validation.$dirty"
-            :key="index">
-        {{validationMessages[key]}}
-      </span>
-    </transition-group>
+    <span class="label text-red"
+          v-for="(key, index) in messageKeys"
+          v-show="!validation[key] && validation.$dirty"
+          :key="index">
+      {{validationMessages[key]}}
+    </span>
   </div>
 </template>
 
