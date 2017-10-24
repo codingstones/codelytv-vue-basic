@@ -15,10 +15,15 @@ export default class NewGigPage extends PageObject {
 
   writeNameAsync(name) {
     let input = this.wrapper.find(eInput)
-    return input.vm.change(name)
+    input.vm.change(name)
   }
 
   async dirtyValidation() {
     this.wrapper.vm.$v.$touch()
+  }
+
+  propagateInput() {
+    let input = this.wrapper.find(eInput).find('input')
+    input.trigger('input')
   }
 }

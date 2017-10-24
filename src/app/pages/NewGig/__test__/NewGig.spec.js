@@ -10,7 +10,7 @@ Vue.use(Quasar)
 describe('New Gig', () => {
 
   let page, wrapper
-  beforeEach(async () => {
+  beforeEach(() => {
     wrapper = mount(NewGig)
     page = new NewGigPage(wrapper)
   })
@@ -30,6 +30,12 @@ describe('New Gig', () => {
     it('and name is empty', async () => {
       await page.dirtyValidation()
       expect(page.text()).toContain('required')
+    })
+
+    it('and name has 4 characters (async)', async() => {
+      page.writeNameAsync(nameWithLength(4))
+      await page.flushPromises()
+      expect(page.text()).toContain('Minimum 5 characters.')
     })
 
     it('and name has 4 characters', () => {

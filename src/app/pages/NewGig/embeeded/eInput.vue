@@ -4,7 +4,8 @@
       <label>{{label}}</label>
       <q-input required :error="invalidAndDirty"
              :value="value"
-             @input="change($event)"/>
+             @input="change($event)"
+              placeholder="gggg"/>
         <span class="label text-red"
               v-for="(key, index) in messageKeys"
               v-if="!validation[key] && validation.$dirty"

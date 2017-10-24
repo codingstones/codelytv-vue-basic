@@ -8,6 +8,10 @@ export default class PageObject {
     this.wrapper.update()
   }
 
+  flushPromises() {
+    return new Promise(resolve => setImmediate(resolve))
+  }
+
   text() {
     return this.wrapper.text()
   }
