@@ -32,13 +32,13 @@ describe('New Gig', () => {
       expect(page.text()).toContain('required')
     })
 
-    it('and name has 4 characters', async () => {
-      await page.writeName(nameWithLength(4))
+    it('and name has 4 characters', () => {
+      page.writeName(nameWithLength(4))
       expect(page.text()).toContain('Minimum 5 characters.')
     })
 
-    it('and name has 21 characters', async () => {
-      await page.writeName(nameWithLength(21))
+    it('and name has 21 characters', () => {
+      page.writeName(nameWithLength(21))
       expect(page.text()).toContain('Maximum 20 characters.')
     })
   })
