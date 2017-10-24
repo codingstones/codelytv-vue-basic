@@ -18,4 +18,8 @@ describe('isFutureDatetime', () => {
     expect(isFutureDatetime('2017-10-11T00:00:00')).toBe(false)
   })
 
+  it('with empty date', () => {
+    expect(isFutureDatetime('')).toBe(true)
+  })
+
 })
