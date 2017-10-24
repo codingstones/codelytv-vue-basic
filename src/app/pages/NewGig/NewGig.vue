@@ -5,7 +5,6 @@
       v-model="name"
       :validation="$v.name"
       :validation-messages="validationMessages.name"
-      :value="name"
     ></e-input>
     <!--<e-date-time-->
       <!--format="YYYY/MM/DD - hh:mm"-->

@@ -15,13 +15,35 @@ describe('New Gig', () => {
     page = new NewGigPage(wrapper)
   })
 
-  it('matches full snapshot', async () => {
-    page.matchSnapshot()
-  })
+  // it('matches full snapshot', async () => {
+  //   page.matchSnapshot()
+  // })
 
-  fit('when validating name', async () => {
+  // it('when validating name', async () => {
+  //
+  //   await page.writeName('abc')
+  //   expect(page.text()).toContain('Minimum 5 characters.')
+  // })
 
-    await page.writeName('abc')
-    expect(page.text()).toContain('Minimum 5 characters.')
+  describe('when validating name', () => {
+
+    it('and name is empty', async () => {
+      await page.dirtyValidation()
+      expect(page.text()).toContain('required')
+    })
+
+    it('and name has 4 characters', async () => {
+      await page.writeName(nameWithLength(4))
+      expect(page.text()).toContain('Minimum 5 characters.')
+    })
+
+    it('and name has 21 characters', async () => {
+      await page.writeName(nameWithLength(21))
+      expect(page.text()).toContain('Maximum 20 characters.')
+    })
   })
 })
+
+function nameWithLength(length) {
+  return 'x'.repeat(length)
+}

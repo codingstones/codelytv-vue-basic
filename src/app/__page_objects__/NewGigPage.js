@@ -8,7 +8,17 @@ export default class NewGigPage extends PageObject {
   }
 
   writeName(name) {
+    let input = this.wrapper.find(eInput).find('input')
+    input.element.value = name
+    input.trigger('input')
+  }
+
+  writeNameAsync(name) {
     let input = this.wrapper.find(eInput)
     return input.vm.change(name)
+  }
+
+  async dirtyValidation() {
+    this.wrapper.vm.$v.$touch()
   }
 }
