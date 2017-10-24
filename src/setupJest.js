@@ -14,4 +14,8 @@ window['mountWithProps'] = (component, props) => {
   return mount(component, { propsData: props })
 }
 
+window['shallowWithProps'] = (component, props) => {
+  return shallow(component, { propsData: props })
+}
+
 registerGlobalComponents()

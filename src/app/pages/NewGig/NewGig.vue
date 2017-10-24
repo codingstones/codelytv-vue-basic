@@ -14,6 +14,9 @@
       :validation-messages="validationMessages.dateTime"
       :value="dateTime"
     ></e-date-time>
+
+    <q-btn color="primary" class="full-width" @click="save()">WTF</q-btn>
+
   </div>
 </template>
 
@@ -52,6 +55,11 @@
             isFutureDatetime: 'You cannot set a gig in a past date :('
           }
         }
+      }
+    },
+    methods: {
+      save() {
+        console.log('Saving...')
       }
     },
     components: {
