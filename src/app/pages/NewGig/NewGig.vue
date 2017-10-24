@@ -48,7 +48,7 @@
             maxLength: 'Maximum 20 characters.'
           },
           dateTime: {
-            required: 'Date of birth is required.',
+            required: 'Date and time of gig are required.',
             isFutureDatetime: 'You cannot set a gig in a past date :('
           }
         }

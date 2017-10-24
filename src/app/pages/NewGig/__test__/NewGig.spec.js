@@ -21,9 +21,10 @@ describe('New Gig', () => {
 
   describe('when validating name', () => {
 
-    it('and name is empty', async () => {
-      await page.dirtyValidation()
-      expect(page.text()).toContain('required')
+    it('and name is cleared', async () => {
+      page.dirtyValidation()
+      await page.flushPromises()
+      expect(page.text()).toContain('Name is required')
     })
 
     it('and name has 4 characters (async)', async() => {
@@ -44,9 +45,16 @@ describe('New Gig', () => {
   })
 
   describe('when validating datetime', () => {
-    it('and name is empty', async () => {
-      await page.dirtyValidation()
-      expect(page.text()).toContain('required')
+    it('and datetime is cleared', async () => {
+      page.dirtyValidation()
+      await page.flushPromises()
+      expect(page.text()).toContain('Date and time of gig are required.')
+    })
+
+    it('and datetime is ', async () => {
+      page.dirtyValidation()
+      await page.flushPromises()
+      expect(page.text()).toContain('Date and time of gig are required.')
     })
   })
 })
