@@ -18,4 +18,5 @@ window['shallowWithProps'] = (component, props) => {
   return shallow(component, { propsData: props })
 }
 
+
 registerGlobalComponents()
