@@ -1,4 +1,5 @@
-import { fetchDaysError, fetchDaysRequest, fetchDaysSuccess } from '../mutations'
+
+import { fetchDaysError, fetchDaysRequest, fetchDaysSuccess } from '../days-mutations'
 
 describe('Mutations', () => {
 

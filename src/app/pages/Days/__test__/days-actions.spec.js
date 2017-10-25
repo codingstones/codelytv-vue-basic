@@ -1,12 +1,9 @@
 import {
-  retrieveDaysAction
-} from '../actions'
-
-import {
   FETCH_DAYS_REQUEST, FETCH_DAYS_SUCCESS, FETCH_DAYS_ERROR
-} from '../mutations'
+} from '../days-mutations'
 
-import { rejectedPromise, resolvedPromise } from '../../../test/helpers'
+import { rejectedPromise, resolvedPromise } from '../../../../../test/helpers'
+import { retrieveDaysAction } from '../days-actions';
 
 describe('Vuex actions', () => {
 

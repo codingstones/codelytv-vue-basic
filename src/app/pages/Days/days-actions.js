@@ -2,9 +2,9 @@ import {
   FETCH_DAYS_REQUEST,
   FETCH_DAYS_SUCCESS,
   FETCH_DAYS_ERROR
-} from './mutations'
+} from './days-mutations'
 
-import { fakeGigsByDay } from '../app/__mocks__/gigs-sample'
+import { retrieveDays } from '../../shared/mosica-api'
 
 export function buildRetrieveDaysAction() {
   return retrieveDaysAction(retrieveDays).run
@@ -23,9 +23,4 @@ export function retrieveDaysAction(retrieveDays) {
       commit(FETCH_DAYS_ERROR, error)
     }
   }
-}
-
-// This will go inside Api module
-function retrieveDays() {
-  return Promise.resolve(fakeGigsByDay)
 }

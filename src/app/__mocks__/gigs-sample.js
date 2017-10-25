@@ -51,7 +51,7 @@ export const fakeGigsByDay = [
             'updated_at': '2017-09-07T15:57:35.419Z'
           }
         ]
-      },
+      }
     ]
   }
 ]

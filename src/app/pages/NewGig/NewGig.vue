@@ -21,6 +21,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+  import { CREATE_GIG } from '../../shared/mosica-actions'
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
   import eInput from './embeeded/eInput.vue'
   import eDateTime from './embeeded/eDateTime.vue'
@@ -58,6 +60,7 @@
       }
     },
     methods: {
+      ...mapActions([CREATE_GIG]),
       save() {
         console.log('Saving...')
       }
