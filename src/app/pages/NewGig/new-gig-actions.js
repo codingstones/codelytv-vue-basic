@@ -8,11 +8,11 @@ export function buildCreateGigAction() {
 export function createGigAction(createGig) {
   return { run }
 
-  async function run({ commit }) {
+  async function run({ commit }, params) {
     commit(CREATE_GIG_REQUEST)
     try {
-      const days = await createGig()
-      commit(CREATE_GIG_SUCCESS, days.result)
+      await createGig(params)
+      commit(CREATE_GIG_SUCCESS, params)
     }
     catch (error) {
       commit(CREATE_GIG_ERROR, error)

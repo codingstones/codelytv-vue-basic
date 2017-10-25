@@ -11,19 +11,19 @@ import {
   FETCH_DAYS_ERROR, FETCH_DAYS_REQUEST, FETCH_DAYS_SUCCESS, fetchDaysError,
   fetchDaysRequest, fetchDaysSuccess
 } from '../app/pages/Days/days-mutations'
+import { buildCreateGigAction } from '../app/pages/NewGig/new-gig-actions'
 
 Vue.use(Vuex)
 
 const initialState = {
-  day: [],
+  days: [],
   error: false,
   loading: true
 }
 
 export const actions = {
   [RETRIEVE_DAYS]: buildRetrieveDaysAction(),
-  // [CREATE_GIG]: buildCreateGigAction()
-  [CREATE_GIG]: () => console.log('Dispatching create gig action')
+  [CREATE_GIG]: buildCreateGigAction()
 }
 
 export const mutations = {
@@ -37,5 +37,6 @@ export const mutations = {
 
 export const store = new Vuex.Store({
   state: initialState,
-  actions
+  actions,
+  mutations
 })

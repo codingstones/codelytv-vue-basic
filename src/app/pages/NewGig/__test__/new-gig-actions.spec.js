@@ -18,21 +18,21 @@ describe('Vuex actions', () => {
   describe('Create Gig action', () => {
 
     it('finishes with success', async () => {
-      const DAYS = { result: 'ANY DAYS' }
-      const retrieveDays = resolvedPromise(DAYS)
+      const NEW_DAY = 'IRRELEVANT NEW DAY'
+      const createGig = resolvedPromise('irrelevant result')
 
-      action = createGigAction(retrieveDays)
-      await action.run({ commit: commitSpy })
+      action = createGigAction(createGig)
+      await action.run({ commit: commitSpy }, NEW_DAY)
 
       expect(commitSpy).toHaveBeenCalledWith(CREATE_GIG_REQUEST)
-      expect(commitSpy).toHaveBeenCalledWith(CREATE_GIG_SUCCESS, DAYS.result)
+      expect(commitSpy).toHaveBeenCalledWith(CREATE_GIG_SUCCESS, NEW_DAY)
     })
 
     it('finishes with error', async () => {
       const createGig = rejectedPromise(backendError)
       action = createGigAction(createGig)
 
-      await action.run({ commit: commitSpy })
+      await action.run({ commit: commitSpy }, 'any gig')
 
       expect(commitSpy).toHaveBeenCalledWith(CREATE_GIG_REQUEST)
       expect(commitSpy).toHaveBeenCalledWith(CREATE_GIG_ERROR, backendError)
