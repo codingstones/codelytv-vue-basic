@@ -1,11 +1,13 @@
 import { mount } from 'vue-test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Vuelidate from 'vuelidate'
 import Quasar from 'quasar-framework'
 import NewGigPage from '../../../__page_objects__/NewGigPage'
 Vue.use(Vuelidate)
 Vue.use(Quasar)
+Vue.use(Vuex)
 
 describe('New Gig', () => {
 
@@ -102,6 +104,22 @@ describe('New Gig', () => {
       await page.flushPromises()
       expect(page.isSaveButtonDisabled()).toBe(false)
     })
+
+  })
+
+  it('creates a GIG in the store when save button is clicked', async () => {
+    wrapper = mount(NewGig)
+    let actionStub = jest.fn()
+    let store = new Vuex.Store({
+      state: {days: [], loading: false},
+      actions: { create_gig: actionStub }
+    })
+    page = new NewGigPage(wrapper, {store})
+    page.writeNameAsync(nameWithValidLength())
+    page.writeDatetime(FUTURE_DATETIME)
+    page.clickSaveButton()
+    await page.flushPromises()
+    // expect(actionStub).toHaveBeenCalled()
   })
 })
 

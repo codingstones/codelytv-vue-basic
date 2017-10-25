@@ -1,6 +1,6 @@
-export const CREATE_GIG_REQUEST = 'createDaysRequest'
-export const CREATE_GIG_SUCCESS = 'createDaysSuccess'
-export const CREATE_GIG_ERROR = 'createDaysError'
+export const CREATE_GIG_REQUEST = 'createGigRequest'
+export const CREATE_GIG_SUCCESS = 'createGigSuccess'
+export const CREATE_GIG_ERROR = 'createGigError'
 
 export function createGigRequest(state) {
   state.loading = true

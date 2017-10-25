@@ -47,4 +47,9 @@ export default class NewGigPage extends PageObject {
   isSaveButtonDisabled() {
     return this.wrapper.find(FormButton).hasProp('disabled', true)
   }
+
+  clickSaveButton() {
+    // console.log(this.wrapper.find(FormButton))
+    this.wrapper.find(FormButton).trigger('click')
+  }
 }
