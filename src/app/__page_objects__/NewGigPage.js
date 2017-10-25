@@ -1,6 +1,7 @@
 import PageObject from './PageObject'
 import eInput from '../pages/NewGig/embeeded/eInput.vue'
 import eDateTime from '../pages/NewGig/embeeded/eDateTime.vue'
+import FormButton from '../shared/FormButton.vue'
 
 export default class NewGigPage extends PageObject {
   constructor(wrapper) {
@@ -41,5 +42,9 @@ export default class NewGigPage extends PageObject {
 
   hasNameError() {
     return this.wrapper.find(eInput).hasClass('text-red')
+  }
+
+  isSaveButtonDisabled() {
+    return this.wrapper.find(FormButton).hasProp('disabled', true)
   }
 }
