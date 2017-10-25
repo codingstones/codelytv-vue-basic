@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const initialState = {
-  gigs: ['GIG1', 'GIG2']
+  day: [],
+  error: false,
+  loading: true
 }
 
 export const store = new Vuex.Store({
