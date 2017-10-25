@@ -15,7 +15,7 @@
       :value="dateTime"
     ></e-date-time>
 
-    <FormButton :onClick="save" :disabled="true">Create Gig</FormButton>
+    <FormButton :onClick="save" :disabled="$v.$invalid">Create Gig</FormButton>
 
   </div>
 </template>
