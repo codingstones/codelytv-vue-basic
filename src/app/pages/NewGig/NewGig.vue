@@ -14,7 +14,6 @@
       :validation-messages="validationMessages.dateTime"
       :value="dateTime"
     ></e-date-time>
-
     <FormButton :onClick="save" :disabled="$v.$invalid">Create Gig</FormButton>
 
   </div>
