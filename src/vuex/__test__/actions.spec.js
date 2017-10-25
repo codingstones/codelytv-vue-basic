@@ -5,7 +5,8 @@ import {
 import {
   FETCH_DAYS_REQUEST, FETCH_DAYS_SUCCESS, FETCH_DAYS_ERROR
 } from '../mutations'
-import { rejectedPromise, resolvedPromise} from '../../../test/helpers'
+
+import { rejectedPromise, resolvedPromise } from '../../../test/helpers'
 
 describe('Vuex actions', () => {
 
@@ -24,7 +25,6 @@ describe('Vuex actions', () => {
       const retrieveDays = resolvedPromise(DAYS)
 
       action = retrieveDaysAction(retrieveDays)
-
       await action.run({ commit: commitSpy })
 
       expect(commitSpy).toHaveBeenCalledWith(FETCH_DAYS_REQUEST)
