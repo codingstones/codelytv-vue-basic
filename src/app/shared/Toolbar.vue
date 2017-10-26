@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <q-toolbar color="primary">
     <q-toolbar-title>
       Anarchy JS

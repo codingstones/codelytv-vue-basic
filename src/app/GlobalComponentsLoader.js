@@ -13,7 +13,7 @@ import {
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
-import Toolbar from '@/app/shared/toolbar.vue'
+import Toolbar from '@/app/shared/Toolbar.vue'
 import Gig from '@/app/pages/Days/Gig.vue'
 import Day from '@/app/pages/Days/Day.vue'
 
