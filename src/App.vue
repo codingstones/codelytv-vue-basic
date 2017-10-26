@@ -2,8 +2,8 @@
   <div id="q-app">
     <div class="layout-padding row justify-center">
       <Toolbar slot="header"></Toolbar>
-      <transition name="fade" mode="out-in">
-        <router-view />
+      <transition name="fade">
+        <router-view class="layout-view"/>
       </transition>
     </div>
   </div>
@@ -17,5 +17,11 @@ export default {}
 </script>
 
 <style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s
+  }
 
+  .fade-enter, .fade-leave-to {
+    opacity: 0
+  }
 </style>
