@@ -5,6 +5,8 @@ import Vuex from 'vuex'
 import Vuelidate from 'vuelidate'
 import Quasar from 'quasar-framework'
 import NewGigPage from '../../../__page_objects__/NewGigPage'
+import { store } from '../../../../vuex/store'
+import { cloneProductionStore } from '../../../../../test/helpers'
 Vue.use(Vuelidate)
 Vue.use(Quasar)
 Vue.use(Vuex)
@@ -121,6 +123,22 @@ describe('New Gig', () => {
     page.clickSaveButton()
 
     expect(actionSpy).toHaveBeenCalled()
+  })
+
+  fit('creates a GIG in the store when save button is clicked', async () => {
+    wrapper = mount(NewGig, { store: cloneProductionStore() })
+    page = new NewGigPage(wrapper)
+
+    expect(store.state.days).toHaveLength(0)
+
+    page.writeNameAsync(nameWithValidLength())
+    page.writeDatetime(FUTURE_DATETIME)
+    await page.flushPromises()
+    page.clickSaveButton()
+    await page.flushPromises()
+
+    expect(store.state.days).toHaveLength(1)
+
   })
 })
 

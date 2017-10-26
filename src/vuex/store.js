@@ -15,7 +15,7 @@ import { buildCreateGigAction } from '../app/pages/NewGig/new-gig-actions'
 
 Vue.use(Vuex)
 
-const initialState = {
+export const initialState = {
   days: [],
   error: false,
   loading: true

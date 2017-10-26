@@ -1,3 +1,6 @@
+import { actions, mutations, initialState } from '../src/vuex/store'
+import Vuex from 'vuex'
+
 export function spyFor() {
   // Returns an object like {arg0: jest.fn(), ...argN: jest.fn()} for the given args
   return Array.from(arguments).reduce((result, arg) => {
@@ -26,4 +29,12 @@ export function rejectedStub(methodName, promiseError) {
   const result = {}
   result[methodName] = rejectedPromise(promiseError)
   return result
+}
+
+export function cloneProductionStore() {
+  return new Vuex.Store({
+    state: Object.assign({}, initialState),
+    actions,
+    mutations
+  })
 }
