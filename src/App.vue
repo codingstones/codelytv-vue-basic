@@ -2,7 +2,9 @@
   <div id="q-app">
     <div class="layout-padding row justify-center">
       <Toolbar slot="header"></Toolbar>
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>

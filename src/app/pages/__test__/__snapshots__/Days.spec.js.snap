@@ -1,26 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Days matches full snapshot 1`] = `
-<div class="layout-padding row justify-center">
-    <div class="q-toolbar row no-wrap items-center relative-position q-toolbar-normal bg-primary">
-        <div class="q-toolbar-title">
-            MOSICA
-        </div> <button class="q-btn row inline flex-center q-focusable q-hoverable relative-position q-btn-rectangle q-btn-standard q-btn-flat"><div class="desktop-only q-focus-helper"></div> <!----> <span class="q-btn-inner row col flex-center"><!----> Info <!----></span></button></div>
-    <div style="width: 100%;">
-        <!---->
-        <div class="day">
-            <div class="q-list">
-                <div class="day">
-                    <div class="q-list-header ">Lunes, 18 de Septiembre</div>
-                    <div>
-                        <div class="q-item q-item-division relative-position q-item-highlight">
-                            Anarchy in the JS - SCBCN
-                        </div>
+<div style="width: 100%;">
+    <!---->
+    <div class="day">
+        <div class="q-list">
+            <div class="day">
+                <div class="q-list-header ">Lunes, 18 de Septiembre</div>
+                <div>
+                    <div class="q-item q-item-division relative-position q-item-highlight">
+                        Anarchy in the JS - SCBCN
                     </div>
-                    <div>
-                        <div class="q-item q-item-division relative-position q-item-highlight">
-                            Vegan Microservices - Around the world
-                        </div>
+                </div>
+                <div>
+                    <div class="q-item q-item-division relative-position q-item-highlight">
+                        Vegan Microservices - Around the world
                     </div>
                 </div>
             </div>

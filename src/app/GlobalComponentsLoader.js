@@ -9,7 +9,8 @@ import {
   QInput,
   QField,
   QDatetime,
-  QAjaxBar
+  QAjaxBar,
+  QIcon
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
@@ -24,6 +25,7 @@ export function registerGlobalComponents() {
   Vue.component('QList', QList)
   Vue.component('QListHeader', QListHeader)
   Vue.component('QItem', QItem)
+  Vue.component('QIcon', QIcon)
   Vue.component('QBtn', QBtn)
   Vue.component('QToolbar', QToolbar)
   Vue.component('QToolbarTitle', QToolbarTitle)

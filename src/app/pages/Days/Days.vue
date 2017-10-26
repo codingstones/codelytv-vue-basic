@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%">
+  <div class="full-width">
     <LoadSpinner :isLoading="isLoading"/>
     <div class="day" v-for="day in gigsByDay" v-if="!isLoading">
       <Day :day="day" :onClick="goTo"/>
@@ -37,10 +37,6 @@
     methods: {
       goTo(gig) {
         this.mosicaRouter.navigateToGig(gig.id)
-      },
-      openInfo() {
-        console.log('Opening info')
-        this.$router.push('gig')
       }
     },
     computed: {

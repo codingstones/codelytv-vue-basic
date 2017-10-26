@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%">
+  <div class="full-width">
     DETAIL OF GIG {{this.$router.currentRoute.params.id}}
   </div>
 </template>

@@ -1,7 +1,11 @@
 export const MosicaRouter = (router) => {
-  return { navigateToGig }
+  return { navigateToGig, navigateToCreateGig }
 
   function navigateToGig(gigId) {
     router.push('gig/' + gigId)
+  }
+
+  function navigateToCreateGig() {
+    router.push('newGig/')
   }
 }
