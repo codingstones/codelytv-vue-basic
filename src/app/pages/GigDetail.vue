@@ -4,21 +4,17 @@
       <div class="block place" v-if="gig.place">
         <strong>{{gig.place}}</strong><br />
         {{gig.address}}<br />
-        <a @click="openMap()">¿Cómo llegar?</a>
+        <FormButton :onClick="openMap"><q-icon name="directions"/>¿Cómo llegar?</FormButton>
+
       </div>
       <div class="block price" v-if="gig.price">
         Precio: {{gig.price}}
       </div>
-      <div class="block ticket" v-if="gig.affiliate_url">
-        <a @click="openAffiliate()">Compra tu entrada ahora</a>
-      </div>
       <div class="block date">
-        <!--<div v-for="schedule in gig.schedule">-->
-          <!--<strong>{{schedule.day | date : "dd/MM/yyyy"}}</strong> a las <strong>{{schedule.hour}} h.</strong>-->
-        <!--</div>-->
-        <div>
-          <a class="block" @click="downloadICS()">Añádelo a tu calendario</a>
+        <div v-for="schedule in gig.schedule">
+          <strong>{{schedule.day}}</strong> a las <strong>{{schedule.hour}} h.</strong>
         </div>
+        <FormButton :onClick="downloadICS"><q-icon name="event"/>  Añádelo a tu calendario</FormButton>
       </div>
       <div class="block description" v-if="gig.description">
         {{gig.description}}
@@ -27,13 +23,14 @@
         <img :src="gig.image_url" />
       </div>
       <div class="block share ticket">
-        <a @click="share()">Compártelo con tus amigos</a>
+        <FormButton :onClick="share"><q-icon name="share"/> Compártelo con tus amigos</FormButton>
       </div>
     </div>
 </template>
 
 <script>
   import { gigService } from '../services/mosica-instances'
+  import { openMap } from '../services/MapService';
 
   export default {
     data () {
@@ -46,6 +43,19 @@
       // We could mapState this route param with vuex-sync-router
       console.log('SHOWING DETAIL OF GIG WITH id: ', this.$router.currentRoute.params.id)
       this.gig = await gigService.retrieveAGig(this.$router.currentRoute.params.id)
+    },
+    methods: {
+      downloadICS() {
+        const BASE_URL = 'http://www.mosica.es/'
+        const downloadUrl = `${BASE_URL}conciertos/${this.gig.slug}.ics`
+        window.open(downloadUrl, '_system')
+      },
+      openMap() {
+        openMap(`https://www.google.es/maps/place/${this.gig.lat_lng}`)
+      },
+      share() {
+        console.log('Sharing gig')
+      }
     }
   }
 </script>

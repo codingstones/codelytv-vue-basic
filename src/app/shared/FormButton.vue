@@ -1,6 +1,5 @@
 <template>
   <q-btn color="primary"
-         class="full-width"
          :disable="disabled"
          @click="onClick()">
     <slot></slot>
