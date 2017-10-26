@@ -2,7 +2,7 @@
   <div v-if="gig" class="full-width">
     <q-card color="secondary">
       <q-card-title>
-        <h2>{{gig.title}}</h2>
+        <h3>{{gig.title}}</h3>
       </q-card-title>
       <q-card-separator />
       <q-card-main>
