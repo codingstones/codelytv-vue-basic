@@ -1,19 +1,20 @@
 <template>
   <div class="full-width">
-    <e-input
-      label="Name"
-      v-model="name"
-      :validation="$v.name"
-      :validation-messages="validationMessages.name"
-    ></e-input>
-    <e-date-time
+    <TextInput
+      label="Gig Title"
+      v-model="title"
+      :validation="$v.title"
+      :validation-messages="validationMessages.title"
+      placeholder="Escribe el nombre del concierto"
+    ></TextInput>
+    <DateTimeInput
       format="YYYY/MM/DD - hh:mm"
       label="Date and time"
       v-model="dateTime"
       :validation="$v.dateTime"
       :validation-messages="validationMessages.dateTime"
       :value="dateTime"
-    ></e-date-time>
+    ></DateTimeInput>
     <FormButton class="full-width" :onClick="save" :disabled="$v.$invalid">Create Gig</FormButton>
 
   </div>
@@ -23,15 +24,15 @@
   import { mapActions } from 'vuex'
   import { CREATE_GIG } from '../../shared/mosica-actions'
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
-  import eInput from './embeeded/eInput.vue'
-  import eDateTime from './embeeded/eDateTime.vue'
+  import TextInput from '../../shared/TextInput.vue'
+  import DateTimeInput from '../../shared/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
 
   export default {
     props: {
     },
     validations: {
-      name: {
+      title: {
         required,
         minLength: minLength(5),
         maxLength: maxLength(20)
@@ -43,10 +44,10 @@
     },
     data () {
       return {
-        name: '',
+        title: '',
         dateTime: '',
         validationMessages: {
-          name: {
+          title: {
             required: 'Name is required.',
             minLength: 'Minimum 5 characters.',
             maxLength: 'Maximum 20 characters.'
@@ -62,11 +63,11 @@
       ...mapActions([CREATE_GIG]),
       save() {
         console.log('Saving...')
-        this.create_gig({name: this.name, day: this.dateTime})
+        this.create_gig({title: this.title, day: this.dateTime})
       }
     },
     components: {
-      eInput, eDateTime
+      TextInput, DateTimeInput
     }
   }
 </script>

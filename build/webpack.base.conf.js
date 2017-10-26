@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: config[env.prod ? 'build' : 'dev'].publicPath,
-    filename: 'js/[name].js',
+    filename: 'js/[title].js',
     chunkFilename: 'js/[id].[chunkhash].js'
   },
   resolve: {
@@ -71,7 +71,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'img/[name].[hash:7].[ext]'
+          name: 'img/[title].[hash:7].[ext]'
         }
       },
       {
@@ -79,7 +79,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'fonts/[name].[hash:7].[ext]'
+          name: 'fonts/[title].[hash:7].[ext]'
         }
       }
     ]

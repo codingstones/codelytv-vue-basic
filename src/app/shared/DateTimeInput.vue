@@ -1,25 +1,30 @@
 <template>
   <div>
-    <div>
-      <label>{{label}}</label>
-      <q-input required :error="invalidAndDirty"
-             :value="value"
-             @input="change($event)"
-              placeholder="gggg"/>
-        <span id='datetime-validation-error' class="label text-red"
-              v-for="(key, index) in messageKeys"
-              v-if="!validation[key] && validation.$dirty"
-              :key="index">
-          {{validationMessages[key]}}
-        </span>
-    </div>
+    <label>{{label}}</label>
+    <q-datetime type="datetime"
+                :error="invalidAndDirty"
+                :label="label"
+                :value="value"
+                :format="format"
+                :placeholder="placeholder"
+                @input="change($event)"
+    ></q-datetime>
+    <span class="label text-red"
+          v-for="(key, index) in messageKeys"
+          v-if="!validation[key] && validation.$dirty"
+          :key="index">
+      {{validationMessages[key]}}
+    </span>
   </div>
 </template>
 
 <script type="text/javascript">
   export default {
-    name: 'eInput',
+    name: 'DateTimeInput',
     props: {
+      format: {
+        type: String
+      },
       validation: {
         type: Object,
         required: true
@@ -28,7 +33,8 @@
         required: true
       },
       validationMessages: {},
-      label: {}
+      label: {},
+      placeholder: {}
     },
     computed: {
       messageKeys () {
@@ -41,9 +47,6 @@
         return this.validation.$invalid && this.validation.$dirty
       }
     },
-    data () {
-      return {}
-    },
     methods: {
       change (value) {
         this.validation.$touch()
@@ -52,7 +55,3 @@
     }
   }
 </script>
-<style scoped>
-
-
-</style>

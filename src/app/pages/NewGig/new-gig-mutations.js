@@ -9,7 +9,7 @@ export function createGigRequest(state) {
 
 export function createGigSuccess(state, gig) {
   state.loading = false
-  const newGig = { name: gig.title, datetime: gig.day }
+  const newGig = { title: gig.title, datetime: gig.day }
   const newDay = {day: gig.day, gigs: [newGig]}
   state.days.push(newDay)
   state.error = ''

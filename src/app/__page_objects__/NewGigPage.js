@@ -1,22 +1,22 @@
 import PageObject from './PageObject'
-import eInput from '../pages/NewGig/embeeded/eInput.vue'
-import eDateTime from '../pages/NewGig/embeeded/eDateTime.vue'
+import TextInput from '../shared/TextInput.vue'
+import DateTimeInput from '../shared/DateTimeInput.vue'
 import FormButton from '../shared/FormButton.vue'
 
-export default class NewGigPage extends PageObject {
+export default class NewGigPageObject extends PageObject {
   constructor(wrapper) {
     super(wrapper)
     this.wrapper = wrapper
   }
 
   writeName(name) {
-    let input = this.wrapper.find(eInput).find('input')
+    let input = this.wrapper.find(TextInput).find('input')
     input.element.value = name
     input.trigger('input')
   }
 
   writeNameAsync(name) {
-    let input = this.wrapper.find(eInput)
+    let input = this.wrapper.find(TextInput)
     input.vm.change(name)
   }
 
@@ -25,23 +25,23 @@ export default class NewGigPage extends PageObject {
   }
 
   writeDatetime(datetime) {
-    const edatetime = this.wrapper.find(eDateTime)
-    edatetime.vm.change(datetime)
+    const datetimeInput = this.wrapper.find(DateTimeInput)
+    datetimeInput.vm.change(datetime)
   }
 
   // This does not work but it's interesting to review WHY in the video
   writeDatetimeTry(datetime) {
-    let div = this.wrapper.find(eDateTime).find('.q-input-target')
+    let div = this.wrapper.find(DateTimeInput).find('.q-input-target')
     div.element.innerHTML = datetime
     div.trigger('input')
   }
 
   hasDatetimeError() {
-    return this.wrapper.find(eDateTime).hasClass('text-red')
+    return this.wrapper.find(DateTimeInput).hasClass('text-red')
   }
 
   hasNameError() {
-    return this.wrapper.find(eInput).hasClass('text-red')
+    return this.wrapper.find(TextInput).hasClass('text-red')
   }
 
   isSaveButtonDisabled() {

@@ -28,26 +28,26 @@ describe('New Gig', () => {
 
   describe('shows validation error', () => {
 
-    describe('when validating name', () => {
+    describe('when validating title', () => {
 
-      it('and name is cleared', async () => {
+      it('and title is cleared', async () => {
         page.dirtyValidation()
         await page.flushPromises()
         expect(page.text()).toContain('Name is required')
       })
 
-      it('and name is too short (async)', async() => {
+      it('and title is too short (async)', async() => {
         page.writeNameAsync(tooShortName())
         await page.flushPromises()
         expect(page.text()).toContain('Minimum 5 characters.')
       })
 
-      it('and name is too short', () => {
+      it('and title is too short', () => {
         page.writeName(tooShortName())
         expect(page.text()).toContain('Minimum 5 characters.')
       })
 
-      it('and name is too long', () => {
+      it('and title is too long', () => {
         page.writeName(tooLongName())
         expect(page.text()).toContain('Maximum 20 characters.')
       })
@@ -74,7 +74,7 @@ describe('New Gig', () => {
         expect(page.hasDatetimeError()).toBe(false)
       })
 
-      it('and name has valid length', async() => {
+      it('and title has valid length', async() => {
         page.writeNameAsync(nameWithValidLength())
         await page.flushPromises()
         expect(page.hasNameError()).toBe(false)
