@@ -5,7 +5,8 @@ module.exports = {
     sourceType: 'module'
   },
   env: {
-    browser: true
+    browser: true,
+    jest: true
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: [
@@ -20,7 +21,12 @@ module.exports = {
     'cordova': true,
     'DEV': true,
     'PROD': true,
-    '__THEME': true
+    '__THEME': true,
+    // defined in src/setupJest.js
+    flushPromises: true,
+    keepsSnapshot: true,
+    mountWithProps: true,
+    shallowWithProps: true,
   },
   // add your custom rules here
   'rules': {
