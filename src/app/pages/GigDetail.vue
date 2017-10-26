@@ -1,36 +1,41 @@
 <template>
   <div v-if="gig" class="full-width">
-      <h1>{{gig.title}}</h1>
-      <div class="block place" v-if="gig.place">
-        <strong>{{gig.place}}</strong><br />
-        {{gig.address}}<br />
+    <q-card color="secondary">
+      <q-card-title>
+        <h2>{{gig.title}}</h2>
+      </q-card-title>
+      <q-card-separator />
+      <q-card-main>
+        <div class="block" v-if="gig.place">
+          <h4>{{gig.place}}</h4>
+          {{gig.address}}<br />
+        </div>
         <FormButton :onClick="openMap"><q-icon name="directions"/>¿Cómo llegar?</FormButton>
-
-      </div>
-      <div class="block price" v-if="gig.price">
-        Precio: {{gig.price}}
-      </div>
-      <div class="block date">
-        <div v-for="schedule in gig.schedule">
-          <strong>{{schedule.day}}</strong> a las <strong>{{schedule.hour}} h.</strong>
+        <div class="block" v-if="gig.price">
+          Precio: {{gig.price}}
+        </div>
+        <div class="block">
+          <div v-for="schedule in gig.schedule">
+            <strong>{{schedule.day}}</strong> a las <strong>{{schedule.hour}} h.</strong>
+          </div>
         </div>
         <FormButton :onClick="downloadICS"><q-icon name="event"/>  Añádelo a tu calendario</FormButton>
-      </div>
-      <div class="block description" v-if="gig.description">
-        {{gig.description}}
-      </div>
-      <div class="photo" v-if="gig.image_url">
-        <img :src="gig.image_url" />
-      </div>
-      <div class="block share ticket">
+        <div class="block" v-if="gig.description">
+          {{gig.description}}
+        </div>
         <FormButton :onClick="share"><q-icon name="share"/> Compártelo con tus amigos</FormButton>
-      </div>
-    </div>
+      </q-card-main>
+      <q-card-media v-if="gig.image_url">
+        <img :src="gig.image_url"/>
+      </q-card-media>
+    </q-card>
+  </div>
+
 </template>
 
 <script>
   import { gigService } from '../services/mosica-instances'
-  import { openMap } from '../services/MapService';
+  import { openMap } from '../services/MapService'
 
   export default {
     data () {
@@ -60,5 +65,15 @@
   }
 </script>
 
-<style>
+<style scoped>
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .block {
+    margin: 0.5rem;
+  }
+  FormButton {
+    margin: 0.5rem;
+  }
 </style>

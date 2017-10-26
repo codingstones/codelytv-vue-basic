@@ -10,7 +10,12 @@ import {
   QField,
   QDatetime,
   QAjaxBar,
-  QIcon
+  QIcon,
+  QCard,
+  QCardSeparator,
+  QCardMedia,
+  QCardMain,
+  QCardTitle
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
@@ -32,6 +37,11 @@ export function registerGlobalComponents() {
   Vue.component('QInput', QInput)
   Vue.component('QField', QField)
   Vue.component('QDatetime', QDatetime)
+  Vue.component('QCard', QCard)
+  Vue.component('QCardMedia', QCardMedia)
+  Vue.component('QCardSeparator', QCardSeparator)
+  Vue.component('QCardMain', QCardMain)
+  Vue.component('QCardTitle', QCardTitle)
   Vue.component('QAjaxBar', QAjaxBar)
   Vue.component('FormButton', FormButton)
   Vue.component('Toolbar', Toolbar)
