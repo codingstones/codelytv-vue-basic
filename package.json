@@ -20,7 +20,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.js",
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue"
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!quasar-framework)"
@@ -80,7 +80,6 @@
     "http-proxy-middleware": "^0.17.0",
     "jest": "^21.2.1",
     "jest-serializer-vue": "^0.2.0",
-    "jest-vue": "^0.8.1",
     "json-loader": "^0.5.7",
     "module-resolver": "^1.0.0",
     "opn": "^5.0.0",
@@ -93,6 +92,7 @@
     "stylus-loader": "^3.0.1",
     "synchronous-promise": "^1.0.17",
     "url-loader": "^0.5.7",
+    "vue-jest": "^1.0.0",
     "vue-loader": "~13.3.0",
     "vue-server-renderer": "^2.5.2",
     "vue-style-loader": "^3.0.3",

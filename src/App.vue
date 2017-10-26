@@ -1,7 +1,9 @@
 <template>
-  <!-- Don't drop "q-app" class -->
   <div id="q-app">
-    <router-view />
+    <div class="layout-padding row justify-center">
+      <Toolbar slot="header"></Toolbar>
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -12,4 +14,6 @@ registerGlobalComponents()
 export default {}
 </script>
 
-<style></style>
+<style>
+
+</style>

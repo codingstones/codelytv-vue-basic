@@ -1,17 +1,8 @@
 <template>
-  <div class="layout-padding row justify-center">
-    <q-toolbar color="primary">
-      <q-toolbar-title>
-        MOSICA
-      </q-toolbar-title>
-      <q-btn flat @click="openInfo">Info</q-btn>
-    </q-toolbar>
-
-    <div style="width: 100%">
-      <LoadSpinner :isLoading="isLoading"/>
-      <div class="day" v-for="day in gigsByDay" v-if="!isLoading">
-        <Day :day="day" :onClick="goTo"/>
-      </div>
+  <div style="width: 100%">
+    <LoadSpinner :isLoading="isLoading"/>
+    <div class="day" v-for="day in gigsByDay" v-if="!isLoading">
+      <Day :day="day" :onClick="goTo"/>
     </div>
   </div>
 </template>

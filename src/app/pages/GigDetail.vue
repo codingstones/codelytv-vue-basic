@@ -1,12 +1,6 @@
 <template>
-  <div class="layout-padding row justify-center">
-    <q-toolbar color="primary">
-      MOSICA
-    </q-toolbar>
-
-    <div style="width: 100%">
-      DETAIL OF GIG {{this.$router.currentRoute.params.id}}
-    </div>
+  <div style="width: 100%">
+    DETAIL OF GIG {{this.$router.currentRoute.params.id}}
   </div>
 </template>
 

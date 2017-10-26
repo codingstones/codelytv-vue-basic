@@ -8,10 +8,12 @@ import {
   QToolbarTitle,
   QInput,
   QField,
-  QDatetime
+  QDatetime,
+  QAjaxBar
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
+import Toolbar from '@/app/shared/toolbar.vue'
 import Gig from '@/app/pages/Days/Gig.vue'
 import Day from '@/app/pages/Days/Day.vue'
 
@@ -28,5 +30,7 @@ export function registerGlobalComponents() {
   Vue.component('QInput', QInput)
   Vue.component('QField', QField)
   Vue.component('QDatetime', QDatetime)
+  Vue.component('QAjaxBar', QAjaxBar)
   Vue.component('FormButton', FormButton)
+  Vue.component('Toolbar', Toolbar)
 }

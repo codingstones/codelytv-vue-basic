@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="full-width">
     <e-input
       label="Name"
       v-model="name"
