@@ -1,6 +1,6 @@
 import PageObject from './PageObject'
 
-export default class DayListPage extends PageObject {
+export default class DayListPageObject extends PageObject {
   constructor(wrapper) {
     super(wrapper)
     this.wrapper = wrapper

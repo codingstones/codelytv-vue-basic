@@ -1,4 +1,4 @@
-import { fakeGigsByDay } from '../__mocks__/gigs-sample'
+import { fakeGigsByDay } from '../services/__mocks__/gigs-sample'
 
 export function retrieveDays() {
   return Promise.resolve({ result: fakeGigsByDay })

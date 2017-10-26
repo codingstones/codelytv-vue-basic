@@ -125,7 +125,7 @@ describe('New Gig', () => {
     expect(actionSpy).toHaveBeenCalled()
   })
 
-  fit('creates a GIG in the store when save button is clicked', async () => {
+  it('creates a GIG in the store when save button is clicked', async () => {
     wrapper = mount(NewGig, { store: cloneProductionStore() })
     page = new NewGigPage(wrapper)
 

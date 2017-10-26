@@ -1,6 +1,6 @@
 
 import { createGigError, createGigRequest, createGigSuccess } from '../new-gig-mutations'
-import { fakeGigsByDay } from '../../../__mocks__/gigs-sample';
+import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample';
 
 describe('New gig mutations', () => {
 

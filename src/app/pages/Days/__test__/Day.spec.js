@@ -1,6 +1,6 @@
 import Day from '@/app/pages/Days/Day.vue'
 import PageObject from '../../../__page_objects__/PageObject'
-import { fakeGigsByDay } from '../../../__mocks__/gigs-sample'
+import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
 
 const FIRST_DAY = fakeGigsByDay[0]
 

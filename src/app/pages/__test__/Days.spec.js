@@ -1,8 +1,9 @@
 import { mount } from 'vue-test-utils'
 import Days from '@/app/pages/Days/Days.vue'
-import { fakeGigsByDay } from '../../__mocks__/gigs-sample'
-import { fakeGigsByDay2 } from '../../__mocks__/gigs-sample2'
+import { fakeGigsByDay } from '../../services/__mocks__/gigs-sample'
+import { fakeGigsByDay2 } from '../../services/__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPage'
+jest.mock('../../services/MosicaCore')
 
 describe('Days', () => {
   const FIRST_DAY_GIG_TEXTS = fakeGigsByDay[0].gigs.map(

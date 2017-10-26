@@ -5,5 +5,5 @@ const MosicaRouter = (history)=> {
   return RouterMock
 }
 module.exports = {
-  MosicaRouter: MosicaRouter
+  MosicaRouter
 }
