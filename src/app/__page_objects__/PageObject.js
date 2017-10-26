@@ -16,6 +16,10 @@ export default class PageObject {
     return this.wrapper.text()
   }
 
+  html() {
+    return this.wrapper.html()
+  }
+
   contains(text) {
     expect(this.text()).toContain(text)
   }

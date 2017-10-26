@@ -104,22 +104,23 @@ describe('New Gig', () => {
       await page.flushPromises()
       expect(page.isSaveButtonDisabled()).toBe(false)
     })
-
   })
 
   it('creates a GIG in the store when save button is clicked', async () => {
-    wrapper = mount(NewGig)
-    let actionStub = jest.fn()
+    let actionSpy = jest.fn()
     let store = new Vuex.Store({
       state: {days: [], loading: false},
-      actions: { create_gig: actionStub }
+      actions: { create_gig: actionSpy }
     })
+    wrapper = mount(NewGig, { store })
     page = new NewGigPage(wrapper, {store})
+
     page.writeNameAsync(nameWithValidLength())
     page.writeDatetime(FUTURE_DATETIME)
-    page.clickSaveButton()
     await page.flushPromises()
-    // expect(actionStub).toHaveBeenCalled()
+    page.clickSaveButton()
+
+    expect(actionSpy).toHaveBeenCalled()
   })
 })
 

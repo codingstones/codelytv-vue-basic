@@ -49,7 +49,6 @@ export default class NewGigPage extends PageObject {
   }
 
   clickSaveButton() {
-    // console.log(this.wrapper.find(FormButton))
     this.wrapper.find(FormButton).trigger('click')
   }
 }
