@@ -6,6 +6,6 @@ export const MosicaRouter = (router) => {
   }
 
   function navigateToCreateGig() {
-    router.push('newGig/')
+    router.push({path: '/newGig'})
   }
 }
