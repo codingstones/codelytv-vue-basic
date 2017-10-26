@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 export class Gig {
   constructor(args) {
     Object.assign(this, args)
@@ -34,7 +35,7 @@ export class GigService {
 
   retrieveAGig(id) {
     return new Promise((resolve, reject) => {
-      let gig = this._gigs.find((gig) => { return (gig.id === id) })
+      let gig = this._gigs.find((gig) => { return (gig.id == parseInt(id)) })
 
       if (gig) {
         resolve(gig)

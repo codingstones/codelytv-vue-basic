@@ -9,11 +9,8 @@
 
 <script>
   import { mapState } from 'vuex'
-  import fetchJsonp from 'fetch-jsonp'
-  import { GigService, Matcher } from '../../services/MosicaCore'
   import { MosicaRouter } from '../../services/MosicaRouter'
-  import { HttpClient } from '../../services/HttpClient'
-  const gigService = new GigService(HttpClient(fetchJsonp), new Matcher())
+  import { gigService } from '../../services/mosica-instances'
 
   export default {
     props: {
