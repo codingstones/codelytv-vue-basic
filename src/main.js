@@ -10,6 +10,9 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 // require(`quasar/dist/quasar.ie`)
 // require(`quasar/dist/quasar.ie.${__THEME}.css`)
 
+// Import all transitions (it will include unused ones KB's)
+import 'quasar-extras/animate'
+
 import Vue from 'vue'
 import Quasar from 'quasar-framework'
 import Vuelidate from 'vuelidate'

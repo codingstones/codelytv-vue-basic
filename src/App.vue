@@ -2,9 +2,10 @@
   <div id="q-app">
     <div class="layout-padding row justify-center">
       <Toolbar slot="header"></Toolbar>
-      <transition name="fade">
+      <q-transition
+        name="custom">
         <router-view class="layout-view"/>
-      </transition>
+      </q-transition>
     </div>
   </div>
 </template>
@@ -17,11 +18,14 @@ export default {}
 </script>
 
 <style>
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 1s
+  .custom-enter-active {
+    transition: all .3s ease;
   }
-
-  .fade-enter, .fade-leave-to {
-    opacity: 0
+  .custom-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .custom-enter, .custom-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
   }
 </style>

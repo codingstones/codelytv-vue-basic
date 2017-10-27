@@ -15,7 +15,8 @@ import {
   QCardSeparator,
   QCardMedia,
   QCardMain,
-  QCardTitle
+  QCardTitle,
+  QTransition
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
@@ -43,6 +44,7 @@ export function registerGlobalComponents() {
   Vue.component('QCardMain', QCardMain)
   Vue.component('QCardTitle', QCardTitle)
   Vue.component('QAjaxBar', QAjaxBar)
+  Vue.component('QTransition', QTransition)
   Vue.component('FormButton', FormButton)
   Vue.component('Toolbar', Toolbar)
 }
