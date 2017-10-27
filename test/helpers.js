@@ -38,3 +38,7 @@ export function cloneProductionStore() {
     mutations
   })
 }
+
+export function stubNow(isoDate) {
+  Date.now = jest.fn(() => new Date(isoDate).valueOf())
+}

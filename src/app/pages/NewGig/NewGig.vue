@@ -62,7 +62,6 @@
     methods: {
       ...mapActions([CREATE_GIG]),
       save() {
-        console.log('Saving...')
         this.create_gig({title: this.title, day: this.dateTime})
       }
     },

@@ -46,7 +46,8 @@
     },
     async created() {
       // We could mapState this route param with vuex-sync-router
-      console.log('SHOWING DETAIL OF GIG WITH id: ', this.$router.currentRoute.params.id)
+      // We need to load the gigs if we reload:
+      // this.gigsByDay = await this.gigService.retrieveNextGigs()
       this.gig = await gigService.retrieveAGig(this.$router.currentRoute.params.id)
     },
     methods: {

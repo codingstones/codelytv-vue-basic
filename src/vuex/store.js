@@ -12,6 +12,7 @@ import {
   fetchDaysRequest, fetchDaysSuccess
 } from '../app/pages/Days/days-mutations'
 import { buildCreateGigAction } from '../app/pages/NewGig/new-gig-actions'
+import { gigsTodayWithReduce } from './getters'
 
 Vue.use(Vuex)
 
@@ -35,8 +36,13 @@ export const mutations = {
   [FETCH_DAYS_ERROR]: fetchDaysError
 }
 
+export const getters = {
+  gigsToday: gigsTodayWithReduce
+}
+
 export const store = new Vuex.Store({
   state: initialState,
   actions,
-  mutations
+  mutations,
+  getters
 })

@@ -1,6 +1,6 @@
-
 import { createGigError, createGigRequest, createGigSuccess } from '../new-gig-mutations'
 import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
+import { stubNow } from '../../../../../test/helpers';
 
 describe('New gig mutations', () => {
 
@@ -24,19 +24,12 @@ describe('New gig mutations', () => {
       it('and new day is created', () => {
         // We will improve this test when we work with Vue arrays
         const NEW_GIG = fakeGigsByDay[0].gigs[0]
+        stubNow('2017-09-18')
+
         createGigSuccess(state, NEW_GIG)
 
         expect(state.days.length).toBe(1)
-        expect(state.days[0].day).toEqual('2017-09-18')
-      })
-
-      it('finishes with success', () => {
-        // We should improve this test
-        const NEW_GIG = fakeGigsByDay[0].gigs[0]
-        createGigSuccess(state, NEW_GIG)
-
-        expect(state.days.length).toBe(1)
-        expect(state.days[0].day).toEqual('2017-09-18')
+        expect(state.days[0].day).toEqual('lunes, 18 de septiembre')
       })
     })
 

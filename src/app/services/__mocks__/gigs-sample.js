@@ -10,7 +10,6 @@ export const fakeGigsByDay = [
         'description': 'Coding Stones Gig',
         'price': '',
         'image_url': 'http://www.zaragoza.es/cont/paginas/actividades/imagen/web_320x480px.png',
-        'affiliate_url': null,
         'place': 'SCBCN',
         'slug': 'stones',
         'schedule_id': 5280,
@@ -40,7 +39,7 @@ export const fakeGigsByDay = [
         'slug': 'stones',
         'schedule_id': 5280,
         'hour': '19:30',
-        'day': '2017-12-03',
+        'day': '2017-09-18',
         'schedule': [
           {
             'id': 5280,
