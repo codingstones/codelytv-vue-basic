@@ -1,5 +1,6 @@
 <template>
   <q-toolbar color="primary">
+    <img src="~assets/stones-small-red-white_letters.svg"/>
     <q-toolbar-title>
       Anarchy JS
     </q-toolbar-title>
@@ -23,3 +24,7 @@
     }
   }
 </script>
+
+<style scoped>
+  img { max-width: 60px; }
+</style>
