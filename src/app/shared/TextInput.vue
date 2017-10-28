@@ -1,12 +1,11 @@
 <template>
   <div>
     <div>
-      <label>{{label}}</label>
-      <q-input required :error="invalidAndDirty"
+      <q-input color="primary" required :error="invalidAndDirty"
              :value="value"
              @input="change($event)"
-              :placeholder="placeholder"/>
-        <span id='datetime-validation-error' class="label text-red"
+             :float-label="label"/>
+        <span id='datetime-validation-error' class="error"
               v-for="(key, index) in messageKeys"
               v-if="!validation[key] && validation.$dirty"
               :key="index">
@@ -54,6 +53,7 @@
   }
 </script>
 <style scoped>
-
-
+  .error {
+    color: darkred;
+  }
 </style>

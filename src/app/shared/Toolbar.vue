@@ -1,5 +1,5 @@
 <template>
-  <q-toolbar color="primary">
+  <q-toolbar>
     <q-btn flat @click="clickDrawer()">
       <q-icon name="menu" />
     </q-btn>
@@ -7,8 +7,8 @@
       Anarchy JS
     </q-toolbar-title>
     <q-btn color='secondary'>
-      <q-icon name="note_add"/>
-      New Gig
+      <q-icon name="search"/>
+      SEARCH
     </q-btn>
   </q-toolbar>
 </template>

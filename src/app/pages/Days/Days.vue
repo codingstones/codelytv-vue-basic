@@ -1,7 +1,7 @@
 <template>
   <div class="full-width">
     <LoadSpinner :isLoading="isLoading"/>
-    <div class="day" v-for="day in gigsByDay" v-if="!isLoading">
+    <div v-for="day in gigsByDay" v-if="!isLoading">
       <Day :day="day" :onClick="goTo"/>
     </div>
   </div>

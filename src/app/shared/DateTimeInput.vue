@@ -1,9 +1,9 @@
 <template>
   <div>
-    <label>{{label}}</label>
     <q-datetime type="datetime"
+                color="primary"
                 :error="invalidAndDirty"
-                :label="label"
+                :float-label="label"
                 :value="value"
                 :format="format"
                 :placeholder="placeholder"

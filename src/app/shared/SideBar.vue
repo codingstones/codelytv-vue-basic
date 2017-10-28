@@ -7,10 +7,19 @@
       <q-item-side icon="list" />
       <q-item-main label="All Gigs"/>
     </q-side-link>
+    <q-side-link item to="/">
+      <q-item-side icon="today" />
+      <q-item-main :label="gigsTodayComputed"/>
+      <q-item-side icon="keyboard_arrow_right" />
+    </q-side-link>
+    <q-side-link item to="/">
+      <q-item-side icon="event" />
+      <q-item-main label="Tomorrow Gigs (5)"/>
+    </q-side-link>
     <q-list-header>
       Admin
     </q-list-header>
-    <q-side-link item to="newGig">
+    <q-side-link item to="/newGig">
       <q-item-side icon="note_add" />
       <q-item-main label="Create new Gig"/>
     </q-side-link>
@@ -18,8 +27,16 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     name: 'SideBar',
+    computed: {
+      ...mapGetters(['gigsToday']),
+      gigsTodayComputed() {
+        return `Gigs Today (${this.gigsToday})`
+      }
+    },
     methods: {
       clickDrawer() {
         this.parent.$refs.layout.toggleLeft()

@@ -1,22 +1,22 @@
 <template>
-  <div class="full-width">
-    <TextInput
-      label="Gig Title"
-      v-model="title"
-      :validation="$v.title"
-      :validation-messages="validationMessages.title"
-      placeholder="Escribe el nombre del concierto"
-    ></TextInput>
-    <DateTimeInput
-      format="YYYY/MM/DD - hh:mm"
-      label="Date and time"
-      v-model="dateTime"
-      :validation="$v.dateTime"
-      :validation-messages="validationMessages.dateTime"
-      :value="dateTime"
-    ></DateTimeInput>
-    <FormButton class="full-width" :onClick="save" :disabled="$v.$invalid">Create Gig</FormButton>
-
+  <div class="layout-padding">
+      <TextInput
+        label="Insert Gig Title"
+        v-model="title"
+        :validation="$v.title"
+        :validation-messages="validationMessages.title"
+        placeholder="Type name of gig"
+      ></TextInput>
+      <DateTimeInput
+        format="YYYY/MM/DD - hh:mm"
+        label="Date and time"
+        v-model="dateTime"
+        :validation="$v.dateTime"
+        :validation-messages="validationMessages.dateTime"
+        :value="dateTime"
+      ></DateTimeInput>
+      <br><br>
+      <FormButton class="full-width" :onClick="save" :disabled="$v.$invalid">Create Gig</FormButton>
   </div>
 </template>
 

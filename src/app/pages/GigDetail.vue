@@ -1,6 +1,6 @@
 <template>
   <div v-if="gig" class="full-width">
-    <q-card color="secondary">
+    <q-card>
       <q-card-title>
         <h3>{{gig.title}}</h3>
       </q-card-title>
