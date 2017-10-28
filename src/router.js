@@ -27,7 +27,8 @@ export default new VueRouter({
    */
   routes: [
     { path: '/', component: Days, title: 'root' },
-    { path: '/today', component: GigsToday, title: 'root' },
+    { path: '/all', component: Days, title: 'all' },
+    { path: '/today', component: GigsToday, title: 'today' },
     { path: '/gig/:id', component: load('GigDetail'), title: 'gig' },
     { path: NEW_GIG_PATH, component: NewGig, title: 'newGig' },
     { path: '*', component: load('Error404') }

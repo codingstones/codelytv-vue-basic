@@ -1,9 +1,9 @@
 <template>
   <q-scroll-area slot="left" style="width: 100%; height: 100%" inset-separator>
-    <q-list-header>
-      <img src="~assets/stones-small-red-white_letters.svg"/>
-    </q-list-header>
-    <q-side-link item to="/">
+    <!--<q-list-header>-->
+      <!--<img src="~assets/stones-small-red-white_letters.svg"/>-->
+    <!--</q-list-header>-->
+    <q-side-link item to="/all">
       <q-item-side icon="list" />
       <q-item-main label="All Gigs"/>
     </q-side-link>
@@ -12,7 +12,7 @@
       <q-item-main :label="gigsTodayComputed"/>
       <q-item-side icon="keyboard_arrow_right" />
     </q-side-link>
-    <q-side-link item to="/">
+    <q-side-link item to="/tomorrow">
       <q-item-side icon="event" />
       <q-item-main label="Tomorrow Gigs (5)"/>
     </q-side-link>
