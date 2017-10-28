@@ -10,6 +10,8 @@ function load (component) {
 import Days from '@/app/pages/Days/Days.vue'
 import NewGig from '@/app/pages/NewGig/NewGig'
 
+export const NEW_GIG_PATH = '/newGig'
+
 export default new VueRouter({
   /*
    * NOTE! VueRouter "history" mode DOESN'T works for Cordova builds,
@@ -22,11 +24,10 @@ export default new VueRouter({
    * If switching back to default "hash" mode, don't forget to set the
    * build publicPath back to '' so Cordova builds work again.
    */
-
   routes: [
     { path: '/', component: Days, title: 'root' },
     { path: '/gig/:id', component: load('GigDetail'), title: 'gig' },
-    { path: '/newGig', component: NewGig, title: 'newGig' },
+    { path: NEW_GIG_PATH, component: NewGig, title: 'newGig' },
     { path: '*', component: load('Error404') }
   ]
 })

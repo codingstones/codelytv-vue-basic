@@ -1,10 +1,12 @@
 <template>
   <q-toolbar color="primary">
-    <img src="~assets/stones-small-red-white_letters.svg"/>
+    <q-btn flat @click="clickDrawer()">
+      <q-icon name="menu" />
+    </q-btn>
     <q-toolbar-title>
       Anarchy JS
     </q-toolbar-title>
-    <q-btn color='secondary' @click="createGig">
+    <q-btn color='secondary'>
       <q-icon name="note_add"/>
       New Gig
     </q-btn>
@@ -12,14 +14,10 @@
 </template>
 
 <script>
-  import { MosicaRouter } from '../services/MosicaRouter'
   export default {
-    async created() {
-      this.mosicaRouter = new MosicaRouter(this.$router)
-    },
     methods: {
-      createGig() {
-        this.mosicaRouter.navigateToCreateGig()
+      clickDrawer() {
+        this.$emit('drawerClick')
       }
     }
   }

@@ -16,10 +16,16 @@ import {
   QCardMedia,
   QCardMain,
   QCardTitle,
-  QTransition
+  QTransition,
+  QSideLink,
+  QScrollArea,
+  QItemSide,
+  QItemMain,
+  QLayout
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
+import SideBar from '@/app/shared/SideBar.vue'
 import Toolbar from '@/app/shared/Toolbar.vue'
 import Gig from '@/app/pages/Days/Gig.vue'
 import Day from '@/app/pages/Days/Day.vue'
@@ -45,6 +51,12 @@ export function registerGlobalComponents() {
   Vue.component('QCardTitle', QCardTitle)
   Vue.component('QAjaxBar', QAjaxBar)
   Vue.component('QTransition', QTransition)
+  Vue.component('QSideLink', QSideLink)
+  Vue.component('QScrollArea', QScrollArea)
+  Vue.component('QItemSide', QItemSide)
+  Vue.component('QItemMain', QItemMain)
+  Vue.component('QLayout', QLayout)
   Vue.component('FormButton', FormButton)
   Vue.component('Toolbar', Toolbar)
+  Vue.component('SideBar', SideBar)
 }

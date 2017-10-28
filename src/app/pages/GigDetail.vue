@@ -40,7 +40,6 @@
   export default {
     data () {
       return {
-        gigService,
         gig: null
       }
     },
