@@ -14,6 +14,7 @@ export function fetchDaysSuccess(state, days) {
 }
 
 export function fetchDaysError(state, error) {
+  console.log('EMOS SIDO ENGAÑADO', error)
   state.loading = false
   state.error = error
 }

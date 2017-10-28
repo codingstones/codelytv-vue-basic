@@ -3,7 +3,7 @@
 exports[`Days matches full snapshot 1`] = `
 <div class="full-width">
     <!---->
-    <div class="day">
+    <div>
         <div class="q-list">
             <div class="day">
                 <div class="q-list-header ">Lunes, 18 de Septiembre</div>

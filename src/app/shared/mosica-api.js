@@ -1,10 +1,9 @@
-import { fakeGigsByDay } from '../services/__mocks__/gigs-sample'
+import { gigService } from '../services/mosica-instances'
 
 export function retrieveDays() {
-  return Promise.resolve(fakeGigsByDay)
+  return gigService.retrieveNextGigs()
 }
 
 export function createGig(params) {
-  console.log('creating gig with params', params)
   return Promise.resolve('success')
 }

@@ -7,7 +7,7 @@
       <q-item-side icon="list" />
       <q-item-main label="All Gigs"/>
     </q-side-link>
-    <q-side-link item to="/">
+    <q-side-link item to="/today">
       <q-item-side icon="today" />
       <q-item-main :label="gigsTodayComputed"/>
       <q-item-side icon="keyboard_arrow_right" />
@@ -32,9 +32,9 @@
   export default {
     name: 'SideBar',
     computed: {
-      ...mapGetters(['gigsToday']),
+      ...mapGetters(['numberOfGigsToday']),
       gigsTodayComputed() {
-        return `Gigs Today (${this.gigsToday})`
+        return `Gigs Today (${this.numberOfGigsToday})`
       }
     },
     methods: {

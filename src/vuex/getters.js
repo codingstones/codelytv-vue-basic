@@ -1,5 +1,21 @@
+import { spanishDay } from '../app/services/date-utils'
+
 const moment = require('moment')
 require('moment/locale/es')
+
+export function numberOfGigsToday(state) {
+  let counter = 0
+  state.days.forEach((day) => {
+    counter += gigsWithDate(moment().format('YYYY-MM-DD'))(day)
+  })
+  return counter
+}
+
+export function numberOfGigsTodayWithReduce(state) {
+  return state.days.reduce((total, day) => {
+    return total + gigsWithDate(moment().format('YYYY-MM-DD'))(day)
+  }, 0)
+}
 
 function gigsWithDate(today) {
   return (day) => {
@@ -10,15 +26,5 @@ function gigsWithDate(today) {
 }
 
 export function gigsToday(state) {
-  let counter = 0
-  state.days.forEach((day) => {
-    counter += gigsWithDate('2017-09-18')(day)
-  })
-  return counter
-}
-
-export function gigsTodayWithReduce(state) {
-  return state.days.reduce((total, day) => {
-    return total + gigsWithDate(moment().format('YYYY-MM-DD'))(day)
-  }, 0)
+  return state.days.find((day) => day.day.toUpperCase() === spanishDay().toUpperCase())
 }

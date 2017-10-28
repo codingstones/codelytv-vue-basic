@@ -3,6 +3,7 @@ import Days from '@/app/pages/Days/Days.vue'
 import { fakeGigsByDay } from '../../services/__mocks__/gigs-sample'
 import { fakeGigsByDay2 } from '../../services/__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPageObject'
+import { cloneProductionStore } from '../../../../test/helpers'
 jest.mock('../../services/MosicaCore')
 
 describe('Days', () => {
@@ -11,7 +12,7 @@ describe('Days', () => {
 
   let page, wrapper
   beforeEach(async () => {
-    wrapper = mount(Days)
+    wrapper = mount(Days, { store: cloneProductionStore() })
     page = new DayListPage(wrapper)
     await page.updateAsync()
   })
@@ -26,25 +27,24 @@ describe('Days', () => {
 
   describe('When clicking buttons', () => {
 
-    let navigateToGigSpy2
+    let navigateToGigSpy
     beforeEach(async () => {
-      navigateToGigSpy2 = jest.fn()
-      page.setRouterSpy({ navigateToGig: navigateToGigSpy2 })
+      navigateToGigSpy = jest.fn()
+      page.setRouterSpy({ navigateToGig: navigateToGigSpy })
     })
 
     it('navigates to first gig detail', async () => {
       const FIRST_GIG = fakeGigsByDay[0].gigs[0]
       page.clickFirstGig()
-      expect(navigateToGigSpy2).toHaveBeenCalledWith(FIRST_GIG.id)
+      expect(navigateToGigSpy).toHaveBeenCalledWith(FIRST_GIG.id)
     })
 
     it('navigates to second gig detail', async () => {
       const SECOND_GIG = fakeGigsByDay[0].gigs[1]
       page.clickSecondGig()
-      expect(navigateToGigSpy2).toHaveBeenCalledWith(SECOND_GIG.id)
+      expect(navigateToGigSpy).toHaveBeenCalledWith(SECOND_GIG.id)
     })
   })
-
 
   /* Different examples of more accurate tests that need
   to explicitly run over the DOM structure
@@ -66,12 +66,12 @@ describe('Days', () => {
   /* Test to demonstrate how to explicitly inject mosicaService as a prop
   (less MAGIC than manual jest mock)
    */
-  it('render days(explicitly injected mock)', async () => {
-    const gigService = {retrieveNextGigs: () => Promise.resolve(fakeGigsByDay2)}
-    const wrapper = mount(Days, {propsData: {gigService}})
-    page = new DayListPage(wrapper)
-    await page.updateAsync()
-    expect(wrapper.html()).toContain('rapsus')
-  })
+  // it('render days(explicitly injected mock)', async () => {
+  //   const gigService = {retrieveNextGigs: () => Promise.resolve(fakeGigsByDay2)}
+  //   const wrapper = mount(Days, {propsData: {gigService}})
+  //   page = new DayListPage(wrapper)
+  //   await page.updateAsync()
+  //   expect(wrapper.html()).toContain('rapsus')
+  // })
 
 })

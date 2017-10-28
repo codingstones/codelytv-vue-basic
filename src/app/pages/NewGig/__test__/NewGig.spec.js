@@ -1,15 +1,9 @@
 import { mount } from 'vue-test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
-import Vue from 'vue'
-import Vuex from 'vuex'
-import Vuelidate from 'vuelidate'
-import Quasar from 'quasar-framework'
 import NewGigPage from '../../../__page_objects__/NewGigPageObject'
 import { store } from '../../../../vuex/store'
 import { cloneProductionStore } from '../../../../../test/helpers'
-Vue.use(Vuelidate)
-Vue.use(Quasar)
-Vue.use(Vuex)
+import Vuex from 'vuex'
 
 describe('New Gig', () => {
 
