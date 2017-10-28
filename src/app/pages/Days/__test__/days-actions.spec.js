@@ -3,7 +3,7 @@ import {
 } from '../days-mutations'
 
 import { rejectedPromise, resolvedPromise } from '../../../../../test/helpers'
-import { retrieveDaysAction } from '../days-actions';
+import { retrieveDaysAction, retrieveDaysActionUsingQueryAction } from '../days-actions'
 
 describe('Vuex actions', () => {
 
@@ -18,14 +18,24 @@ describe('Vuex actions', () => {
   describe('Retrieving days action', () => {
 
     it('finishes with success', async () => {
-      const DAYS = { result: 'ANY DAYS' }
+      const DAYS = 'ANY DAYS'
       const retrieveDays = resolvedPromise(DAYS)
 
       action = retrieveDaysAction(retrieveDays)
       await action.run({ commit: commitSpy })
 
       expect(commitSpy).toHaveBeenCalledWith(FETCH_DAYS_REQUEST)
-      expect(commitSpy).toHaveBeenCalledWith(FETCH_DAYS_SUCCESS, DAYS.result)
+      expect(commitSpy).toHaveBeenCalledWith(FETCH_DAYS_SUCCESS, DAYS)
+    })
+
+    it('finishes with success ()', async () => {
+      const DAYS = 'ANY DAYS'
+      action = retrieveDaysActionUsingQueryAction(resolvedPromise(DAYS))
+
+      await action.run({ commit: commitSpy })
+
+      expect(commitSpy).toHaveBeenCalledWith(FETCH_DAYS_REQUEST)
+      expect(commitSpy).toHaveBeenCalledWith(FETCH_DAYS_SUCCESS, DAYS)
     })
 
     it('finishes with error', async () => {

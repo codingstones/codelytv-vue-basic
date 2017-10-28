@@ -1,7 +1,7 @@
 import { fakeGigsByDay } from '../services/__mocks__/gigs-sample'
 
 export function retrieveDays() {
-  return Promise.resolve({ result: fakeGigsByDay })
+  return Promise.resolve(fakeGigsByDay)
 }
 
 export function createGig(params) {
