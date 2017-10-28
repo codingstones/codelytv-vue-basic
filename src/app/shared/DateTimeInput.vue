@@ -55,3 +55,8 @@
     }
   }
 </script>
+<style scoped>
+  .error {
+    color: #DB2828;
+  }
+</style>

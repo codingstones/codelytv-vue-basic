@@ -15,3 +15,11 @@
     props: { day: Object, isLoading: Boolean, onClick: Function }
   }
 </script>
+
+<style scoped>
+  .q-list-header {
+    color: black;
+    font-weight: bold;
+    font-size: 150%;
+  }
+</style>

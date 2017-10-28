@@ -54,6 +54,6 @@
 </script>
 <style scoped>
   .error {
-    color: darkred;
+    color: #DB2828;
   }
 </style>

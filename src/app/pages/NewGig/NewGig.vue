@@ -1,5 +1,6 @@
 <template>
   <div class="layout-padding">
+      <h4>Add a New Gig to Mosica!</h4>
       <TextInput
         label="Insert Gig Title"
         v-model="title"
