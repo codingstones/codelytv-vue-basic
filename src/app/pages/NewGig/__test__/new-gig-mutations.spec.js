@@ -1,13 +1,14 @@
 import { createGigError, createGigRequest, createGigSuccess } from '../new-gig-mutations'
 import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
-import { stubNow } from '../../../../../test/helpers';
+import { stubNow } from '../../../../../test/helpers'
+import { Gig } from '../../../services/MosicaCore';
 
 describe('New gig mutations', () => {
 
   let state
   let OLD_DAYS
   beforeEach(() => {
-    OLD_DAYS = []
+    OLD_DAYS = fakeGigsByDay
     state = { days: OLD_DAYS }
   })
 
@@ -22,14 +23,23 @@ describe('New gig mutations', () => {
     describe('It finishes with success', () => {
 
       it('and new day is created', () => {
+        const NEW_GIG = aGig('2017-09-19')
+
+        createGigSuccess(state, NEW_GIG)
+
+        expect(state.days.length).toBe(2)
+        expect(state.days[0].day).toEqual('Lunes, 18 de Septiembre')
+      })
+
+      it('and there were already gigs that day', () => {
         // We will improve this test when we work with Vue arrays
-        const NEW_GIG = fakeGigsByDay[0].gigs[0]
+        const NEW_GIG = aGig('2017-09-19')
         stubNow('2017-09-18')
 
         createGigSuccess(state, NEW_GIG)
 
-        expect(state.days.length).toBe(1)
-        expect(state.days[0].day).toEqual('lunes, 18 de septiembre')
+        expect(state.days.length).toBe(2)
+        expect(state.days[0].day).toEqual('Lunes, 18 de Septiembre')
       })
     })
 
@@ -40,3 +50,7 @@ describe('New gig mutations', () => {
     })
   })
 })
+
+function aGig(date) {
+  return new Gig({title: 'Any title', day: date})
+}

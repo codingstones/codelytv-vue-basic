@@ -11,8 +11,8 @@ export function createGigAction(createGig) {
   async function run({ commit }, params) {
     commit(CREATE_GIG_REQUEST)
     try {
-      await createGig(params)
-      commit(CREATE_GIG_SUCCESS, params)
+      const gig = await createGig(params)
+      commit(CREATE_GIG_SUCCESS, gig)
     }
     catch (error) {
       commit(CREATE_GIG_ERROR, error)

@@ -1,4 +1,4 @@
-import { spanishToday, spanishTomorrow, isoToday, isoTomorrow } from '../date-utils'
+import { spanishToday, spanishTomorrow, isoToday, isoTomorrow, spanishFromIso } from '../date-utils'
 import { stubNow } from '../../../../test/helpers'
 
 describe('date utils', () => {
@@ -14,10 +14,14 @@ describe('date utils', () => {
   })
 
   it('Prints todays date in spanish', () => {
-    expect(spanishToday()).toBe('lunes, 18 de septiembre')
+    expect(spanishToday()).toBe('Lunes, 18 de Septiembre')
   })
 
   it('Prints tomorrows date in spanish', () => {
-    expect(spanishTomorrow()).toBe('martes, 19 de septiembre')
+    expect(spanishTomorrow()).toBe('Martes, 19 de Septiembre')
+  })
+
+  it('translate ISO date to Spanish format', () => {
+    expect(spanishFromIso('2017-09-18')).toBe('Lunes, 18 de Septiembre')
   })
 })

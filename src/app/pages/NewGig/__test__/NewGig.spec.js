@@ -5,7 +5,7 @@ import { store } from '../../../../vuex/store'
 import { cloneProductionStore } from '../../../../../test/helpers'
 import Vuex from 'vuex'
 
-xdescribe('New Gig', () => {
+describe('New Gig', () => {
 
   const PAST_DATETIME = '1900/10/27'
   const FUTURE_DATETIME = '3000/10/27'

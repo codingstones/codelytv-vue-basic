@@ -19,7 +19,7 @@ describe('Vuex actions', () => {
 
     it('finishes with success', async () => {
       const NEW_DAY = 'IRRELEVANT NEW DAY'
-      const createGig = resolvedPromise('irrelevant result')
+      const createGig = resolvedPromise(NEW_DAY)
 
       action = createGigAction(createGig)
       await action.run({ commit: commitSpy }, NEW_DAY)
