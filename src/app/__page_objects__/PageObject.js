@@ -4,7 +4,7 @@ export default class PageObject {
   }
 
   async updateAsync() {
-    await flushPromises()
+    await this.flushPromises()
     this.wrapper.update()
   }
 

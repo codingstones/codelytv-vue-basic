@@ -1,11 +1,15 @@
 import FormButton from '@/app/shared/FormButton.vue'
+import { Wrap } from '../../../../test/helpers'
 
 describe('FormButton.vue', () => {
 
   it('renders label', () => {
 
     const SLOT_CONTENT = '<p>Any text</p>'
-    const wrapper = mountWithProps(FormButton, {label: 'SAVE'}, {default: SLOT_CONTENT})
+    const wrapper = Wrap(FormButton)
+      .withProps({label: 'SAVE'})
+      .withSlots({default: SLOT_CONTENT})
+      .mount()
 
     expect(wrapper.html()).toContain(SLOT_CONTENT)
   })
@@ -18,7 +22,7 @@ describe('FormButton.vue', () => {
     })
 
     it('calls callback if enabled', () => {
-      const wrapper = mountWithProps(FormButton, {onClick: clickSpy})
+      const wrapper = Wrap(FormButton).withProps({onClick: clickSpy}).mount()
 
       wrapper.trigger('click')
 
@@ -26,8 +30,9 @@ describe('FormButton.vue', () => {
     })
 
     it('does not call callback if disabled', () => {
-      const wrapper = mountWithProps(FormButton, {disabled: true, onClick: clickSpy})
-
+      const wrapper = Wrap(FormButton)
+        .withProps({disabled: true, onClick: clickSpy})
+        .mount()
       wrapper.trigger('click')
 
       expect(wrapper.html()).toContain('disable')

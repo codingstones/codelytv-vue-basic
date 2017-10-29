@@ -1,4 +1,5 @@
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
+import { Wrap } from '../../../../test/helpers';
 
 describe('LoadSpinner.vue', () => {
 
@@ -11,12 +12,13 @@ describe('LoadSpinner.vue', () => {
   })
 
   it('shows loading', () => {
-    const wrapper = mountWithProps(LoadSpinner, { isLoading: false })
+    const wrapper = Wrap(LoadSpinner).withProps({ isLoading: false }).mount()
     expect(wrapper.text()).not.toContain('Loading...')
   })
 
   it('does not show loading', () => {
-    const wrapper = mountWithProps(LoadSpinner, { isLoading: true })
+    const wrapper = Wrap(LoadSpinner).withProps({ isLoading: true }).mount()
+
     expect(wrapper.text()).toContain('Loading...')
   })
 })

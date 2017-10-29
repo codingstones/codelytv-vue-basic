@@ -23,10 +23,7 @@ module.exports = {
     'PROD': true,
     '__THEME': true,
     // defined in src/setupJest.js
-    flushPromises: true,
     keepsSnapshot: true,
-    mountWithProps: true,
-    shallowWithProps: true,
   },
   // add your custom rules here
   'rules': {
