@@ -25,27 +25,6 @@ describe('Days', () => {
     FIRST_DAY_GIG_TEXTS.map((text) => page.contains(text))
   })
 
-  describe('When clicking buttons', () => {
-
-    let navigateToGigSpy
-    beforeEach(async () => {
-      navigateToGigSpy = jest.fn()
-      page.setRouterSpy({ navigateToGig: navigateToGigSpy })
-    })
-
-    it('navigates to first gig detail', async () => {
-      const FIRST_GIG = fakeGigsByDay[0].gigs[0]
-      page.clickFirstGig()
-      expect(navigateToGigSpy).toHaveBeenCalledWith(FIRST_GIG.id)
-    })
-
-    it('navigates to second gig detail', async () => {
-      const SECOND_GIG = fakeGigsByDay[0].gigs[1]
-      page.clickSecondGig()
-      expect(navigateToGigSpy).toHaveBeenCalledWith(SECOND_GIG.id)
-    })
-  })
-
   /* Different examples of more accurate tests that need
   to explicitly run over the DOM structure
   */

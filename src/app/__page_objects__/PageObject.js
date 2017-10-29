@@ -27,4 +27,8 @@ export default class PageObject {
   matchSnapshot() {
     expect(this.wrapper.html()).toMatchSnapshot()
   }
+
+  setRouterSpy(routerSpy) {
+    this.wrapper.vm.mosicaRouter = routerSpy
+  }
 }

@@ -4,15 +4,25 @@
       <q-list-header>{{day.day}}</q-list-header>
 
       <div v-for="gig in day.gigs">
-        <Gig :gig ="gig" :onClick="onClick"/>
+        <Gig :gig ="gig" :onClick="goTo"/>
       </div>
     </div>
   </q-list>
 </template>
 
 <script>
+  import { MosicaRouter } from '../../services/MosicaRouter'
+
   export default {
-    props: { day: Object, isLoading: Boolean, onClick: Function }
+    props: {day: Object, isLoading: Boolean},
+    created() {
+      this.mosicaRouter = new MosicaRouter(this.$router)
+    },
+    methods: {
+      goTo(gig) {
+        this.mosicaRouter.navigateToGig(gig.id)
+      }
+    }
   }
 </script>
 
