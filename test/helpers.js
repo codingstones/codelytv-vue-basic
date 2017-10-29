@@ -42,3 +42,7 @@ export function cloneProductionStore() {
 export function stubNow(isoDate) {
   Date.now = jest.fn(() => new Date(isoDate).valueOf())
 }
+
+export function stubDate(isoDate) {
+  Date.now = jest.fn(() => new Date(isoDate).valueOf())
+}

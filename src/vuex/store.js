@@ -12,7 +12,7 @@ import {
   fetchDaysRequest, fetchDaysSuccess
 } from '../app/pages/Days/days-mutations'
 import { buildCreateGigAction } from '../app/pages/NewGig/new-gig-actions'
-import { gigsToday, numberOfGigsTodayWithReduce } from './getters'
+import { gigsToday, gigsTomorrow, numberOfGigsToday, numberOfGigsTomorrow } from './getters'
 
 Vue.use(Vuex)
 
@@ -37,8 +37,10 @@ export const mutations = {
 }
 
 export const getters = {
-  numberOfGigsToday: numberOfGigsTodayWithReduce,
-  gigsToday: gigsToday
+  numberOfGigsToday: numberOfGigsToday,
+  numberOfGigsTomorrow: numberOfGigsTomorrow,
+  gigsToday: gigsToday,
+  gigsTomorrow: gigsTomorrow
 }
 
 export const store = new Vuex.Store({

@@ -1,4 +1,4 @@
-import { spanishDay } from '../../services/date-utils'
+import { spanishToday } from '../../services/date-utils'
 
 export const CREATE_GIG_REQUEST = 'createGigRequest'
 export const CREATE_GIG_SUCCESS = 'createGigSuccess'
@@ -12,7 +12,7 @@ export function createGigRequest(state) {
 export function createGigSuccess(state, gig) {
   state.loading = false
   const newGig = { title: gig.title, datetime: gig.day }
-  const newDay = {day: spanishDay(gig.day), gigs: [newGig]}
+  const newDay = {day: spanishToday(gig.day), gigs: [newGig]}
   state.days.push(newDay)
   state.error = ''
 }

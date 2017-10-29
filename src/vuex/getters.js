@@ -1,30 +1,33 @@
-import { spanishDay } from '../app/services/date-utils'
-
-const moment = require('moment')
-require('moment/locale/es')
+import { isoToday, isoTomorrow, spanishToday, spanishTomorrow } from '../app/services/date-utils'
 
 export function numberOfGigsToday(state) {
-  let counter = 0
-  state.days.forEach((day) => {
-    counter += gigsWithDate(moment().format('YYYY-MM-DD'))(day)
-  })
-  return counter
+  return numberOfGigsForDateWithReduce(isoToday())(state)
 }
 
-export function numberOfGigsTodayWithReduce(state) {
-  return state.days.reduce((total, day) => {
-    return total + gigsWithDate(moment().format('YYYY-MM-DD'))(day)
-  }, 0)
+export function numberOfGigsTomorrow(state) {
+  return numberOfGigsForDateWithReduce(isoTomorrow())(state)
 }
 
-function gigsWithDate(today) {
+function numberOfGigsForDateWithReduce(date) {
+  return (state) => {
+    return state.days.reduce((total, day) => {
+      return total + numberOfGigsInADay(date)(day)
+    }, 0)
+  }
+}
+
+function numberOfGigsInADay(date) {
   return (day) => {
     if (!day.gigs) return 0
-    const daysOfToday = day.gigs.filter((gig) => gig.day === today)
+    const daysOfToday = day.gigs.filter((gig) => gig.day === date)
     return daysOfToday.length
   }
 }
 
 export function gigsToday(state) {
-  return state.days.find((day) => day.day.toUpperCase() === spanishDay().toUpperCase())
+  return state.days.find((day) => day.day.toUpperCase() === spanishToday().toUpperCase())
+}
+
+export function gigsTomorrow(state) {
+  return state.days.find((day) => day.day.toUpperCase() === spanishTomorrow().toUpperCase())
 }

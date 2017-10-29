@@ -6,6 +6,7 @@
     <q-side-link item to="/all">
       <q-item-side icon="list" />
       <q-item-main label="All Gigs"/>
+      <q-item-side icon="keyboard_arrow_right" />
     </q-side-link>
     <q-side-link item to="/today">
       <q-item-side icon="today" />
@@ -14,7 +15,8 @@
     </q-side-link>
     <q-side-link item to="/tomorrow">
       <q-item-side icon="event" />
-      <q-item-main label="Tomorrow Gigs (5)"/>
+      <q-item-main :label="gigsTomorrowComputed"/>
+      <q-item-side icon="keyboard_arrow_right" />
     </q-side-link>
     <q-list-header>
       Admin
@@ -22,6 +24,7 @@
     <q-side-link item to="/newGig">
       <q-item-side icon="note_add" />
       <q-item-main label="Create new Gig"/>
+      <q-item-side icon="keyboard_arrow_right" />
     </q-side-link>
   </q-scroll-area>
 </template>
@@ -32,9 +35,12 @@
   export default {
     name: 'SideBar',
     computed: {
-      ...mapGetters(['numberOfGigsToday']),
+      ...mapGetters(['numberOfGigsToday', 'numberOfGigsTomorrow']),
       gigsTodayComputed() {
         return `Gigs Today (${this.numberOfGigsToday})`
+      },
+      gigsTomorrowComputed() {
+        return `Gigs Tomorrow (${this.numberOfGigsTomorrow})`
       }
     },
     methods: {

@@ -10,6 +10,7 @@ function load (component) {
 import Days from '@/app/pages/Days/Days.vue'
 import NewGig from '@/app/pages/NewGig/NewGig'
 import GigsToday from '@/app/pages/GigsToday/GigsToday'
+import GigsTomorrow from '@/app/pages/GigsTomorrow/GigsTomorrow'
 
 export const NEW_GIG_PATH = '/newGig'
 
@@ -29,6 +30,7 @@ export default new VueRouter({
     { path: '/', component: Days, title: 'root' },
     { path: '/all', component: Days, title: 'all' },
     { path: '/today', component: GigsToday, title: 'today' },
+    { path: '/tomorrow', component: GigsTomorrow, title: 'tomorrow' },
     { path: '/gig/:id', component: load('GigDetail'), title: 'gig' },
     { path: NEW_GIG_PATH, component: NewGig, title: 'newGig' },
     { path: '*', component: load('Error404') }
