@@ -1,4 +1,4 @@
-import { actions, mutations, initialState } from '../src/vuex/store'
+import { actions, mutations, getters, initialState } from '../src/vuex/store'
 import Vuex from 'vuex'
 import { mount as _mount, shallow as _shallow} from 'vue-test-utils'
 
@@ -36,7 +36,8 @@ export function cloneProductionStore() {
   return new Vuex.Store({
     state: Object.assign({}, initialState),
     actions,
-    mutations
+    mutations,
+    getters
   })
 }
 

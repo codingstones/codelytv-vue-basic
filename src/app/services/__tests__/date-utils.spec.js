@@ -18,7 +18,6 @@ describe('date utils', () => {
   })
 
   it('Prints tomorrows date in spanish', () => {
-    stubNow('2017-09-18')
     expect(spanishTomorrow()).toBe('martes, 19 de septiembre')
   })
 })
