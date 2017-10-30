@@ -1,4 +1,4 @@
-import { createGig } from '../../shared/mosica-api'
+import { createGig } from '../../services/mosica-api'
 import { CREATE_GIG_ERROR, CREATE_GIG_REQUEST, CREATE_GIG_SUCCESS } from './new-gig-mutations'
 
 export function buildCreateGigAction() {

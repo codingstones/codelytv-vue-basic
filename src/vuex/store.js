@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { CREATE_GIG, RETRIEVE_DAYS } from '../app/shared/mosica-actions'
+import { CREATE_GIG, RETRIEVE_DAYS } from '../app/services/mosica-commands'
 import { buildRetrieveDaysAction } from '../app/pages/Days/days-actions'
 import {
   CREATE_GIG_ERROR,

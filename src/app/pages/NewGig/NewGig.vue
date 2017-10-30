@@ -23,11 +23,12 @@
 
 <script>
   import { mapActions } from 'vuex'
-  import { CREATE_GIG } from '../../shared/mosica-actions'
+  import { CREATE_GIG } from '../../services/mosica-commands'
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
   import TextInput from '../../shared/TextInput.vue'
   import DateTimeInput from '../../shared/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
+  import { createGigPayload } from '../../services/mosica-api'
 
   export default {
     props: {
@@ -63,7 +64,7 @@
     methods: {
       ...mapActions([CREATE_GIG]),
       save() {
-        this.create_gig({title: this.title, day: this.dateTime})
+        this.create_gig(createGigPayload(this.title, this.dateTime))
       }
     },
     components: {
