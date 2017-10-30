@@ -139,7 +139,7 @@ describe('New Gig', () => {
       expect(store.state.days).toHaveLength(1)
     })
     fit('navigates to all gigs route', async () => {
-      page.checkCurrentPath(store, 'all')
+      page.checkCurrentPath(store, '/all')
     })
   })
 })

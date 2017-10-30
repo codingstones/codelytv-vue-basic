@@ -32,6 +32,6 @@ export default class PageObject {
   }
 
   checkCurrentPath(state, path) {
-    console.log('path: ', this.wrapper.vm.$store.state.route)
+    expect(this.wrapper.vm.$store.state.route.path).toBe(path)
   }
 }
