@@ -4,6 +4,7 @@ import NewGigPage from '../../../__page_objects__/NewGigPageObject'
 import { store } from '../../../../vuex/store'
 import { cloneProductionStore } from '../../../../../test/helpers'
 import Vuex from 'vuex'
+jest.mock('../../../services/mosica-api')
 
 describe('New Gig', () => {
 
@@ -12,7 +13,7 @@ describe('New Gig', () => {
 
   let page, wrapper
   beforeEach(() => {
-    wrapper = mount(NewGig)
+    wrapper = mount(NewGig, { store: cloneProductionStore() })
     page = new NewGigPage(wrapper)
   })
 
@@ -119,7 +120,7 @@ describe('New Gig', () => {
     expect(actionSpy).toHaveBeenCalled()
   })
 
-  it('creates a GIG in the store when save button is clicked', async () => {
+  it('creates a GIG in the store when save button is clicked (better)', async () => {
     wrapper = mount(NewGig, { store: cloneProductionStore() })
     page = new NewGigPage(wrapper)
 

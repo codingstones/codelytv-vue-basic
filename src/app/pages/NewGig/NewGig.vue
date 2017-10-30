@@ -17,18 +17,21 @@
         :value="dateTime"
       ></DateTimeInput>
       <br><br>
-      <FormButton class="full-width" :onClick="save" :disabled="$v.$invalid">Create Gig</FormButton>
+      <FormButton class="full-width" :onClick="save"
+                  :disabled="$v.$invalid" :isLoading="loading">
+        Create Gig
+      </FormButton>
   </div>
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
   import { CREATE_GIG } from '../../services/mosica-commands'
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
   import TextInput from '../../shared/TextInput.vue'
   import DateTimeInput from '../../shared/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
-  import { createGigPayload } from '../../services/mosica-api'
+  import { createGigPayload } from '../../services/mosica-payloads'
 
   export default {
     props: {
@@ -61,10 +64,18 @@
         }
       }
     },
+    computed: {
+      ...mapState(['loading'])
+    },
     methods: {
       ...mapActions([CREATE_GIG]),
-      save() {
-        this.create_gig(createGigPayload(this.title, this.dateTime))
+      async save() {
+        try {
+          await this.create_gig(createGigPayload(this.title, this.dateTime))
+        }
+        catch (error) {
+          console.log('Error creating ', error)
+        }
       }
     },
     components: {

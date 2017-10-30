@@ -21,7 +21,8 @@ import {
   QScrollArea,
   QItemSide,
   QItemMain,
-  QLayout
+  QLayout,
+  QSpinnerMat
 } from 'quasar-framework'
 import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
@@ -56,6 +57,7 @@ export function registerGlobalComponents() {
   Vue.component('QItemSide', QItemSide)
   Vue.component('QItemMain', QItemMain)
   Vue.component('QLayout', QLayout)
+  Vue.component('QSpinnerMat', QSpinnerMat)
   Vue.component('FormButton', FormButton)
   Vue.component('Toolbar', Toolbar)
   Vue.component('SideBar', SideBar)

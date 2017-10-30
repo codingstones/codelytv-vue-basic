@@ -19,7 +19,7 @@ Vue.use(Vuex)
 export const initialState = {
   days: [],
   error: false,
-  loading: true
+  loading: false
 }
 
 export const actions = {

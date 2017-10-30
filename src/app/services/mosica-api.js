@@ -4,15 +4,8 @@ export function retrieveDays() {
   return gigService.retrieveNextGigs()
 }
 
-export function createGig(payload) {
-  return Promise.resolve(payload)
-}
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-export function createGigPayload(title, dateTime) {
-  return {
-    title: title,
-    day: dateTime.substring(0, 10),
-    description: 'Fake gig created by mosica-api',
-    place: 'Fake place'
-  }
+export function createGig(payload) {
+  return delay(1000).then(() => payload)
 }

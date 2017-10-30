@@ -1,5 +1,5 @@
 import { stubNow } from '../../../../test/helpers'
-import { createGigPayload } from '../mosica-api';
+import { createGigPayload } from '../mosica-payloads';
 
 describe('mosica api', () => {
 
