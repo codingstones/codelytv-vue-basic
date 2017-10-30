@@ -2,7 +2,7 @@ import { mount } from 'vue-test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import NewGigPage from '../../../__page_objects__/NewGigPageObject'
 import { store } from '../../../../vuex/store'
-import { cloneProductionStore } from '../../../../../test/helpers'
+import { cloneProductionStore, Wrap } from '../../../../../test/helpers'
 import Vuex from 'vuex'
 jest.mock('../../../services/mosica-api')
 
@@ -120,20 +120,27 @@ describe('New Gig', () => {
     expect(actionSpy).toHaveBeenCalled()
   })
 
-  it('creates a GIG in the store when save button is clicked (better)', async () => {
-    wrapper = mount(NewGig, { store: cloneProductionStore() })
-    page = new NewGigPage(wrapper)
+  describe('When clicking save button', async () => {
+    let store
+    beforeEach(async () => {
+      store = cloneProductionStore()
+      wrapper = Wrap(NewGig).withStore(store).mount()
+      page = new NewGigPage(wrapper)
 
-    expect(store.state.days).toHaveLength(0)
+      expect(store.state.days).toHaveLength(0)
 
-    page.writeNameAsync(nameWithValidLength())
-    page.writeDatetime(FUTURE_DATETIME)
-    await page.wait()
-    page.clickSaveButton()
-    await page.wait()
-
-    expect(store.state.days).toHaveLength(1)
-
+      page.writeNameAsync(nameWithValidLength())
+      page.writeDatetime(FUTURE_DATETIME)
+      await page.wait()
+      page.clickSaveButton()
+      await page.wait()
+    })
+    it('creates a GIG in the store', async () => {
+      expect(store.state.days).toHaveLength(1)
+    })
+    fit('navigates to all gigs route', async () => {
+      page.checkCurrentPath(store, 'all')
+    })
   })
 })
 

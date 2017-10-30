@@ -1,6 +1,9 @@
 import { actions, mutations, getters, initialState } from '../src/vuex/store'
 import Vuex from 'vuex'
-import { mount as _mount, shallow as _shallow} from 'vue-test-utils'
+import VueRouter from 'vue-router'
+import { sync } from 'vuex-router-sync'
+import { mount as _mount, shallow as _shallow } from 'vue-test-utils'
+import { deepCopy } from '../src/vuex/utils'
 
 export function spyFor() {
   // Returns an object like {arg0: jest.fn(), ...argN: jest.fn()} for the given args
@@ -34,7 +37,7 @@ export function rejectedStub(methodName, promiseError) {
 
 export function cloneProductionStore() {
   return new Vuex.Store({
-    state: Object.assign({}, initialState),
+    state: deepCopy(initialState),
     actions,
     mutations,
     getters
@@ -51,10 +54,17 @@ export function stubDate(isoDate) {
 
 export function Wrap(component) {
 
-  return {mount, shallow, withProps, withSlots, withRouter, config}
+  return {mount, shallow, withProps, withSlots, withRouter, withStore, config}
 
   function withProps(props) {
     this.props = props
+    return this
+  }
+
+  function withStore(store) {
+    this.store = store
+    this.router = new VueRouter()
+    sync(this.store, this.router)
     return this
   }
 
@@ -77,6 +87,6 @@ export function Wrap(component) {
   }
 
   function config() {
-    return { propsData: this.props, slots: this.slots, router: this.router }
+    return { propsData: this.props, slots: this.slots, router: this.router, store: this.store }
   }
 }

@@ -20,8 +20,7 @@
     data () {
       return {
         gigsByDay: [],
-        isLoading: false,
-        mosicaRouter: null
+        isLoading: false
       }
     },
     async created() {

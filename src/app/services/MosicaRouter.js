@@ -1,5 +1,5 @@
 export const MosicaRouter = (router) => {
-  return { navigateToGig, navigateToCreateGig }
+  return { navigateToGig, navigateToCreateGig, navigateToAllGigs }
 
   function navigateToGig(gigId) {
     router.push('gig/' + gigId)
@@ -7,5 +7,9 @@ export const MosicaRouter = (router) => {
 
   function navigateToCreateGig() {
     router.push({path: '/newGig'})
+  }
+
+  function navigateToAllGigs() {
+    router.push({path: '/all'})
   }
 }

@@ -13,6 +13,7 @@ import GigsToday from '@/app/pages/GigsToday/GigsToday'
 import GigsTomorrow from '@/app/pages/GigsTomorrow/GigsTomorrow'
 
 export const NEW_GIG_PATH = '/newGig'
+export const ALL_GIGS_PATH = '/all'
 
 export default new VueRouter({
   /*
@@ -28,7 +29,7 @@ export default new VueRouter({
    */
   routes: [
     { path: '/', component: Days, title: 'root' },
-    { path: '/all', component: Days, title: 'all' },
+    { path: ALL_GIGS_PATH, component: Days, title: 'all' },
     { path: '/today', component: GigsToday, title: 'today' },
     { path: '/tomorrow', component: GigsTomorrow, title: 'tomorrow' },
     { path: '/gig/:id', component: load('GigDetail'), title: 'gig' },

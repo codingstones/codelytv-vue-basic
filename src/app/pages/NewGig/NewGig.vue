@@ -32,6 +32,7 @@
   import DateTimeInput from '../../shared/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
   import { createGigPayload } from '../../services/mosica-payloads'
+  import { MosicaRouter } from '../../services/MosicaRouter'
 
   export default {
     props: {
@@ -46,6 +47,9 @@
         required,
         isFutureDatetime
       }
+    },
+    created() {
+      this.mosicaRouter = new MosicaRouter(this.$router)
     },
     data () {
       return {
@@ -72,6 +76,7 @@
       async save() {
         try {
           await this.create_gig(createGigPayload(this.title, this.dateTime))
+          this.mosicaRouter.navigateToAllGigs()
         }
         catch (error) {
           console.log('Error creating ', error)

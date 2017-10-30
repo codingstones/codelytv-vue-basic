@@ -1,8 +1,7 @@
 import Day from '@/app/pages/Days/Day.vue'
-import PageObject from '../../../__page_objects__/PageObject'
 import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
 import { Wrap } from '../../../../../test/helpers'
-import DayListPageObject from '../../../__page_objects__/DayPageObject';
+import DayListPageObject from '../../../__page_objects__/DayPageObject'
 
 const FIRST_DAY = fakeGigsByDay[0]
 
@@ -12,7 +11,6 @@ describe('Day', () => {
   beforeEach(async () => {
     wrapper = Wrap(Day)
       .withProps({ day: FIRST_DAY, isLoading: false, onClick: jest.fn })
-      .withRouter(jest.fn())
       .mount()
     page = new DayListPageObject(wrapper)
   })

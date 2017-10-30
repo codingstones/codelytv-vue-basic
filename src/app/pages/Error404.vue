@@ -27,13 +27,8 @@
 </template>
 
 <script>
-import { QBtn, QIcon } from 'quasar'
 
 export default {
-  components: {
-    QBtn,
-    QIcon
-  },
   data () {
     return {
       canGoBack: window.history.length > 1

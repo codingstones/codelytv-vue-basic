@@ -30,4 +30,8 @@ export default class PageObject {
   setRouterSpy(routerSpy) {
     this.wrapper.vm.mosicaRouter = routerSpy
   }
+
+  checkCurrentPath(state, path) {
+    console.log('path: ', this.wrapper.vm.$store.state.route)
+  }
 }
