@@ -14,7 +14,6 @@ describe('Days', () => {
   beforeEach(async () => {
     wrapper = mount(Days, { store: cloneProductionStore() })
     page = new DayListPage(wrapper)
-    await page.updateAsync()
   })
 
   it('matches full snapshot', async() => {

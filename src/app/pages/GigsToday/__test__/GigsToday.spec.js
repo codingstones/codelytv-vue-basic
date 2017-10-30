@@ -27,7 +27,5 @@ async function mountPage() {
   const store = cloneProductionStore()
   store.state.days = fakeGigsByDay
   const wrapper = mount(GigsToday, {store})
-  const page = new PageObject(wrapper)
-  await page.updateAsync()
-  return page
+  return new PageObject(wrapper)
 }

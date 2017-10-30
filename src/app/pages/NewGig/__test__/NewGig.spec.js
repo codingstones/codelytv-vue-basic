@@ -26,13 +26,13 @@ describe('New Gig', () => {
 
       it('and title is cleared', async () => {
         page.dirtyValidation()
-        await page.flushPromises()
+        await page.wait()
         expect(page.text()).toContain('Name is required')
       })
 
       it('and title is too short (async)', async() => {
         page.writeNameAsync(tooShortName())
-        await page.flushPromises()
+        await page.wait()
         expect(page.text()).toContain('Minimum 5 characters.')
       })
 
@@ -50,13 +50,13 @@ describe('New Gig', () => {
     describe('when validating datetime', () => {
       it('and datetime is cleared', async () => {
         page.dirtyValidation()
-        await page.flushPromises()
+        await page.wait()
         expect(page.text()).toContain('Date and time of gig are required.')
       })
 
       it('and datetime is in the past', async () => {
         page.writeDatetime(PAST_DATETIME)
-        await page.flushPromises()
+        await page.wait()
         expect(page.text()).toContain('You cannot set a gig in a past date :(')
       })
     })
@@ -64,13 +64,13 @@ describe('New Gig', () => {
     describe('does not show validation error', () => {
       it('and datetime is in the future', async () => {
         page.writeDatetime(FUTURE_DATETIME)
-        await page.flushPromises()
+        await page.wait()
         expect(page.hasDatetimeError()).toBe(false)
       })
 
       it('and title has valid length', async() => {
         page.writeNameAsync(nameWithValidLength())
-        await page.flushPromises()
+        await page.wait()
         expect(page.hasNameError()).toBe(false)
       })
     })
@@ -83,21 +83,21 @@ describe('New Gig', () => {
 
     it('is disabled when form not fully filled', async () => {
       page.writeNameAsync(nameWithValidLength())
-      await page.flushPromises()
+      await page.wait()
       expect(page.isSaveButtonDisabled()).toBe(true)
     })
 
     it('is disabled when form has errors', async () => {
       page.writeNameAsync(tooShortName())
       page.writeDatetime(PAST_DATETIME)
-      await page.flushPromises()
+      await page.wait()
       expect(page.isSaveButtonDisabled()).toBe(true)
     })
 
     it('is enabled when form is fully filled without errors', async () => {
       page.writeNameAsync(nameWithValidLength())
       page.writeDatetime(FUTURE_DATETIME)
-      await page.flushPromises()
+      await page.wait()
       expect(page.isSaveButtonDisabled()).toBe(false)
     })
   })
@@ -113,7 +113,7 @@ describe('New Gig', () => {
 
     page.writeNameAsync(nameWithValidLength())
     page.writeDatetime(FUTURE_DATETIME)
-    await page.flushPromises()
+    await page.wait()
     page.clickSaveButton()
 
     expect(actionSpy).toHaveBeenCalled()
@@ -127,9 +127,9 @@ describe('New Gig', () => {
 
     page.writeNameAsync(nameWithValidLength())
     page.writeDatetime(FUTURE_DATETIME)
-    await page.flushPromises()
+    await page.wait()
     page.clickSaveButton()
-    await page.flushPromises()
+    await page.wait()
 
     expect(store.state.days).toHaveLength(1)
 

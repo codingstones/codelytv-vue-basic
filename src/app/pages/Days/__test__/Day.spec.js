@@ -15,7 +15,6 @@ describe('Day', () => {
       .withRouter(jest.fn())
       .mount()
     page = new DayListPageObject(wrapper)
-    await page.updateAsync()
   })
 
   // Do we need tests to check onClick works as it is already tested in integration test (Days.spec)?

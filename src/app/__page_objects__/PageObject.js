@@ -3,13 +3,12 @@ export default class PageObject {
     this.wrapper = wrapper
   }
 
-  async updateAsync() {
-    await this.flushPromises()
-    this.wrapper.update()
+  wait() {
+    return new Promise(resolve => setImmediate(resolve))
   }
 
-  flushPromises() {
-    return new Promise(resolve => setImmediate(resolve))
+  update() {
+    return this.wrapper.update()
   }
 
   text() {
