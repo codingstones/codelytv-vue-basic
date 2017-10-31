@@ -23,9 +23,11 @@ describe('Vuex Getters', () => {
     })
 
     it('gets list of gigs for today', () => {
+      const FIRST_DAY = fakeGigsByDay[Object.keys(fakeGigsByDay)[0]]
+
       stubNow('2017-09-18')
       const state = {days: fakeGigsByDay}
-      expect(gigsToday(state)).toBe(fakeGigsByDay[0])
+      expect(gigsToday(state)).toBe(FIRST_DAY)
     })
 
     it('gets EMPTY list of gigs for today', () => {

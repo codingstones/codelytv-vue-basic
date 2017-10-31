@@ -1,5 +1,5 @@
 import faker from 'faker'
-import { isoFuture, spanishFromIso } from '../date-utils'
+import { isoFuture } from '../date-utils'
 
 export function createFakeGig(date) {
   return {
@@ -22,15 +22,17 @@ function randomNumber(min, max) {
 
 export function createFakeDay(date) {
   return {
-    day: spanishFromIso(date),
+    date: date,
     gigs: Array(randomNumber(1, 10)).fill().map(() => createFakeGig(date))
   }
 }
 
 export function createFakeDays() {
-  return Array(randomNumber(3, 10)).fill().map((number, index) => {
-    return createFakeDay(isoFuture(index))
+  let days = {}
+  Array(randomNumber(3, 10)).fill().forEach((number, index) => {
+    days[isoFuture(index)] = createFakeDay(isoFuture(index))
   })
+  return days
 }
 
 function randomImageUrl() {
@@ -81,17 +83,3 @@ const secondTerm = [
 const thirdTerm = [
   'De Zaragoza', 'Aragonés', 'Turolense', 'Oscense'
 ]
-
-// {
-//   'schedule_id': 5280,
-//   'schedule': [
-//   {
-//     'id': 5280,
-//     'day': '2017-09-18',
-//     'hour': '19:30',
-//     'gig_id': 5927,
-//     'created_at': '2017-09-07T15:57:35.419Z',
-//     'updated_at': '2017-09-07T15:57:35.419Z'
-//   }
-// ]
-// },

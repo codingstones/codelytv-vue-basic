@@ -1,9 +1,8 @@
 import Day from '@/app/pages/Days/Day.vue'
-import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
+import { FIRST_DAY } from '../../../services/__mocks__/gigs-sample'
 import { Wrap } from '../../../../../test/helpers'
 import DayListPageObject from '../../../__page_objects__/DayPageObject'
-
-const FIRST_DAY = fakeGigsByDay[0]
+import { spanishFromIso } from '../../../services/date-utils';
 
 describe('Day', () => {
 
@@ -22,10 +21,9 @@ describe('Day', () => {
     page.matchSnapshot()
   })
 
-  it('renders gig', async() => {
-    page.contains(FIRST_DAY.day)
+  it('renders gig date in spanish format', async() => {
+    page.contains(spanishFromIso(FIRST_DAY.date))
   })
-
 
   describe('When clicking buttons', () => {
 

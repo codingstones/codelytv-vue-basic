@@ -1,4 +1,5 @@
 import PageObject from './PageObject'
+import { spanishFromIso } from '../services/date-utils';
 
 export default class DayListPageObject extends PageObject {
   constructor(wrapper) {
@@ -6,7 +7,7 @@ export default class DayListPageObject extends PageObject {
     this.wrapper = wrapper
   }
 
-  dayTexts() {
+  dayTitles() {
     return this.wrapper.findAll('.q-list-header').wrappers.map((day) => day.text())
   }
 

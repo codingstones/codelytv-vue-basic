@@ -1,5 +1,3 @@
-import { spanishFromIso } from '../../services/date-utils'
-
 export const CREATE_GIG_REQUEST = 'createGigRequest'
 export const CREATE_GIG_SUCCESS = 'createGigSuccess'
 export const CREATE_GIG_ERROR = 'createGigError'
@@ -19,8 +17,8 @@ export function createGigSuccess(state, gig) {
   }
   else {
     const newGig = { title: gig.title, datetime: gig.day }
-    const newDay = {day: spanishFromIso(gig.day), gigs: [newGig]}
-    state.days.push(newDay)
+    const newDay = { gigs: [newGig] }
+    state.days[gig.day] = newDay
   }
 }
 
@@ -30,5 +28,5 @@ export function createGigError(state, error) {
 }
 
 function dayOfGigsFor(state, gig) {
-  return state.days.find(day => day.day === spanishFromIso(gig.day))
+  return state.days[gig.day]
 }

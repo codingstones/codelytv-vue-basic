@@ -27,8 +27,8 @@ describe('New gig mutations', () => {
 
         createGigSuccess(state, NEW_GIG)
 
-        expect(state.days.length).toBe(2)
-        expect(state.days[0].day).toEqual('Lunes, 18 de Septiembre')
+        expect(Object.keys(state.days).length).toBe(2)
+        expect(state.days['2017-09-19']).toBeDefined()
       })
 
       it('and there were already gigs that day', () => {
@@ -38,8 +38,8 @@ describe('New gig mutations', () => {
 
         createGigSuccess(state, NEW_GIG)
 
-        expect(state.days.length).toBe(2)
-        expect(state.days[0].day).toEqual('Lunes, 18 de Septiembre')
+        expect(Object.keys(state.days).length).toBe(2)
+        expect(state.days['2017-09-19']).toBeDefined()
       })
     })
 

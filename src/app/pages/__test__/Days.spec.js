@@ -1,13 +1,14 @@
 import { mount } from 'vue-test-utils'
 import Days from '@/app/pages/Days/Days.vue'
-import { fakeGigsByDay } from '../../services/__mocks__/gigs-sample'
+import { FIRST_DAY, DAY_LIST } from '../../services/__mocks__/gigs-sample'
 import { fakeGigsByDay2 } from '../../services/__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPageObject'
 import { cloneProductionStore } from '../../../../test/helpers'
+import { spanishFromIso } from '../../services/date-utils';
 jest.mock('../../services/MosicaCore')
 
 describe('Days', () => {
-  const FIRST_DAY_GIG_TEXTS = fakeGigsByDay[0].gigs.map(
+  const FIRST_DAY_GIG_TEXTS = FIRST_DAY.gigs.map(
     gig => gig.title + ' - ' + gig.place)
 
   let page, wrapper
@@ -28,14 +29,14 @@ describe('Days', () => {
   to explicitly run over the DOM structure
   */
 
-  it('render days', async () => {
-    const DAYS = fakeGigsByDay.map((day) => day.day)
-    expect(page.dayTexts()).toEqual(DAYS)
+  it('render days in spanish format', async () => {
+    const DAYS = DAY_LIST.map((day) => spanishFromIso(day.date))
+    expect(page.dayTitles()).toEqual(DAYS)
   })
 
   it('render gigs for each day', async () => {
     let expectedGigs
-    fakeGigsByDay.map((day, index) => {
+    DAY_LIST.map((day, index) => {
       expectedGigs = day.gigs.map((gig) => gig.title + ' - ' + gig.place)
       expect(page.gigRowsFor(index)).toEqual(expectedGigs)
     })

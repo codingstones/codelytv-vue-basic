@@ -1,7 +1,7 @@
 <template>
   <q-list v-if="!isLoading">
     <div class='day'>
-      <q-list-header>{{day.day}}</q-list-header>
+      <q-list-header>{{dateLabel}}</q-list-header>
 
       <div v-for="gig in day.gigs">
         <Gig :gig ="gig" :onClick="goTo"/>
@@ -12,6 +12,7 @@
 
 <script>
   import { MosicaRouter } from '../../services/MosicaRouter'
+  import { spanishFromIso } from '../../services/date-utils'
 
   export default {
     props: {day: Object, isLoading: Boolean},
@@ -21,6 +22,11 @@
     methods: {
       goTo(gig) {
         this.mosicaRouter.navigateToGig(gig.id)
+      }
+    },
+    computed: {
+      dateLabel() {
+        return spanishFromIso(this.day.date)
       }
     }
   }
