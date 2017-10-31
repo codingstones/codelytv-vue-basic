@@ -1,8 +1,5 @@
 <template>
   <q-scroll-area slot="left" style="width: 100%; height: 100%" inset-separator>
-    <q-list-header>
-      <img src="~assets/stones-small-red-white_letters.svg"/>
-    </q-list-header>
     <q-side-link item to="/all">
       <q-item-side icon="list" />
       <q-item-main label="All Gigs"/>
@@ -26,6 +23,10 @@
       <q-item-main label="Create new Gig"/>
       <q-item-side icon="keyboard_arrow_right" />
     </q-side-link>
+    <br>
+    <q-list-header>
+      <img src="~assets/stones.svg"/>
+    </q-list-header>
   </q-scroll-area>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
-  <q-list v-if="!isLoading">
+  <q-card v-if="!isLoading">
     <div class='day'>
-      <q-list-header>{{dateLabel}}</q-list-header>
+      <q-card-title>{{dateLabel}}</q-card-title>
 
       <div v-for="gig in day.gigs">
         <Gig :gig ="gig" :onClick="goTo"/>
       </div>
     </div>
-  </q-list>
+  </q-card>
 </template>
 
 <script>
@@ -33,7 +33,7 @@
 </script>
 
 <style scoped>
-  .q-list-header {
+  .q-card-title {
     color: black;
     font-weight: bold;
     font-size: 150%;

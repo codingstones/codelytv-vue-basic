@@ -1,5 +1,5 @@
 <template>
-  <q-btn color="primary"
+  <q-btn color="secondary"
          :disable="disabled"
          @click="onClick()">
     <q-spinner-mat size="20" v-if="isLoading"/>

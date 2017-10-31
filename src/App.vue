@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app" class="layout-padding row justify-center">
+  <div id="q-app" class="row justify-center">
     <q-layout ref="layout">
       <Toolbar slot="header" @drawerClick="clickDrawer()"></Toolbar>
       <SideBar slot="left"></SideBar>
@@ -7,7 +7,7 @@
         name="custom">
         <router-view class="layout-view"/>
       </q-transition>
-    </q-layout>
+   </q-layout>
   </div>
 </template>
 
@@ -28,14 +28,14 @@ export default {
 
 <style>
   .custom-enter-active {
-    transition: all .3s ease;
-    opacity: 0;
+    transition: all .5s ease;
+    opacity: 0.5;
   }
   .custom-leave-active {
     transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
   }
   .custom-enter, .custom-leave-to {
-    transform: translateX(10px);
+    transform: translateX(100px);
     opacity: 0;
   }
 </style>

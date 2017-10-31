@@ -1,27 +1,29 @@
 <template>
-  <div class="layout-padding">
-      <h4>Add a New Gig to Mosica!</h4>
-      <TextInput
-        label="Insert Gig Title"
-        v-model="title"
-        :validation="$v.title"
-        :validation-messages="validationMessages.title"
-        placeholder="Type name of gig"
-      ></TextInput>
-      <DateTimeInput
-        format="YYYY/MM/DD - hh:mm"
-        label="Date and time"
-        v-model="dateTime"
-        :validation="$v.dateTime"
-        :validation-messages="validationMessages.dateTime"
-        :value="dateTime"
-      ></DateTimeInput>
-      <br><br>
-      <FormButton class="full-width" :onClick="save"
-                  :disabled="$v.$invalid" :isLoading="loading">
-        Create Gig
-      </FormButton>
-  </div>
+    <q-card>
+      <div class="layout-padding">
+        <h4>Add a New Gig to Mosica!</h4>
+        <TextInput
+          label="Insert Gig Title"
+          v-model="title"
+          :validation="$v.title"
+          :validation-messages="validationMessages.title"
+          placeholder="Type name of gig"
+        ></TextInput>
+        <DateTimeInput
+          format="YYYY/MM/DD - hh:mm"
+          label="Date and time"
+          v-model="dateTime"
+          :validation="$v.dateTime"
+          :validation-messages="validationMessages.dateTime"
+          :value="dateTime"
+        ></DateTimeInput>
+        <br><br>
+        <FormButton class="full-width" :onClick="save"
+                    :disabled="$v.$invalid" :isLoading="loading">
+          Create Gig
+        </FormButton>
+      </div>
+    </q-card>
 </template>
 
 <script>

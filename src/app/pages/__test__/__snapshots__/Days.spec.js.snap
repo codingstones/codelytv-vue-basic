@@ -4,9 +4,15 @@ exports[`Days matches full snapshot 1`] = `
 <div class="full-width">
     <!---->
     <div>
-        <div class="q-list">
+        <div class="q-card">
             <div class="day">
-                <div class="q-list-header ">Lunes, 18 de Septiembre</div>
+                <div class="q-card-primary q-card-container row no-wrap">
+                    <div class="col column">
+                        <div class="q-card-title">Lunes, 18 de Septiembre</div>
+                        <div class="q-card-subtitle"></div>
+                    </div>
+                    <div class="col-auto self-center q-card-title-extra"></div>
+                </div>
                 <div>
                     <div class="q-item q-item-division relative-position q-item-highlight">
                         Anarchy in the JS - SCBCN
