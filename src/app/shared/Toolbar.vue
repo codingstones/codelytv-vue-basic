@@ -4,7 +4,7 @@
       <q-icon name="menu" />
     </q-btn>
     <q-toolbar-title>
-      Anarchy JS
+      Jotas JS
     </q-toolbar-title>
     <q-btn color='secondary'>
       <q-icon name="search"/>

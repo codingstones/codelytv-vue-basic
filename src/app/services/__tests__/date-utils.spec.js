@@ -23,5 +23,6 @@ describe('date utils', () => {
 
   it('translate ISO date to Spanish format', () => {
     expect(spanishFromIso('2017-09-18')).toBe('Lunes, 18 de Septiembre')
+    expect(spanishFromIso('2017-11-04')).toBe('Sábado, 04 de Noviembre')
   })
 })

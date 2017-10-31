@@ -1,4 +1,6 @@
 /* eslint-disable eqeqeq */
+import { createFakeDays } from './__mocks__/create-fake-gig'
+
 export class Gig {
   constructor(args) {
     Object.assign(this, args)
@@ -7,30 +9,15 @@ export class Gig {
 
 export class GigService {
   constructor(httpClient, matcher) {
-    this._httpClient = httpClient
-    this._baseUrl = 'http://www.mosica.es/api/1'
     this._gigs = []
     this._gigs_by_day = []
     this._matcher = matcher
   }
 
   retrieveNextGigs() {
-    return new Promise((resolve, reject) => {
-      this._httpClient.get(this._baseUrl + '/gigs').then((response) => {
-        let gigsByDay = response
-
-        gigsByDay.forEach((day) => {
-          let gigs = day.gigs.map((gig) => {
-            return new Gig(gig)
-          })
-          this._gigs = this._gigs.concat(gigs)
-        })
-
-        this._gigs_by_day = gigsByDay
-
-        resolve(gigsByDay)
-      })
-    })
+    const days = createFakeDays()
+    days.forEach((day) => this._gigs.push(...day.gigs))
+    return Promise.resolve(days)
   }
 
   retrieveAGig(id) {

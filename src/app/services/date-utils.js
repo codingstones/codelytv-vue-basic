@@ -10,6 +10,10 @@ export function isoTomorrow() {
   return moment().add(1, 'days').format(ISO_FORMAT)
 }
 
+export function isoFuture(daysFromNow) {
+  return moment().add(daysFromNow, 'days').format(ISO_FORMAT)
+}
+
 export function spanishToday() {
   return toSpanish(moment())
 }
@@ -23,9 +27,9 @@ export function spanishFromIso(isoDate) {
 }
 
 function toSpanish(date) {
-  return capitalize(date.format('dddd, DD [de] MMMM')).replace(' De ', ' de ')
+  return toTitleCase(date.format('dddd, DD [de] MMMM')).replace(' De ', ' de ')
 }
 
-function capitalize(date) {
-  return date.replace(/\b\w/g, l => l.toUpperCase())
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() })
 }
