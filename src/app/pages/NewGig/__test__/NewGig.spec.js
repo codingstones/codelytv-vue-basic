@@ -1,10 +1,12 @@
 import { mount } from 'vue-test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import NewGigPage from '../../../__page_objects__/NewGigPageObject'
-import { store } from '../../../../vuex/store'
 import { cloneProductionStore, Wrap } from '../../../../../test/helpers'
 import Vuex from 'vuex'
+// We mock mosica-api module
+import { createGig as createGigSpy } from '../../../services/mosica-api'
 jest.mock('../../../services/mosica-api')
+import { createGigPayload } from '../../../services/mosica-payloads'
 
 describe('New Gig', () => {
 
@@ -138,8 +140,14 @@ describe('New Gig', () => {
     it('creates a GIG in the store', async () => {
       expect(store.state.days).toHaveLength(1)
     })
-    fit('navigates to all gigs route', async () => {
+    it('navigates to all gigs route', async () => {
       page.checkCurrentPath(store, '/all')
+    })
+
+    fit('calls backend with appropriate command', async () => {
+      // This will be also tested in happy path but in this integration tests we can check all strange cases
+      // faster and cheaper
+      expect(createGigSpy).toHaveBeenCalledWith(createGigPayload(nameWithValidLength(), FUTURE_DATETIME))
     })
   })
 })
