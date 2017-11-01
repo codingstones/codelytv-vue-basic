@@ -21,6 +21,7 @@ import {
   QScrollArea,
   QItemSide,
   QItemMain,
+  QItemSeparator,
   QLayout,
   QSpinnerMat
 } from 'quasar-framework'
@@ -56,6 +57,7 @@ export function registerGlobalComponents() {
   Vue.component('QScrollArea', QScrollArea)
   Vue.component('QItemSide', QItemSide)
   Vue.component('QItemMain', QItemMain)
+  Vue.component('QItemSeparator', QItemSeparator)
   Vue.component('QLayout', QLayout)
   Vue.component('QSpinnerMat', QSpinnerMat)
   Vue.component('FormButton', FormButton)

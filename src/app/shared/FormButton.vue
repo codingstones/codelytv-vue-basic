@@ -2,7 +2,10 @@
   <q-btn color="secondary"
          :disable="disabled"
          @click="onClick()">
-    <q-spinner-mat size="20" v-if="isLoading"/>
+    <span v-if="isLoading">
+      <q-spinner-mat size="20"/>
+      Saving gig...
+    </span>
     <slot v-else></slot>
   </q-btn>
 </template>

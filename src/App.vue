@@ -38,4 +38,7 @@ export default {
     transform: translateX(100px);
     opacity: 0;
   }
+  striped {
+    color: yellow
+  }
 </style>

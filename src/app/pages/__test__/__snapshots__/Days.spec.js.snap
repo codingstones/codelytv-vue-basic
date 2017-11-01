@@ -14,12 +14,12 @@ exports[`Days matches full snapshot 1`] = `
                     <div class="col-auto self-center q-card-title-extra"></div>
                 </div>
                 <div>
-                    <div class="q-item q-item-division relative-position q-item-highlight">
+                    <div striped="" class="q-item q-item-division relative-position q-item-highlight q-item-link">
                         Anarchy in the JS - SCBCN
                     </div>
                 </div>
                 <div>
-                    <div class="q-item q-item-division relative-position q-item-highlight">
+                    <div striped="" class="q-item q-item-division relative-position q-item-highlight q-item-link">
                         Vegan Microservices - Around the world
                     </div>
                 </div>

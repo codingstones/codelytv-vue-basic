@@ -1,5 +1,5 @@
 <template>
-  <q-item @click="onClick(gig)" :key="gig.id" highlight>
+  <q-item @click="onClick(gig)" :key="gig.id" highlight link striped>
     {{gig.title}} - {{gig.place}}
   </q-item>
 </template>
