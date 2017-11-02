@@ -57,4 +57,5 @@ export const fakeGigsByDay =
 }
 
 export const FIRST_DAY = fakeGigsByDay[Object.keys(fakeGigsByDay)[0]]
+export const FIRST_GIG = FIRST_DAY.gigs[0]
 export const DAY_LIST = Object.values(fakeGigsByDay)

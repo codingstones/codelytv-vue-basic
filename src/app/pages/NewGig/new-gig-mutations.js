@@ -10,7 +10,6 @@ export function createGigRequest(state) {
 export function createGigSuccess(state, gig) {
   state.loading = false
   state.error = ''
-
   const existingDay = dayOfGigsFor(state, gig)
   if (existingDay) {
     existingDay.gigs.push(gig)

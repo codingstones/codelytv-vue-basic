@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 import { createGig as createGigSpy } from '../../../services/mosica-api'
 jest.mock('../../../services/mosica-api')
 import { createGigPayload } from '../../../services/mosica-payloads'
+import VueRouter from 'vue-router'
 
 describe('New Gig', () => {
 
@@ -111,7 +112,7 @@ describe('New Gig', () => {
       state: {days: [], loading: false},
       actions: { create_gig: actionSpy }
     })
-    wrapper = mount(NewGig, { store })
+    wrapper = mount(NewGig, { store, router: new VueRouter() })
     page = new NewGigPage(wrapper, {store})
 
     page.writeNameAsync(nameWithValidLength())
@@ -129,7 +130,7 @@ describe('New Gig', () => {
       wrapper = Wrap(NewGig).withStore(store).mount()
       page = new NewGigPage(wrapper)
 
-      expect(store.state.days).toHaveLength(0)
+      expect(store.state.days).toEqual({})
 
       page.writeNameAsync(nameWithValidLength())
       page.writeDatetime(FUTURE_DATETIME)
@@ -138,13 +139,13 @@ describe('New Gig', () => {
       await page.wait()
     })
     it('creates a GIG in the store', async () => {
-      expect(store.state.days).toHaveLength(1)
+      expect(store.state.days[FUTURE_DATETIME]).toBeDefined()
     })
     it('navigates to all gigs route', async () => {
       page.checkCurrentPath(store, '/all')
     })
 
-    fit('calls backend with appropriate command', async () => {
+    it('calls backend with appropriate command', async () => {
       // This will be also tested in happy path but in this integration tests we can check all strange cases
       // faster and cheaper
       expect(createGigSpy).toHaveBeenCalledWith(createGigPayload(nameWithValidLength(), FUTURE_DATETIME))

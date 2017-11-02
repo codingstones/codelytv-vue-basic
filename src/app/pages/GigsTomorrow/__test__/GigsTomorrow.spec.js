@@ -1,10 +1,8 @@
 import { mount } from 'vue-test-utils'
 import GigsTomorrow from '@/app/pages/GigsTomorrow/GigsTomorrow.vue'
-import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
+import { fakeGigsByDay, FIRST_DAY } from '../../../services/__mocks__/gigs-sample'
 import PageObject from '../../../__page_objects__/PageObject'
 import { cloneProductionStore, stubNow } from '../../../../../test/helpers'
-
-const FIRST_DAY = fakeGigsByDay[Object.keys(fakeGigsByDay)[0]]
 
 describe('Gigs Tomorrow', () => {
   const FIRST_DAY_GIG_TEXTS = FIRST_DAY.gigs.map(
