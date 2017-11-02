@@ -33,7 +33,11 @@ export function localizedFromIso(isoDate) {
 }
 
 function localize(date) {
-  return toTitleCase(date.locale(locale).format(`dddd, DD [${localizedSeparator(locale)}] MMMM`))
+  return removeLeadingZeros(toTitleCase(date.locale(locale).format(`dddd, DD [${localizedSeparator(locale)}] MMMM`)))
+}
+
+function removeLeadingZeros(formattedDate) {
+  return formattedDate.replace(/ 0+/g, ' ')
 }
 
 function localizedSeparator(locale) {

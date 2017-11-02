@@ -1,19 +1,19 @@
 import {
-  localizedToday, englishToday, isoToday, isoTomorrow, localizedFromIso, localizedTomorrow,
+  localizedToday, isoToday, isoTomorrow, localizedFromIso, localizedTomorrow,
   setLocale
 } from '../date-utils'
 import { stubNow } from '../../../../test/helpers'
 
 describe('date utils', () => {
 
-  beforeEach(() => stubNow('2017-09-18'))
+  beforeEach(() => stubNow('2017-09-02'))
 
   it('Prints today in ISO', () => {
-    expect(isoToday()).toBe('2017-09-18')
+    expect(isoToday()).toBe('2017-09-02')
   })
 
   it('Prints tomorrow in ISO', () => {
-    expect(isoTomorrow()).toBe('2017-09-19')
+    expect(isoTomorrow()).toBe('2017-09-03')
   })
 
   describe('When locale is english', () => {
@@ -21,11 +21,11 @@ describe('date utils', () => {
     beforeEach(() => setLocale('en'))
 
     it('Prints todays date', () => {
-      expect(localizedToday()).toBe('Monday, 18 Of September')
+      expect(localizedToday()).toBe('Saturday, 2 Of September')
     })
 
     it('Prints tomorrows date', () => {
-      expect(localizedTomorrow()).toBe('Tuesday, 19 Of September')
+      expect(localizedTomorrow()).toBe('Sunday, 3 Of September')
     })
   })
 
@@ -34,16 +34,16 @@ describe('date utils', () => {
     beforeEach(() => setLocale('es'))
 
     it('Prints todays date', () => {
-      expect(localizedToday()).toBe('Lunes, 18 De Septiembre')
+      expect(localizedToday()).toBe('Sábado, 2 De Septiembre')
     })
 
     it('Prints tomorrows date', () => {
-      expect(localizedTomorrow()).toBe('Martes, 19 De Septiembre')
+      expect(localizedTomorrow()).toBe('Domingo, 3 De Septiembre')
     })
 
     it('translate ISO date', () => {
       expect(localizedFromIso('2017-09-18')).toBe('Lunes, 18 De Septiembre')
-      expect(localizedFromIso('2017-11-04')).toBe('Sábado, 04 De Noviembre')
+      expect(localizedFromIso('2017-11-04')).toBe('Sábado, 4 De Noviembre')
     })
   })
 })

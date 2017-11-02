@@ -6,21 +6,19 @@
       </q-card-title>
       <q-card-separator />
       <q-card-main>
+        <div class="block" v-if="gig.price">
+          <h5> {{gig.price}}</h5>
+        </div>
+        <div class="block">
+          <strong>{{localized(gig.day)}}</strong> a las <strong>{{gig.hour}} h.</strong>
+        </div>
+        <FormButton :onClick="downloadICS"><q-icon name="event"/>  Add it to your calendar </FormButton>
         <div class="block" v-if="gig.place">
           <h4>{{gig.place}}</h4>
           <span v-html="gig.address"/>
-          <br />
         </div>
         <FormButton :onClick="openMap"><q-icon name="directions"/> How to get there? </FormButton>
-        <div class="block" v-if="gig.price">
-          <h5> Price: {{gig.price}}</h5>
-        </div>
-        <div class="block">
-          <div v-for="schedule in gig.schedule">
-            <strong>{{schedule.day}}</strong> a las <strong>{{schedule.hour}} h.</strong>
-          </div>
-        </div>
-        <FormButton :onClick="downloadICS"><q-icon name="event"/>  Add it to youir calendar </FormButton>
+        <br/><br/>
         <div class="block" v-if="gig.description">
           {{gig.description}}
         </div>
@@ -37,6 +35,7 @@
 <script>
   import { gigService } from '../services/jota-instances'
   import { openMap } from '../services/MapService'
+  import { localizedFromIso } from '../services/date-utils'
 
   export default {
     data () {
@@ -62,6 +61,9 @@
       },
       share() {
         console.log('Sharing gig')
+      },
+      localized(day) {
+        return localizedFromIso(day)
       }
     }
   }

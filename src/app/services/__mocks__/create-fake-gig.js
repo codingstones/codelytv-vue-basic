@@ -9,7 +9,7 @@ export function createFakeGig(date) {
     image_url: randomImageUrl(),
     lat_lng: `${faker.address.latitude()},${faker.address.longitude()}`,
     address: fakeAddress(),
-    price: randomNumber(5, 100) + '€',
+    price: randomNumber(5, 60) + '€',
     place: randomPlace(),
     hour: randomNumber(4, 11) + 'PM',
     day: date
