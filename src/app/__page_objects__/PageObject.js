@@ -28,7 +28,7 @@ export default class PageObject {
   }
 
   setRouterSpy(routerSpy) {
-    this.wrapper.vm.mosicaRouter = routerSpy
+    this.wrapper.vm.jotaRouter = routerSpy
   }
 
   checkCurrentPath(state, path) {

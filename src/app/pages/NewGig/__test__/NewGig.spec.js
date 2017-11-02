@@ -3,14 +3,13 @@ import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import NewGigPage from '../../../__page_objects__/NewGigPageObject'
 import { cloneProductionStore, Wrap } from '../../../../../test/helpers'
 import Vuex from 'vuex'
-// We mock mosica-api module
-import { createGig as createGigSpy } from '../../../services/mosica-api'
-jest.mock('../../../services/mosica-api')
-import { createGigPayload } from '../../../services/mosica-payloads'
+import { createGig as createGigSpy } from '../../../services/jota-api'
+// The only double that we need to mock
+jest.mock('@/app/services/jota-api')
+import { createGigPayload } from '../../../services/jota-payloads'
 import VueRouter from 'vue-router'
 
 describe('New Gig', () => {
-
   const PAST_DATETIME = '1900/10/27'
   const FUTURE_DATETIME = '3000/10/27'
 

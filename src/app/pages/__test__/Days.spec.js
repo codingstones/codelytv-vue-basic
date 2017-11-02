@@ -4,8 +4,8 @@ import { FIRST_DAY, DAY_LIST } from '../../services/__mocks__/gigs-sample'
 import { fakeGigsByDay2 } from '../../services/__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPageObject'
 import { cloneProductionStore } from '../../../../test/helpers'
-import { localizedFromIso } from '../../services/date-utils';
-jest.mock('../../services/MosicaCore')
+import { localizedFromIso } from '../../services/date-utils'
+jest.mock('@/app/services/jota-api')
 
 describe('Days', () => {
   const FIRST_DAY_GIG_TEXTS = FIRST_DAY.gigs.map(
@@ -29,7 +29,7 @@ describe('Days', () => {
   to explicitly run over the DOM structure
   */
 
-  it('render days in spanish format', async () => {
+  it('render days in localized format', async () => {
     const DAYS = DAY_LIST.map((day) => localizedFromIso(day.date))
     expect(page.dayTitles()).toEqual(DAYS)
   })
@@ -42,7 +42,7 @@ describe('Days', () => {
     })
   })
 
-  /* Test to demonstrate how to explicitly inject mosicaService as a prop
+  /* Test to demonstrate how to explicitly inject backendService as a prop
   (less MAGIC than manual jest mock)
    */
   // it('render days(explicitly injected mock)', async () => {

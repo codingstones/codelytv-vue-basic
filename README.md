@@ -1,4 +1,4 @@
-# Mosica Quasar
+# Jota JS Quasar
 
 > A Quasar project
 

@@ -1,7 +1,7 @@
 import { createGigError, createGigRequest, createGigSuccess } from '../new-gig-mutations'
 import { fakeGigsByDay } from '../../../services/__mocks__/gigs-sample'
 import { stubNow } from '../../../../../test/helpers'
-import { Gig } from '../../../services/MosicaCore';
+import { Gig } from '../../../fake-backend/JotaCore';
 
 describe('New gig mutations', () => {
 

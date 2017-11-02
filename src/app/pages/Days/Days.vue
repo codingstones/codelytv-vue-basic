@@ -9,12 +9,12 @@
 
 <script>
   import { mapState, mapActions } from 'vuex'
-  import { gigService } from '../../services/mosica-instances'
+  import { retrieveDays } from '../../services/jota-api'
 
   export default {
     props: {
       gigService: {
-        default: () => gigService
+        default: () => retrieveDays
       }
     },
     data () {
@@ -26,7 +26,7 @@
     async created() {
       this.isLoading = true
       // Without vuex action
-      this.gigsByDay = await this.gigService.retrieveNextGigs()
+      this.gigsByDay = await retrieveDays
       // With vuex action
       await this.retrieve_days()
       this.gigsByDay = this.days

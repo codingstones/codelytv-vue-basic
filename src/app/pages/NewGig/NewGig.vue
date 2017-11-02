@@ -28,13 +28,13 @@
 
 <script>
   import { mapActions, mapState } from 'vuex'
-  import { CREATE_GIG } from '../../services/mosica-commands'
+  import { CREATE_GIG } from '../../services/jota-commands'
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
   import TextInput from '../../shared/TextInput.vue'
   import DateTimeInput from '../../shared/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
-  import { createGigPayload } from '../../services/mosica-payloads'
-  import { MosicaRouter } from '../../services/MosicaRouter'
+  import { createGigPayload } from '../../services/jota-payloads'
+  import { JotaRouter } from '../../services/JotaRouter'
 
   export default {
     props: {
@@ -51,7 +51,7 @@
       }
     },
     created() {
-      this.mosicaRouter = new MosicaRouter(this.$router)
+      this.jotaRouter = new JotaRouter(this.$router)
     },
     data () {
       return {
@@ -78,7 +78,7 @@
       async save() {
         try {
           await this.create_gig(createGigPayload(this.title, this.dateTime))
-          this.mosicaRouter.navigateToAllGigs()
+          this.jotaRouter.navigateToAllGigs()
         }
         catch (error) {
           console.log('Error creating ', error)

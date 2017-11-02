@@ -11,17 +11,17 @@
 </template>
 
 <script>
-  import { MosicaRouter } from '../../services/MosicaRouter'
+  import { JotaRouter } from '../../services/JotaRouter'
   import { localizedFromIso } from '../../services/date-utils'
 
   export default {
     props: {day: Object, isLoading: Boolean},
     created() {
-      this.mosicaRouter = new MosicaRouter(this.$router)
+      this.jotaRouter = new JotaRouter(this.$router)
     },
     methods: {
       goTo(gig) {
-        this.mosicaRouter.navigateToGig(gig.id)
+        this.jotaRouter.navigateToGig(gig.id)
       }
     },
     computed: {

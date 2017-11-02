@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import { createFakeDays } from './__mocks__/create-fake-gig'
+import { createFakeDays } from '../services/__mocks__/create-fake-gig'
 
 export class Gig {
   constructor(args) {
@@ -8,7 +8,7 @@ export class Gig {
 }
 
 export class GigService {
-  constructor(httpClient, matcher) {
+  constructor(matcher) {
     this._gigs = []
     this._gigs_by_day = []
     this._matcher = matcher

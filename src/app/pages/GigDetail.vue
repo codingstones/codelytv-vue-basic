@@ -13,7 +13,7 @@
         </div>
         <FormButton :onClick="openMap"><q-icon name="directions"/> How to get there? </FormButton>
         <div class="block" v-if="gig.price">
-          Price: {{gig.price}}
+          <h5> Price: {{gig.price}}</h5>
         </div>
         <div class="block">
           <div v-for="schedule in gig.schedule">
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import { gigService } from '../services/mosica-instances'
+  import { gigService } from '../services/jota-instances'
   import { openMap } from '../services/MapService'
 
   export default {
@@ -52,9 +52,10 @@
     },
     methods: {
       downloadICS() {
-        const BASE_URL = 'http://www.mosica.es/'
-        const downloadUrl = `${BASE_URL}conciertos/${this.gig.slug}.ics`
-        window.open(downloadUrl, '_system')
+        console.log('Downloading ICS')
+        // const BASE_URL = 'http://jotajs.es'
+        // const downloadUrl = `${BASE_URL}gigs/${this.gig.slug}.ics`
+        // window.open(downloadUrl, '_system')
       },
       openMap() {
         openMap(`https://www.google.es/maps/place/${this.gig.lat_lng}`)

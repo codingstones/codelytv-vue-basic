@@ -1,7 +1,7 @@
 import { stubNow } from '../../../../test/helpers'
-import { createGigPayload } from '../mosica-payloads';
+import { createGigPayload } from '../jota-payloads'
 
-describe('mosica api', () => {
+describe('jota payloads', () => {
 
   beforeEach(() => stubNow('2017-09-18'))
 

@@ -1,4 +1,4 @@
-export const MosicaRouter = (router) => {
+export const JotaRouter = (router) => {
   return { navigateToGig, navigateToCreateGig, navigateToAllGigs }
 
   function navigateToGig(gigId) {

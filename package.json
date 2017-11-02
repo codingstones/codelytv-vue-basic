@@ -1,8 +1,8 @@
 {
-  "name": "MosicaQuasar",
-  "productName": "Quasar Mosica",
+  "name": "JotaQuasar",
+  "productName": "Jota JS",
   "version": "0.0.1",
-  "description": "Mosica Sample with Quasar",
+  "description": "Jota Sample with Quasar",
   "author": "Coding Stones<yeah@codingstones.com>",
   "scripts": {
     "clean": "node build/script.clean.js",

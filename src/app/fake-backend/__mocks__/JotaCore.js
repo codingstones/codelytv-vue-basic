@@ -1,4 +1,4 @@
-import { fakeGigsByDay } from './gigs-sample'
+import { fakeGigsByDay } from '../../services/__mocks__/gigs-sample'
 
 class GigService {
   retrieveNextGigs() {

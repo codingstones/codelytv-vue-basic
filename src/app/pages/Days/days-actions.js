@@ -4,7 +4,7 @@ import {
   FETCH_DAYS_ERROR
 } from './days-mutations'
 
-import { retrieveDays } from '../../services/mosica-api'
+import { retrieveDays } from '../../services/jota-api'
 
 export function buildRetrieveDaysAction() {
   return retrieveDaysAction(retrieveDays).run
