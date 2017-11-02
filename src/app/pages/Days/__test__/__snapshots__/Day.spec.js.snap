@@ -5,7 +5,7 @@ exports[`Day matches full snapshot 1`] = `
     <div class="day">
         <div class="q-card-primary q-card-container row no-wrap">
             <div class="col column">
-                <div class="q-card-title">Lunes, 18 de Septiembre</div>
+                <div class="q-card-title">Lunes, 18 De Septiembre</div>
                 <div class="q-card-subtitle"></div>
             </div>
             <div class="col-auto self-center q-card-title-extra"></div>
