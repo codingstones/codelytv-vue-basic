@@ -4,7 +4,7 @@
       <q-card-title>{{dateLabel}}</q-card-title>
 
       <div v-for="gig in day.gigs">
-        <Gig :gig ="gig" :onClick="goTo"/>
+        <GigRow :gig ="gig" :onClick="goTo"/>
       </div>
     </div>
   </q-card>

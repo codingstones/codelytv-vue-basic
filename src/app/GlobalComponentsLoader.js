@@ -29,13 +29,13 @@ import LoadSpinner from '@/app/shared/LoadSpinner.vue'
 import FormButton from '@/app/shared/FormButton.vue'
 import SideBar from '@/app/shared/SideBar.vue'
 import Toolbar from '@/app/shared/Toolbar.vue'
-import Gig from '@/app/pages/Days/Gig.vue'
+import GigRow from '@/app/pages/Days/GigRow.vue'
 import Day from '@/app/pages/Days/Day.vue'
 
 export function registerGlobalComponents() {
   Vue.component('LoadSpinner', LoadSpinner)
   Vue.component('Day', Day)
-  Vue.component('Gig', Gig)
+  Vue.component('GigRow', GigRow)
   Vue.component('QList', QList)
   Vue.component('QListHeader', QListHeader)
   Vue.component('QItem', QItem)
