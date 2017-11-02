@@ -17,7 +17,7 @@ import { gigsToday, gigsTomorrow, numberOfGigsToday, numberOfGigsTomorrow } from
 Vue.use(Vuex)
 
 export const initialState = {
-  days: [],
+  days: {},
   error: false,
   loading: false
 }

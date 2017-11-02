@@ -12,13 +12,10 @@ describe('Vuex test helpers', () => {
 
   it('cloneProductionStore', async () => {
     let clonedStore = cloneProductionStore()
-
-    expect(clonedStore.state.days).toHaveLength(0)
-
-    clonedStore.state.days = ['ANY DAY']
+    clonedStore.state.days = { 'any date': 'ANY DAY' }
 
     clonedStore = cloneProductionStore()
 
-    expect(clonedStore.state.days).toHaveLength(0)
+    expect(clonedStore.state.days).toBeDefined()
   })
 })
