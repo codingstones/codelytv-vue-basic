@@ -27,6 +27,7 @@
     </q-side-link>
     <br>
     <q-list-header>
+      <img src="~assets/baturro.gif" class="baturro"/>
       <img src="~assets/stones.svg"/>
     </q-list-header>
   </q-scroll-area>
@@ -61,5 +62,9 @@
   }
   q-scroll-area {
     background-color: #f4f4f4;
+  }
+  .baturro {
+    position: relative;
+    top: 10px;
   }
 </style>
