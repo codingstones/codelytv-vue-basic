@@ -5,15 +5,21 @@ export function createFakeGig(date) {
   return {
     id: faker.random.number().toString(),
     title: randomTitle(),
-    description: faker.lorem.paragraph(),
+    description: faker.lorem.paragraph(15),
     image_url: randomImageUrl(),
     lat_lng: `${faker.address.latitude()},${faker.address.longitude()}`,
-    address: faker.address.streetAddress(),
+    address: fakeAddress(),
     price: randomNumber(5, 100) + '€',
     place: randomPlace(),
     hour: randomNumber(4, 11) + 'PM',
     day: date
   }
+}
+
+function fakeAddress() {
+  return faker.address.streetAddress() +
+   '<br/>' + faker.address.city() + ', ' + faker.address.country() +
+   '<br/>' + faker.address.zipCode()
 }
 
 function randomNumber(min, max) {

@@ -8,22 +8,23 @@
       <q-card-main>
         <div class="block" v-if="gig.place">
           <h4>{{gig.place}}</h4>
-          {{gig.address}}<br />
+          <span v-html="gig.address"/>
+          <br />
         </div>
-        <FormButton :onClick="openMap"><q-icon name="directions"/>¿Cómo llegar?</FormButton>
+        <FormButton :onClick="openMap"><q-icon name="directions"/> How to get there? </FormButton>
         <div class="block" v-if="gig.price">
-          Precio: {{gig.price}}
+          Price: {{gig.price}}
         </div>
         <div class="block">
           <div v-for="schedule in gig.schedule">
             <strong>{{schedule.day}}</strong> a las <strong>{{schedule.hour}} h.</strong>
           </div>
         </div>
-        <FormButton :onClick="downloadICS"><q-icon name="event"/>  Añádelo a tu calendario</FormButton>
+        <FormButton :onClick="downloadICS"><q-icon name="event"/>  Add it to youir calendar </FormButton>
         <div class="block" v-if="gig.description">
           {{gig.description}}
         </div>
-        <FormButton :onClick="share"><q-icon name="share"/> Compártelo con tus amigos</FormButton>
+        <FormButton :onClick="share"><q-icon name="share"/> Share it with your friends </FormButton>
       </q-card-main>
       <q-card-media v-if="gig.image_url">
         <img :src="gig.image_url"/>
@@ -65,13 +66,16 @@
   }
 </script>
 
-<style scoped>
+<style lang="stylus" type="text/stylus" scoped>
+  @import '~variables'
+
   img {
     max-width: 100%;
     max-height: 100%;
   }
   .block {
     margin: 0.5rem;
+    font-size: 1.1rem;
   }
   FormButton {
     margin: 0.5rem;

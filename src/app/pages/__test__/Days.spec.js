@@ -4,7 +4,7 @@ import { FIRST_DAY, DAY_LIST } from '../../services/__mocks__/gigs-sample'
 import { fakeGigsByDay2 } from '../../services/__mocks__/gigs-sample2'
 import DayListPage from '../../__page_objects__/DaysPageObject'
 import { cloneProductionStore } from '../../../../test/helpers'
-import { spanishFromIso } from '../../services/date-utils';
+import { localizedFromIso } from '../../services/date-utils';
 jest.mock('../../services/MosicaCore')
 
 describe('Days', () => {
@@ -30,7 +30,7 @@ describe('Days', () => {
   */
 
   it('render days in spanish format', async () => {
-    const DAYS = DAY_LIST.map((day) => spanishFromIso(day.date))
+    const DAYS = DAY_LIST.map((day) => localizedFromIso(day.date))
     expect(page.dayTitles()).toEqual(DAYS)
   })
 

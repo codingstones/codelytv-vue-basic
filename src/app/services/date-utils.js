@@ -2,6 +2,12 @@ const moment = require('moment')
 require('moment/locale/es')
 const ISO_FORMAT = 'YYYY-MM-DD'
 
+// Default locale:
+let locale = 'es'
+export function setLocale(localeCode) {
+  locale = localeCode
+}
+
 export function isoToday() {
   return moment().format(ISO_FORMAT)
 }
@@ -14,20 +20,25 @@ export function isoFuture(daysFromNow) {
   return moment().add(daysFromNow, 'days').format(ISO_FORMAT)
 }
 
-export function spanishToday() {
-  return toSpanish(moment())
+export function localizedToday() {
+  return localize(moment())
 }
 
-export function spanishTomorrow() {
-  return toSpanish(moment().add(1, 'days'))
+export function localizedTomorrow() {
+  return localize(moment().add(1, 'days'))
 }
 
-export function spanishFromIso(isoDate) {
-  return toSpanish(moment(isoDate, ISO_FORMAT))
+export function localizedFromIso(isoDate) {
+  return localize(moment(isoDate, ISO_FORMAT))
 }
 
-function toSpanish(date) {
-  return toTitleCase(date.format('dddd, DD [de] MMMM')).replace(' De ', ' de ')
+function localize(date) {
+  return toTitleCase(date.locale(locale).format(`dddd, DD [${localizedSeparator(locale)}] MMMM`))
+}
+
+function localizedSeparator(locale) {
+  if (locale === 'en') return 'of'
+  return 'de'
 }
 
 function toTitleCase(str) {

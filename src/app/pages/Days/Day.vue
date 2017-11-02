@@ -12,7 +12,7 @@
 
 <script>
   import { MosicaRouter } from '../../services/MosicaRouter'
-  import { spanishFromIso } from '../../services/date-utils'
+  import { localizedFromIso } from '../../services/date-utils'
 
   export default {
     props: {day: Object, isLoading: Boolean},
@@ -26,7 +26,7 @@
     },
     computed: {
       dateLabel() {
-        return spanishFromIso(this.day.date)
+        return localizedFromIso(this.day.date)
       }
     }
   }
