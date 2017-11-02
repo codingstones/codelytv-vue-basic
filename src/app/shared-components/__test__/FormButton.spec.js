@@ -1,4 +1,4 @@
-import FormButton from '@/app/shared/FormButton.vue'
+import FormButton from '@/app/shared-components/FormButton.vue'
 import { Wrap } from '../../../../test/helpers'
 
 describe('FormButton.vue', () => {
@@ -16,7 +16,7 @@ describe('FormButton.vue', () => {
 
   describe('When clicking', () => {
 
-    let clickSpy = jest.fn()
+    let clickSpy
     beforeEach(() => {
       clickSpy = jest.fn()
     })

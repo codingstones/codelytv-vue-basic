@@ -25,10 +25,10 @@ import {
   QLayout,
   QSpinnerMat
 } from 'quasar-framework'
-import LoadSpinner from '@/app/shared/LoadSpinner.vue'
-import FormButton from '@/app/shared/FormButton.vue'
-import SideBar from '@/app/shared/SideBar.vue'
-import Toolbar from '@/app/shared/Toolbar.vue'
+import LoadSpinner from '@/app/shared-components/LoadSpinner.vue'
+import FormButton from '@/app/shared-components/FormButton.vue'
+import SideBar from '@/app/shared-components/SideBar.vue'
+import Toolbar from '@/app/shared-components/Toolbar.vue'
 import GigRow from '@/app/pages/Days/GigRow.vue'
 import Day from '@/app/pages/Days/Day.vue'
 
