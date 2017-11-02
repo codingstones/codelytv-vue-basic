@@ -1,7 +1,7 @@
 import PageObject from './PageObject'
-import TextInput from '../shared/TextInput.vue'
-import DateTimeInput from '../shared/DateTimeInput.vue'
-import FormButton from '../shared/FormButton.vue'
+import TextInput from '../shared-components/TextInput.vue'
+import DateTimeInput from '../shared-components/DateTimeInput.vue'
+import FormButton from '../shared-components/FormButton.vue'
 
 export default class NewGigPageObject extends PageObject {
   constructor(wrapper) {

@@ -1,10 +1,10 @@
 import { mount } from 'vue-test-utils'
 import Days from '@/app/pages/Days/Days.vue'
-import { FIRST_DAY, DAY_LIST } from '../../services/__mocks__/gigs-sample'
-import { fakeGigsByDay2 } from '../../services/__mocks__/gigs-sample2'
-import DayListPage from '../../__page_objects__/DaysPageObject'
-import { cloneProductionStore } from '../../../../test/helpers'
-import { localizedFromIso } from '../../services/date-utils'
+import { FIRST_DAY, DAY_LIST } from '../../../services/__mocks__/gigs-sample'
+import { fakeGigsByDay2 } from '../../../services/__mocks__/gigs-sample2'
+import DayListPage from '../../../__page_objects__/DaysPageObject'
+import { cloneProductionStore } from '../../../../../test/helpers'
+import { localizedFromIso } from '../../../services/date-utils'
 jest.mock('@/app/services/jota-api')
 
 describe('Days', () => {
