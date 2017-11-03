@@ -17,7 +17,7 @@
   export default {
     props: {day: Object, isLoading: Boolean},
     created() {
-      this.jotaRouter = new JotaRouter(this.$router)
+      this.jotaRouter = JotaRouter(this.$router)
     },
     methods: {
       goTo(gig) {

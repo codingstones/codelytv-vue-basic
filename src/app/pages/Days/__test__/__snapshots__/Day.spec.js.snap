@@ -11,7 +11,7 @@ exports[`Day matches full snapshot 1`] = `
             <div class="col-auto self-center q-card-title-extra"></div>
         </div>
         <div>
-            <div highlight="" class="q-card">
+            <div class="q-card">
                 <div class="q-item q-item-division relative-position"><img src="http://www.zaragoza.es/cont/paginas/actividades/imagen/web_320x480px.png" class="q-item-side q-item-side-left q-item-section q-item-image">
                     <div class="q-item-main q-item-section">
                         <div class="q-item-label">Anarchy in the JS</div>
@@ -21,7 +21,7 @@ exports[`Day matches full snapshot 1`] = `
             </div>
         </div>
         <div>
-            <div highlight="" class="q-card">
+            <div class="q-card">
                 <div class="q-item q-item-division relative-position"><img src="http://www.wtf.es/wtf.png" class="q-item-side q-item-side-left q-item-section q-item-image">
                     <div class="q-item-main q-item-section">
                         <div class="q-item-label">Vegan Microservices</div>

@@ -1,8 +1,5 @@
 <template>
-  <!--<q-card @click="onClick(gig)" :key="gig.id" highlight link striped>-->
-    <!--{{gig.title}} <br/> {{gig.place}}-->
-  <!--</q-card>-->
-  <q-card @click="onClick(gig)" highlight>
+  <q-card @click="onClick(gig)">
     <q-item>
       <q-item-side :image="gig.image_url" />
       <q-item-main>

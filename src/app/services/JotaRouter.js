@@ -1,5 +1,5 @@
 export const JotaRouter = (router) => {
-  return { navigateToGig, navigateToCreateGig, navigateToAllGigs }
+  return { navigateToGig, navigateToCreateGig, navigateToAllGigs, getParam }
 
   function navigateToGig(gigId) {
     router.push('gig/' + gigId)
@@ -11,5 +11,9 @@ export const JotaRouter = (router) => {
 
   function navigateToAllGigs() {
     router.push({path: '/all'})
+  }
+
+  function getParam(id) {
+    return router.currentRoute.params[id]
   }
 }

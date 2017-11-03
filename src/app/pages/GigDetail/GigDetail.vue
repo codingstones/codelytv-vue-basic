@@ -1,5 +1,5 @@
 <template>
-  <div v-if="gig" class="full-width">
+  <div v-show="gig.title" class="full-width">
     <q-card>
       <q-card-title>
         <h3>{{gig.title}}</h3>
@@ -33,28 +33,24 @@
 </template>
 
 <script>
-  import { gigService } from '../services/jota-instances'
-  import { openMap } from '../services/MapService'
-  import { localizedFromIso } from '../services/date-utils'
+  import { openMap } from '../../services/MapService'
+  import { localizedFromIso } from '../../services/date-utils'
+  import { retrieveAGig } from '../../services/jota-api'
+  import { JotaRouter } from '../../services/JotaRouter'
 
   export default {
     data () {
       return {
-        gig: null
+        gig: {}
       }
     },
     async created() {
-      // We could mapState this route param with vuex-sync-router
-      // We need to load the gigs if we reload:
-      // this.gigsByDay = await this.gigService.retrieveNextGigs()
-      this.gig = await gigService.retrieveAGig(this.$router.currentRoute.params.id)
+      this.jotaRouter = JotaRouter(this.$router)
+      this.gig = await retrieveAGig(this.jotaRouter.getParam('id'))
     },
     methods: {
       downloadICS() {
         console.log('Downloading ICS')
-        // const BASE_URL = 'http://jotajs.es'
-        // const downloadUrl = `${BASE_URL}gigs/${this.gig.slug}.ics`
-        // window.open(downloadUrl, '_system')
       },
       openMap() {
         openMap(`https://www.google.es/maps/place/${this.gig.lat_lng}`)

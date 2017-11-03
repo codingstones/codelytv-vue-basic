@@ -1,15 +1,15 @@
-// function createGig(payload) {
-//   return Promise.resolve(payload)
-// }
+import { fakeGigsByDay, FIRST_GIG } from './gigs-sample'
 
-import { fakeGigsByDay } from './gigs-sample'
-
-const createGigStub = jest.fn((payload) => {
+const createGig = jest.fn((payload) => {
   return Promise.resolve(payload)
 })
 
-const retrieveDaysStub = jest.fn(() => {
+const retrieveAGig = jest.fn((gigId) => {
+  return Promise.resolve(FIRST_GIG)
+})
+
+const retrieveDays = jest.fn(() => {
   return Promise.resolve(fakeGigsByDay)
 })
 
-module.exports = { createGig: createGigStub, retrieveDays: retrieveDaysStub }
+module.exports = { createGig, retrieveDays, retrieveAGig }

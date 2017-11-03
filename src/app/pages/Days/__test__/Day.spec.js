@@ -2,7 +2,7 @@ import Day from '@/app/pages/Days/Day.vue'
 import { FIRST_DAY } from '../../../services/__mocks__/gigs-sample'
 import { Wrap } from '../../../../../test/helpers'
 import DayListPageObject from '../../../__page_objects__/DayPageObject'
-import { localizedFromIso } from '../../../services/date-utils';
+import { localizedFromIso } from '../../../services/date-utils'
 
 describe('Day', () => {
 
