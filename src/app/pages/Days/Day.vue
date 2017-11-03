@@ -1,5 +1,5 @@
 <template>
-  <q-card v-if="!isLoading">
+  <div v-if="!isLoading">
     <div class='day'>
       <q-card-title>{{dateLabel}}</q-card-title>
 
@@ -7,7 +7,7 @@
         <GigRow :gig ="gig" :onClick="goTo"/>
       </div>
     </div>
-  </q-card>
+  </div>
 </template>
 
 <script>

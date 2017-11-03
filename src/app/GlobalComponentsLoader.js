@@ -21,6 +21,7 @@ import {
   QScrollArea,
   QItemSide,
   QItemMain,
+  QItemTile,
   QItemSeparator,
   QLayout,
   QSpinnerMat
@@ -56,6 +57,7 @@ export function registerGlobalComponents() {
   Vue.component('QSideLink', QSideLink)
   Vue.component('QScrollArea', QScrollArea)
   Vue.component('QItemSide', QItemSide)
+  Vue.component('QItemTile', QItemTile)
   Vue.component('QItemMain', QItemMain)
   Vue.component('QItemSeparator', QItemSeparator)
   Vue.component('QLayout', QLayout)

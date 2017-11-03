@@ -1,6 +1,6 @@
 <template>
   <q-toolbar>
-    <q-btn flat @click="clickDrawer()">
+    <q-btn flat @click="clickDrawer()" big>
       <q-icon name="menu" />
     </q-btn>
     <q-toolbar-title>

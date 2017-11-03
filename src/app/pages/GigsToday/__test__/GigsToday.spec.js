@@ -4,7 +4,6 @@ import { fakeGigsByDay, FIRST_DAY } from '../../../services/__mocks__/gigs-sampl
 import PageObject from '../../../__page_objects__/PageObject'
 import { cloneProductionStore, stubNow } from '../../../../../test/helpers'
 
-
 describe('Gigs Today', () => {
   const FIRST_DAY_GIG_TEXTS = FIRST_DAY.gigs.map(
     gig => gig.title + ' - ' + gig.place)

@@ -1,7 +1,16 @@
 <template>
-  <q-item @click="onClick(gig)" :key="gig.id" highlight link striped>
-    {{gig.title}} - {{gig.place}}
-  </q-item>
+  <!--<q-card @click="onClick(gig)" :key="gig.id" highlight link striped>-->
+    <!--{{gig.title}} <br/> {{gig.place}}-->
+  <!--</q-card>-->
+  <q-card @click="onClick(gig)" highlight>
+    <q-item>
+      <q-item-side :image="gig.image_url" />
+      <q-item-main>
+        <q-item-tile label>{{gig.title}}</q-item-tile>
+        <q-item-tile sublabel>{{gig.place}}</q-item-tile>
+      </q-item-main>
+    </q-item>
+  </q-card>
 </template>
 
 <script>
@@ -9,3 +18,10 @@
     props: { gig: Object, onClick: Function }
   }
 </script>
+
+<style lang="stylus" type="text/stylus">
+  .q-item:hover {
+    background: alpha(#795548, 30%);
+    cursor: pointer;
+  }
+</style>
