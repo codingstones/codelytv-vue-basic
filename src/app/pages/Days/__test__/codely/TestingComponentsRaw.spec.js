@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import GigRow from '@/app/pages/Days/GigRow.vue'
-import { mount } from 'vue-test-utils'
 
 describe('GigRow', () => {
 
@@ -11,24 +10,7 @@ describe('GigRow', () => {
     const GigRowBuilder = Vue.extend(GigRow)
     const vm = new GigRowBuilder({ propsData: {gig: GIG} }).$mount()
 
-
-
-    const wrapper = mount(GigRow, { propsData: {gig: GIG} })
-
-    expect(wrapper.text()).toContain('a title - a place')
+    expect(vm.$el.textContent).toContain('a title')
+    expect(vm.$el.textContent).toContain('a place')
   })
 })
-
-
-
-// fit('renders the correct message with native', () => {
-//   const Ctor = Vue.extend(FunctionalSFC)
-//   const vm = new Ctor({ propsData: { msg: 'Hello' } }).$mount()
-//   console.log('YIIIIPIIII', vm.$el.textContent)
-// })
-
-// it('renders the correct message with native from parent', () => {
-//   const Ctor = Vue.extend(FunctionalSFCParent)
-//   const vm = new Ctor().$mount()
-//   console.log('YIIIIPIIII', vm.$el.textContent)
-// })

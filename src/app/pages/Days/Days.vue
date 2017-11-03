@@ -13,7 +13,7 @@
 
   export default {
     props: {
-      gigService: {
+      retrieveDays: {
         default: () => retrieveDays
       }
     },
@@ -26,7 +26,7 @@
     async created() {
       this.isLoading = true
       // Without vuex action
-      this.gigsByDay = await retrieveDays
+      this.gigsByDay = await this.retrieveDays
       // With vuex action
       await this.retrieve_days()
       this.gigsByDay = this.days

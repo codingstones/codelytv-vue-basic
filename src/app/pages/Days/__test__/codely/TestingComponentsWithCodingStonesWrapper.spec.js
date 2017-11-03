@@ -1,5 +1,5 @@
 import GigRow from '@/app/pages/Days/GigRow.vue'
-import { mount } from 'vue-test-utils'
+import { Wrap } from '../../../../../../test/helpers'
 
 describe('GigRow', () => {
 
@@ -7,9 +7,9 @@ describe('GigRow', () => {
 
     const GIG = {id: 'an id', title: 'a title', place: 'a place'}
 
-    const wrapper = mount(GigRow, { propsData: {gig: GIG} })
+    const wrapper = Wrap(GigRow).withProps({ gig: GIG }).mount()
 
     expect(wrapper.text()).toContain('a title')
-    expect(wrapper.text()).toContain('a place')
+    expect(wrapper.text()).toContain('a title')
   })
 })

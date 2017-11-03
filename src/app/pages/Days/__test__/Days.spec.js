@@ -1,15 +1,13 @@
 import { mount } from 'vue-test-utils'
 import Days from '@/app/pages/Days/Days.vue'
 import { FIRST_DAY, DAY_LIST } from '../../../services/__mocks__/gigs-sample'
-import { fakeGigsByDay2 } from '../../../services/__mocks__/gigs-sample2'
 import DayListPage from '../../../__page_objects__/DaysPageObject'
 import { cloneProductionStore } from '../../../../../test/helpers'
 import { localizedFromIso } from '../../../services/date-utils'
 jest.mock('@/app/services/jota-api')
 
 describe('Days', () => {
-  const FIRST_DAY_GIG_TEXTS = FIRST_DAY.gigs.map(
-    gig => gig.title + ' - ' + gig.place)
+  const FIRST_DAY_GIG_TITLES = FIRST_DAY.gigs.map(gig => gig.title)
 
   let page, wrapper
   beforeEach(async () => {
@@ -22,7 +20,7 @@ describe('Days', () => {
   })
 
   it('renders all gigs in the first day', async() => {
-    FIRST_DAY_GIG_TEXTS.map((text) => page.contains(text))
+    FIRST_DAY_GIG_TITLES.map((text) => page.contains(text))
   })
 
   /* Different examples of more accurate tests that need
@@ -37,20 +35,8 @@ describe('Days', () => {
   it('render gigs for each day', async () => {
     let expectedGigs
     DAY_LIST.map((day, index) => {
-      expectedGigs = day.gigs.map((gig) => gig.title + ' - ' + gig.place)
+      expectedGigs = day.gigs.map((gig) => gig.title + ' ' + gig.place)
       expect(page.gigRowsFor(index)).toEqual(expectedGigs)
     })
   })
-
-  /* Test to demonstrate how to explicitly inject backendService as a prop
-  (less MAGIC than manual jest mock)
-   */
-  // it('render days(explicitly injected mock)', async () => {
-  //   const gigService = {retrieveNextGigs: () => Promise.resolve(fakeGigsByDay2)}
-  //   const wrapper = mount(Days, {propsData: {gigService}})
-  //   page = new DayListPage(wrapper)
-  //   await page.updateAsync()
-  //   expect(wrapper.html()).toContain('rapsus')
-  // })
-
 })

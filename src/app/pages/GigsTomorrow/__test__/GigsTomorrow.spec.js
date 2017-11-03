@@ -5,15 +5,14 @@ import PageObject from '../../../__page_objects__/PageObject'
 import { cloneProductionStore, stubNow } from '../../../../../test/helpers'
 
 describe('Gigs Tomorrow', () => {
-  const FIRST_DAY_GIG_TEXTS = FIRST_DAY.gigs.map(
-    gig => gig.title + ' - ' + gig.place)
+  const FIRST_DAY_GIG_TITLES = FIRST_DAY.gigs.map(gig => gig.title)
 
   let page
 
   it('renders all gigs in the first day', async () => {
     stubNow('2017-09-17')
     page = await mountPage()
-    FIRST_DAY_GIG_TEXTS.map((text) => page.contains(text))
+    FIRST_DAY_GIG_TITLES.map((text) => page.contains(text))
   })
 
   it('renders all gigs in the first day', async () => {
