@@ -19,7 +19,7 @@
         ></DateTimeInput>
         <br><br>
         <FormButton class="full-width" :onClick="save"
-                    :disabled="$v.$invalid" :isLoading="loading">
+                    :disabled="$v.$invalid" :isLoading="saving">
           Create Gig
         </FormButton>
       </div>
@@ -27,14 +27,13 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex'
-  import { CREATE_GIG } from '../../services/jota-commands'
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
   import TextInput from '../../shared-components/TextInput.vue'
   import DateTimeInput from '../../shared-components/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
   import { createGigPayload } from '../../services/jota-payloads'
   import { JotaRouter } from '../../services/JotaRouter'
+  import { createGig } from '../../services/jota-api'
 
   export default {
     props: {
@@ -55,6 +54,7 @@
     },
     data () {
       return {
+        saving: false,
         title: '',
         dateTime: '',
         validationMessages: {
@@ -70,14 +70,12 @@
         }
       }
     },
-    computed: {
-      ...mapState(['loading'])
-    },
     methods: {
-      ...mapActions([CREATE_GIG]),
       async save() {
         try {
-          await this.create_gig(createGigPayload(this.title, this.dateTime))
+          this.saving = true
+          await createGig(createGigPayload(this.title, this.dateTime))
+          this.saving = false
           this.jotaRouter.navigateToAllGigs()
         }
         catch (error) {

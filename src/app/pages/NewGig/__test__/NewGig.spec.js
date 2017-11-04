@@ -1,13 +1,10 @@
 import { mount } from 'vue-test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import NewGigPage from '../../../__page_objects__/NewGigPageObject'
-import { cloneProductionStore, Wrap } from '../../../../../test/helpers'
-import Vuex from 'vuex'
 import { createGig as createGigSpy } from '../../../services/jota-api'
-// The only double that we need to mock
 jest.mock('@/app/services/jota-api')
+jest.mock('@/app/services/JotaRouter')
 import { createGigPayload } from '../../../services/jota-payloads'
-import VueRouter from 'vue-router'
 
 describe('New Gig', () => {
   const PAST_DATETIME = '1900/10/27'
@@ -15,13 +12,9 @@ describe('New Gig', () => {
 
   let page, wrapper
   beforeEach(() => {
-    wrapper = mount(NewGig, { store: cloneProductionStore() })
+    wrapper = mount(NewGig)
     page = new NewGigPage(wrapper)
   })
-
-  // it('matches full snapshot', async () => {
-  //   page.matchSnapshot()
-  // })
 
   describe('shows validation error', () => {
 
@@ -105,43 +98,13 @@ describe('New Gig', () => {
     })
   })
 
-  it('creates a GIG in the store when save button is clicked', async () => {
-    let actionSpy = jest.fn()
-    let store = new Vuex.Store({
-      state: {days: [], loading: false},
-      actions: { create_gig: actionSpy }
-    })
-    wrapper = mount(NewGig, { store, router: new VueRouter() })
-    page = new NewGigPage(wrapper, {store})
-
-    page.writeNameAsync(nameWithValidLength())
-    page.writeDatetime(FUTURE_DATETIME)
-    await page.wait()
-    page.clickSaveButton()
-
-    expect(actionSpy).toHaveBeenCalled()
-  })
-
   describe('When clicking save button', async () => {
-    let store
     beforeEach(async () => {
-      store = cloneProductionStore()
-      wrapper = Wrap(NewGig).withStore(store).mount()
-      page = new NewGigPage(wrapper)
-
-      expect(store.state.days).toEqual({})
-
       page.writeNameAsync(nameWithValidLength())
       page.writeDatetime(FUTURE_DATETIME)
       await page.wait()
       page.clickSaveButton()
       await page.wait()
-    })
-    it('creates a GIG in the store', async () => {
-      expect(store.state.days[FUTURE_DATETIME]).toBeDefined()
-    })
-    it('navigates to all gigs route', async () => {
-      page.checkCurrentPath(store, '/all')
     })
 
     it('calls backend with appropriate command', async () => {
