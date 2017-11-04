@@ -17,7 +17,7 @@ export class GigService {
   retrieveNextGigs() {
     const days = createFakeDays()
     Object.keys(days).forEach((date) => this._gigs.push(...days[date].gigs))
-    return Promise.resolve(days)
+    return days
   }
 
   retrieveAGig(id) {

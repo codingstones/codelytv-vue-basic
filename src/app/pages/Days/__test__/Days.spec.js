@@ -2,7 +2,6 @@ import { mount } from 'vue-test-utils'
 import Days from '@/app/pages/Days/Days.vue'
 import { FIRST_DAY, DAY_LIST } from '../../../services/__mocks__/gigs-sample'
 import DayListPage from '../../../__page_objects__/DaysPageObject'
-import { cloneProductionStore } from '../../../../../test/helpers'
 import { localizedFromIso } from '../../../services/date-utils'
 jest.mock('@/app/services/jota-api')
 
@@ -11,7 +10,7 @@ describe('Days', () => {
 
   let page, wrapper
   beforeEach(async () => {
-    wrapper = mount(Days, { store: cloneProductionStore() })
+    wrapper = mount(Days)
     page = new DayListPage(wrapper)
   })
 
