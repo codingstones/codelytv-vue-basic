@@ -3,11 +3,14 @@ import Days from '@/app/pages/Days/Days.vue'
 import { FIRST_DAY, DAY_LIST } from '../../../services/__mocks__/gigs-sample'
 import DayListPage from '../../../__page_objects__/DaysPageObject'
 import { localizedFromIso } from '../../../services/date-utils'
+import { JotaRouter } from '../../../services/JotaRouter'
 jest.mock('@/app/services/jota-api')
+jest.mock('@/app/services/JotaRouter')
 
 describe('Days', () => {
   const FIRST_DAY_GIG_TITLES = FIRST_DAY.gigs.map(gig => gig.title)
 
+  const navigateToGigSpy = JotaRouter().navigateToGig
   let page, wrapper
   beforeEach(async () => {
     wrapper = mount(Days)
@@ -20,6 +23,21 @@ describe('Days', () => {
 
   it('renders all gigs in the first day', async() => {
     FIRST_DAY_GIG_TITLES.map((text) => page.contains(text))
+  })
+
+  describe('When clicking buttons', () => {
+
+    it('navigates to first gig detail', async () => {
+      const FIRST_GIG = FIRST_DAY.gigs[0]
+      page.clickFirstGig()
+      expect(navigateToGigSpy).toHaveBeenCalledWith(FIRST_GIG.id)
+    })
+
+    it('navigates to second gig detail', async () => {
+      const SECOND_GIG = FIRST_DAY.gigs[1]
+      page.clickSecondGig()
+      expect(navigateToGigSpy).toHaveBeenCalledWith(SECOND_GIG.id)
+    })
   })
 
   /* Different examples of more accurate tests that need

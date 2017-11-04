@@ -2,13 +2,14 @@
   <div class="full-width">
     <LoadSpinner :isLoading="isLoading"/>
     <div v-for="day in gigsByDay" v-if="!isLoading">
-      <Day :day="day"/>
+      <Day :day="day" :onClick="goTo"/>
     </div>
   </div>
 </template>
 
 <script>
   import { retrieveDays } from '../../services/jota-api'
+  import { JotaRouter } from '../../services/JotaRouter'
 
   export default {
     data () {
@@ -18,11 +19,16 @@
       }
     },
     async created() {
+      this.jotaRouter = JotaRouter(this.$router)
       this.isLoading = true
       this.gigsByDay = await retrieveDays()
       this.isLoading = false
     },
-    methods: {}
+    methods: {
+      goTo(gig) {
+        this.jotaRouter.navigateToGig(gig.id)
+      }
+    }
   }
 </script>
 

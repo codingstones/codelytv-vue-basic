@@ -4,26 +4,17 @@
       <q-card-title>{{dateLabel}}</q-card-title>
 
       <div v-for="gig in day.gigs">
-        <GigRow :gig ="gig" :onClick="goTo"/>
+        <GigRow :gig ="gig" :onClick="onClick"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import { JotaRouter } from '../../services/JotaRouter'
   import { localizedFromIso } from '../../services/date-utils'
 
   export default {
-    props: {day: Object, isLoading: Boolean},
-    created() {
-      this.jotaRouter = JotaRouter(this.$router)
-    },
-    methods: {
-      goTo(gig) {
-        this.jotaRouter.navigateToGig(gig.id)
-      }
-    },
+    props: {day: Object, isLoading: Boolean, onClick: Function},
     computed: {
       dateLabel() {
         return localizedFromIso(this.day.date)

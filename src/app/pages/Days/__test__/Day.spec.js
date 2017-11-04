@@ -14,35 +14,7 @@ describe('Day', () => {
     page = new DayListPageObject(wrapper)
   })
 
-  // Do we need tests to check onClick works as it is already tested in integration test (Days.spec)?
-  // The same applies to isLoading
-
-  it('matches full snapshot', async() => {
-    page.matchSnapshot()
-  })
-
   it('renders gig date in spanish format', async() => {
     page.contains(localizedFromIso(FIRST_DAY.date))
-  })
-
-  describe('When clicking buttons', () => {
-
-    let navigateToGigSpy
-    beforeEach(async () => {
-      navigateToGigSpy = jest.fn()
-      page.setRouterSpy({ navigateToGig: navigateToGigSpy })
-    })
-
-    it('navigates to first gig detail', async () => {
-      const FIRST_GIG = FIRST_DAY.gigs[0]
-      page.clickFirstGig()
-      expect(navigateToGigSpy).toHaveBeenCalledWith(FIRST_GIG.id)
-    })
-
-    it('navigates to second gig detail', async () => {
-      const SECOND_GIG = FIRST_DAY.gigs[1]
-      page.clickSecondGig()
-      expect(navigateToGigSpy).toHaveBeenCalledWith(SECOND_GIG.id)
-    })
   })
 })
