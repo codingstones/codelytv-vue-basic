@@ -79,13 +79,13 @@ function randomTitle() {
 }
 
 const firstTerm = [
-  'Grupo', 'Agrupación', 'Amigos', 'Folklore', 'Colectivo', 'Banda', 'Ronda', 'Rondalla', 'Escuela'
+  'Grupo', 'Rondalla', 'Agrupación', 'Amigos', 'Folklore', 'Colectivo', 'Banda', 'Ronda', 'Rondalla', 'Escuela'
 ]
 
 const secondTerm = [
-  'Folclore', 'Baluarte', 'Danzantes', 'Joteros', 'Jota', 'Baile'
+  'Folclore', 'Baluarte', 'Danzantes', 'Joteros', 'Jota', 'Baile', 'Bandurrias', 'Copla'
 ]
 
 const thirdTerm = [
-  'De Zaragoza', 'Aragonés', 'Turolense', 'Oscense'
+  'de Zaragoza', 'de Aragón', 'Turolense', 'Oscense', 'Fematera', 'Rondadera'
 ]
