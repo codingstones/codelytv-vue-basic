@@ -11,11 +11,6 @@
   import { retrieveDays } from '../../services/jota-api'
 
   export default {
-    props: {
-      retrieveDays: {
-        default: () => retrieveDays
-      }
-    },
     data () {
       return {
         gigsByDay: [],
@@ -24,7 +19,7 @@
     },
     async created() {
       this.isLoading = true
-      this.gigsByDay = await this.retrieveDays()
+      this.gigsByDay = await retrieveDays()
       this.isLoading = false
     },
     methods: {}

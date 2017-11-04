@@ -39,6 +39,12 @@
   import { JotaRouter } from '../../services/JotaRouter'
 
   export default {
+    props: {
+      // We just use this prop as part of TestingWithBackendAsProp.spec.js demonstration
+      retrieveAGig: {
+        default: () => retrieveAGig
+      }
+    },
     data () {
       return {
         gig: {}
@@ -46,7 +52,7 @@
     },
     async created() {
       this.jotaRouter = JotaRouter(this.$router)
-      this.gig = await retrieveAGig(this.jotaRouter.getParam('id'))
+      this.gig = await this.retrieveAGig(this.jotaRouter.getParam('id'))
     },
     methods: {
       downloadICS() {

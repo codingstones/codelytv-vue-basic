@@ -7,7 +7,7 @@ export function retrieveDays() {
 }
 
 export function retrieveAGig(gigId) {
-  return delay(5000).then(() => gigService.retrieveAGig(gigId))
+  return delay(1000).then(() => gigService.retrieveAGig(gigId))
 }
 
 export function createGig(payload) {
