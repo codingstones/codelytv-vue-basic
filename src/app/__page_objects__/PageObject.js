@@ -1,10 +1,13 @@
+import Vue from 'Vue'
+
 export default class PageObject {
   constructor(wrapper) {
     this.wrapper = wrapper
   }
 
-  wait() {
+  async wait() {
     return new Promise(resolve => setImmediate(resolve))
+    // return Vue.nextTick()
   }
 
   update() {
