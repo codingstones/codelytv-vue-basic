@@ -23,9 +23,9 @@ export const fakeGigsByDay =
               'hour': '19:30',
               'gig_id': 5927,
               'created_at': '2017-09-07T15:57:35.419Z',
-              'updated_at': '2017-09-07T15:57:35.419Z',
-            },
-          ],
+              'updated_at': '2017-09-07T15:57:35.419Z'
+            }
+          ]
         },
         {
           'id': '2222222',
@@ -48,13 +48,13 @@ export const fakeGigsByDay =
               'hour': '19:30',
               'gig_id': 5927,
               'created_at': '2017-09-07T15:57:35.419Z',
-              'updated_at': '2017-09-07T15:57:35.419Z',
-            },
+              'updated_at': '2017-09-07T15:57:35.419Z'
+            }
           ]
         }
-      ],
-    },
-}
+      ]
+    }
+  }
 
 export const FIRST_DAY = fakeGigsByDay[Object.keys(fakeGigsByDay)[0]]
 export const FIRST_GIG = FIRST_DAY.gigs[0]
