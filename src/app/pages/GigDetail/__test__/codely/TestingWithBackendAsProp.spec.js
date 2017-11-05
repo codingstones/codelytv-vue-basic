@@ -2,8 +2,6 @@ import GigDetail from '@/app/pages/GigDetail/GigDetail.vue'
 import { mount } from 'vue-test-utils'
 import { createFakeGig } from '../../../../services/__mocks__/create-fake-gig'
 
-jest.mock('@/app/services/JotaRouter')
-
 describe('Gig Detail', () => {
 
   it('renders details from a Gig', async () => {

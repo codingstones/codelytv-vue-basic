@@ -1,4 +1,7 @@
+import VueRouter from 'vue-router'
+
 export const JotaRouter = (router) => {
+  if (!router) router = new VueRouter()
   return { navigateToGig, navigateToCreateGig, navigateToAllGigs, getParam }
 
   function navigateToGig(gigId) {
@@ -14,6 +17,13 @@ export const JotaRouter = (router) => {
   }
 
   function getParam(id) {
+    if (!router) return ''
     return router.currentRoute.params[id]
+  }
+}
+
+export const jotaRouterMixin = {
+  created: function () {
+    this.jotaRouter = JotaRouter(this.$router)
   }
 }

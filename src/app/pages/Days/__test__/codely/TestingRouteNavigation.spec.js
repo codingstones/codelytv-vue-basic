@@ -1,16 +1,15 @@
 import Days from '@/app/pages/Days/Days.vue'
 import { mount } from 'vue-test-utils'
 import { FIRST_DAY } from '../../../../services/__mocks__/gigs-sample'
-import { JotaRouter } from '../../../../services/JotaRouter'
 
 jest.mock('@/app/services/jota-api')
-jest.mock('@/app/services/JotaRouter')
 
 describe('Days', () => {
-  const navigateToGigSpy = JotaRouter().navigateToGig
+  const navigateToGigSpy = jest.fn()
   let wrapper
   beforeEach(async () => {
     wrapper = mount(Days)
+    wrapper.vm.jotaRouter.navigateToGig = navigateToGigSpy
   })
 
   describe('When clicking buttons', () => {

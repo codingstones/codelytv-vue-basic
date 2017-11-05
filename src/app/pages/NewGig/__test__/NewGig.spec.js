@@ -3,7 +3,6 @@ import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import NewGigPage from '../../../__page_objects__/NewGigPageObject'
 import { createGig as createGigSpy } from '../../../services/jota-api'
 jest.mock('@/app/services/jota-api')
-jest.mock('@/app/services/JotaRouter')
 import { createGigPayload } from '../../../services/jota-payloads'
 
 describe('New Gig', () => {

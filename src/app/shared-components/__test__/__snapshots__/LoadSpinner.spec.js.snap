@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`LoadSpinner.vue keeps snapshot when is NOT loading 1`] = `<!---->`;
-
-exports[`LoadSpinner.vue keeps snapshot when is loading 1`] = `<!---->`;

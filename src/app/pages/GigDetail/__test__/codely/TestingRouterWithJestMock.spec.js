@@ -3,7 +3,6 @@ import { mount } from 'vue-test-utils'
 import { FIRST_GIG } from '../../../../services/__mocks__/gigs-sample'
 
 jest.mock('@/app/services/jota-api')
-jest.mock('@/app/services/JotaRouter')
 
 describe('Gig Detail', () => {
 

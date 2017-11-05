@@ -7,7 +7,6 @@ import FormButton from '@/app/shared-components/FormButton.vue'
 import { createGig as createGigSpy } from '@/app/services/jota-api'
 import { createGigPayload } from '@/app/services/jota-payloads'
 jest.mock('@/app/services/jota-api')
-jest.mock('@/app/services/JotaRouter')
 
 describe('New Gig Form', () => {
   const FUTURE_DATETIME = '3000/10/27'

@@ -35,7 +35,6 @@
   import { openMap } from '../../services/MapService'
   import { localizedFromIso } from '../../services/date-utils'
   import { retrieveAGig } from '../../services/jota-api'
-  import { JotaRouter } from '../../services/JotaRouter'
 
   export default {
     props: {
@@ -50,7 +49,6 @@
       }
     },
     async created() {
-      this.jotaRouter = JotaRouter(this.$router)
       this.gig = await this.retrieveAGig(this.jotaRouter.getParam('id'))
     },
     methods: {

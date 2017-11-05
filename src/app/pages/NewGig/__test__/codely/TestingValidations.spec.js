@@ -5,7 +5,6 @@ import TextInput from '@/app/shared-components/TextInput.vue'
 import DateTimeInput from '@/app/shared-components/DateTimeInput.vue'
 
 jest.mock('@/app/services/jota-api')
-jest.mock('@/app/services/JotaRouter')
 
 describe('New Gig Form', () => {
 

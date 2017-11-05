@@ -9,7 +9,6 @@
 
 <script>
   import { retrieveDays } from '../../services/jota-api'
-  import { JotaRouter } from '../../services/JotaRouter'
 
   export default {
     data () {
@@ -19,7 +18,6 @@
       }
     },
     async created() {
-      this.jotaRouter = JotaRouter(this.$router)
       this.isLoading = true
       this.gigsByDay = await retrieveDays()
       this.isLoading = false
