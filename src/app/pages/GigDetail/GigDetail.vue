@@ -4,7 +4,6 @@
       <q-card-title>
         <h3>{{gig.title}}</h3>
       </q-card-title>
-      <q-card-separator />
       <q-card-main>
         <div class="block" v-if="gig.price">
           <h5> {{gig.price}}</h5>
