@@ -35,6 +35,5 @@ exports[`Days matches full snapshot 1`] = `
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> <button class="q-btn row inline flex-center q-focusable q-hoverable relative-position fixed-bottom-right q-btn-round q-btn-standard bg-secondary text-white hidden" style="margin: 0px 15px 15px 0px;"><div class="desktop-only q-focus-helper"></div> <!----> <span class="q-btn-inner row col flex-center"><!----> <i aria-hidden="true" class="q-icon material-icons">keyboard_arrow_up</i> <!----></span></button></div>
 `;

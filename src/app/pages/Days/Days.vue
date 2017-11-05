@@ -4,6 +4,7 @@
     <div v-for="day in gigsByDay" v-if="!isLoading">
       <Day :day="day" :onClick="goTo"/>
     </div>
+    <BackToTopButton/>
   </div>
 </template>
 
