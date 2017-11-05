@@ -94,7 +94,7 @@
     "stylus-loader": "^3.0.1",
     "synchronous-promise": "^1.0.17",
     "url-loader": "^0.5.7",
-    "vue-jest": "^1.0.0",
+    "vue-jest": "^1.0.2",
     "vue-loader": "~13.3.0",
     "vue-server-renderer": "^2.5.2",
     "vue-style-loader": "^3.0.3",
