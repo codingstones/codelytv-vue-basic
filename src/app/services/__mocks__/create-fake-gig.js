@@ -1,9 +1,12 @@
 import faker from 'faker'
 import { isoFuture } from '../date-utils'
 
+let UUID = 0
+
 export function createFakeGig(date) {
+  UUID += 1
   return {
-    id: faker.random.number().toString(),
+    id: (UUID).toString(),
     title: randomTitle(),
     description: faker.lorem.paragraph(15),
     image_url: randomImageUrl(),
@@ -79,7 +82,8 @@ function randomTitle() {
 }
 
 const firstTerm = [
-  'Grupo', 'Rondalla', 'Agrupación', 'Amigos', 'Folklore', 'Colectivo', 'Banda', 'Ronda', 'Rondalla', 'Escuela'
+  'Grupo', 'Rondalla', 'Agrupación', 'Amigos', 'Folklore', 'Colectivo', 'Banda', 'Ronda',
+  'Rondalla', 'Escuela', 'Dulzaineros'
 ]
 
 const secondTerm = [
