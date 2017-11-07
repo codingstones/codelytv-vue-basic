@@ -51,5 +51,7 @@ function nameWithLength(length) {
 }
 
 function wait() {
-  return Vue.nextTick()
+  return new Promise(resolve => setImmediate(resolve))
+
+  // return Vue.nextTick()
 }
