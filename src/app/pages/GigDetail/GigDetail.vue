@@ -1,34 +1,39 @@
 <template>
-  <div v-show="gig.title" class="full-width">
-    <q-card>
-      <q-card-title>
-        <h3>{{gig.title}}</h3>
-      </q-card-title>
-      <q-card-main>
-        <div class="block" v-if="gig.price">
-          <h5> {{gig.price}}</h5>
-        </div>
-        <div class="block">
-          <strong>{{localized(gig.day)}}</strong> a las <strong>{{gig.hour}} h.</strong>
-        </div>
-        <FormButton :onClick="downloadICS"><q-icon name="event"/>  Add it to your calendar </FormButton>
-        <div class="block" v-if="gig.place">
-          <h4>{{gig.place}}</h4>
-          <span v-html="gig.address"/>
-        </div>
-        <FormButton :onClick="openMap"><q-icon name="directions"/> How to get there? </FormButton>
-        <br/><br/>
-        <div class="block" v-if="gig.description">
-          {{gig.description}}
-        </div>
-        <FormButton :onClick="share"><q-icon name="share"/> Share it with your friends </FormButton>
-      </q-card-main>
-      <q-card-media v-if="gig.image_url">
-        <img :src="gig.image_url"/>
-      </q-card-media>
-    </q-card>
+  <div>
+    <LoadSpinner :isLoading="!gig.title"></LoadSpinner>
+    <q-transition leave="fadeOut"
+                  enter="fadeIn">
+      <div v-show="gig.title" class="full-width">
+        <q-card>
+          <q-card-title>
+            <h3>{{gig.title}}</h3>
+          </q-card-title>
+          <q-card-main>
+            <div class="block" v-if="gig.price">
+              <h5> {{gig.price}}</h5>
+            </div>
+            <div class="block">
+              <strong>{{localized(gig.day)}}</strong> a las <strong>{{gig.hour}} h.</strong>
+            </div>
+            <FormButton :onClick="downloadICS"><q-icon name="event"/>  Add it to your calendar </FormButton>
+            <div class="block" v-if="gig.place">
+              <h4>{{gig.place}}</h4>
+              <span v-html="gig.address"/>
+            </div>
+            <FormButton :onClick="openMap"><q-icon name="directions"/> How to get there? </FormButton>
+            <br/><br/>
+            <div class="block" v-if="gig.description">
+              {{gig.description}}
+            </div>
+            <FormButton :onClick="share"><q-icon name="share"/> Share it with your friends </FormButton>
+          </q-card-main>
+          <q-card-media v-if="gig.image_url">
+            <img :src="gig.image_url"/>
+          </q-card-media>
+        </q-card>
+      </div>
+    </q-transition>
   </div>
-
 </template>
 
 <script>

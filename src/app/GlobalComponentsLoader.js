@@ -24,6 +24,7 @@ import {
   QItemTile,
   QItemSeparator,
   QLayout,
+  QSpinner,
   QSpinnerMat,
   QFixedPosition
 } from 'quasar-framework'
@@ -63,6 +64,7 @@ export function registerGlobalComponents() {
   Vue.component('QItemMain', QItemMain)
   Vue.component('QItemSeparator', QItemSeparator)
   Vue.component('QLayout', QLayout)
+  Vue.component('QSpinner', QSpinner)
   Vue.component('QSpinnerMat', QSpinnerMat)
   Vue.component('QFixedPosition', QFixedPosition)
   Vue.component('FormButton', FormButton)
