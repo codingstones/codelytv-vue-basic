@@ -11,6 +11,6 @@ describe('GigRow', () => {
     const wrapper = mount(GigRow, { propsData: {gig: GIG} })
 
     expect(wrapper.text()).toContain('a title')
-    expect(wrapper.text()).toContain('a title')
+    expect(wrapper.text()).toContain('a place')
   })
 })

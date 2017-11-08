@@ -10,6 +10,6 @@ describe('GigRow', () => {
     const wrapper = Wrap(GigRow).withProps({ gig: GIG }).mount()
 
     expect(wrapper.text()).toContain('a title')
-    expect(wrapper.text()).toContain('a title')
+    expect(wrapper.text()).toContain('a place')
   })
 })
