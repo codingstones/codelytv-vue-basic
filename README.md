@@ -9,15 +9,22 @@ _Note that although all the videos and course contents are in Spanish, this repo
 ``` bash
 # install dependencies
 $ yarn install
+or
+$ npm install
 
 # run tests
 $ jest --watch
 
 # serve with hot reload at localhost:8080
 $ yarn dev mat
+or 
+$ npm run dev mat
+
 
 # 'mat' was the material theme, try iOS with
 $ yarn dev ios
+or
+$ npm run dev ios
 
 # build for production with minification
 $ quasar build
