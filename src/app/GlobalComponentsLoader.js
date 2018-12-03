@@ -74,4 +74,5 @@ export function registerGlobalComponents() {
   Vue.component('Toolbar', Toolbar)
   Vue.component('TextInput', TextInput)
   Vue.component('DateTimeInput', DateTimeInput)
+  Vue.component('SideBar', SideBar)
 }
