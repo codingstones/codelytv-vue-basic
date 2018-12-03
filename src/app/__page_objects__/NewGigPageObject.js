@@ -37,15 +37,15 @@ export default class NewGigPageObject extends PageObject {
   }
 
   hasDatetimeError() {
-    return this.wrapper.find(DateTimeInput).hasClass('text-red')
+    return this.wrapper.find(DateTimeInput).classes('text-red')
   }
 
   hasNameError() {
-    return this.wrapper.find(TextInput).hasClass('text-red')
+    return this.wrapper.find(TextInput).classes('text-red')
   }
 
   isSaveButtonDisabled() {
-    return this.wrapper.find(FormButton).hasProp('disabled', true)
+    return this.wrapper.find(FormButton).props('disabled') === true
   }
 
   clickSaveButton() {
