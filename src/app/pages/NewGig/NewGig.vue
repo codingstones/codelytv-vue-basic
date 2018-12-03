@@ -28,8 +28,6 @@
 
 <script>
   import { required, minLength, maxLength } from 'vuelidate/lib/validators'
-  import TextInput from '../../shared-components/TextInput.vue'
-  import DateTimeInput from '../../shared-components/DateTimeInput.vue'
   import { isFutureDatetime } from './customValidations'
   import { createGigPayload } from '../../services/jota-payloads'
   import { createGig } from '../../services/jota-api'
@@ -78,9 +76,6 @@
           console.log('Error creating ', error)
         }
       }
-    },
-    components: {
-      TextInput, DateTimeInput
     }
   }
 </script>
