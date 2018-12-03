@@ -1,5 +1,5 @@
 import FormButton from '@/app/shared-components/FormButton.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 
 describe('FormButton.vue', () => {
 

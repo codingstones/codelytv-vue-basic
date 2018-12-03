@@ -1,5 +1,5 @@
 import Days from '@/app/pages/Days/Days.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import { FIRST_DAY } from '../../../../services/__mocks__/gigs-sample'
 
 jest.mock('@/app/services/jota-api')

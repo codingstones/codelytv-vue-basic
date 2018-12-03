@@ -1,5 +1,5 @@
 import GigDetail from '@/app/pages/GigDetail/GigDetail.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import { FIRST_GIG } from '../../../../services/__mocks__/gigs-sample'
 

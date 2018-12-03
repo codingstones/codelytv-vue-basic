@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import TextInput from '@/app/shared-components/TextInput.vue'
 import DateTimeInput from '@/app/shared-components/DateTimeInput.vue'
@@ -13,7 +13,7 @@ describe('New Gig Form', () => {
 
   let wrapper
   beforeEach(() => {
-    wrapper = mount(NewGig)
+    wrapper = mount(NewGig, { sync: false })
   })
 
   describe('When clicking save button', async () => {

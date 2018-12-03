@@ -1,5 +1,5 @@
 import GigDetail from '@/app/pages/GigDetail/GigDetail.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import { createFakeGig } from '../../../../services/__mocks__/create-fake-gig'
 
 describe('Gig Detail', () => {

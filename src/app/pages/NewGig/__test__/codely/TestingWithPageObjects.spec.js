@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import NewGigPage from '../../../../__page_objects__/NewGigPageObject'
 import { createGig as createGigSpy } from '@/app/services//jota-api'
@@ -12,7 +12,8 @@ describe('New Gig Form', () => {
 
   let page, wrapper
   beforeEach(() => {
-    wrapper = mount(NewGig)
+    // https://github.com/vuejs/vue/pull/8240
+    wrapper = mount(NewGig, { sync: false })
     page = new NewGigPage(wrapper)
   })
 
@@ -32,13 +33,15 @@ describe('New Gig Form', () => {
         expect(page.text()).toContain('Minimum 5 characters.')
       })
 
-      it('and title is too short', () => {
+      it('and title is too short', async () => {
         page.writeName(tooShortName())
+        await page.wait()
         expect(page.text()).toContain('Minimum 5 characters.')
       })
 
-      it('and title is too long', () => {
+      it('and title is too long', async () => {
         page.writeName(tooLongName())
+        await page.wait()
         expect(page.text()).toContain('Maximum 20 characters.')
       })
     })

@@ -1,5 +1,5 @@
 import GigRow from '@/app/pages/Days/GigRow.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 
 describe('GigRow', () => {
 

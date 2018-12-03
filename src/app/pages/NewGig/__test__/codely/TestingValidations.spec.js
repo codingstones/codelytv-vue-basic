@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import Vue from 'vue'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
 import TextInput from '@/app/shared-components/TextInput.vue'
@@ -10,16 +10,17 @@ describe('New Gig Form', () => {
 
   let wrapper
   beforeEach(() => {
-    wrapper = mount(NewGig)
+    wrapper = mount(NewGig, { sync: false })
   })
 
   describe('shows validation error', () => {
 
-    it('when title is too short', () => {
+    it('when title is too short', async () => {
       let input = wrapper.find(TextInput).find('input')
 
       input.element.value = tooShortName()
       input.trigger('input')
+      await wait()
 
       expect(wrapper.text()).toContain('Minimum 5 characters.')
     })

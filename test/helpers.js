@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router'
-import { mount as _mount, shallow as _shallow } from 'vue-test-utils'
+import { mount as _mount, shallow as _shallow } from '@vue/test-utils'
 
 export function resolvedPromise(promiseResult) {
   return jest.fn(() => Promise.resolve(promiseResult))
