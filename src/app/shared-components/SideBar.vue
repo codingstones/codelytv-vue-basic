@@ -3,20 +3,20 @@
     <q-list-header>
       ¡A la jota jotaaa!
     </q-list-header>
-    <q-side-link item to="/all">
+    <q-item item to="/all">
       <q-item-side icon="list" />
       <q-item-main label="All Gigs"/>
       <q-item-side icon="keyboard_arrow_right" />
-    </q-side-link>
+    </q-item>
     <q-item-separator></q-item-separator>
     <q-list-header>
       Admin
     </q-list-header>
-    <q-side-link item to="/newGig">
+    <q-item item to="/newGig">
       <q-item-side icon="note_add" />
       <q-item-main label="Create new Gig"/>
       <q-item-side icon="keyboard_arrow_right" />
-    </q-side-link>
+    </q-item>
     <br>
     <q-list-header>
       <img src="~assets/baturro.gif" class="baturro"/>

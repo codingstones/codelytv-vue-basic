@@ -3,7 +3,7 @@ import { isFutureDatetime } from '../customValidations'
 describe('isFutureDatetime', () => {
 
   beforeEach(() => {
-    Date.now = jest.genMockFunction().mockReturnValue(new Date('2017-10-12T04:41:20'))
+    Date.now = jest.fn(() => new Date('2017-10-12T04:41:20'))
   })
 
   it('with tomorrow', () => {

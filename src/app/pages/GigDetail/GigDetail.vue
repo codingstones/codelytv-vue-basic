@@ -1,7 +1,7 @@
 <template>
   <div>
     <LoadSpinner :isLoading="!gig.title"></LoadSpinner>
-    <q-transition leave="fadeOut"
+    <transition leave="fadeOut"
                   enter="fadeIn">
       <div v-show="gig.title" class="full-width">
         <q-card>
@@ -32,7 +32,7 @@
           </q-card-media>
         </q-card>
       </div>
-    </q-transition>
+    </transition>
   </div>
 </template>
 

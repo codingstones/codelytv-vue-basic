@@ -1,5 +1,5 @@
 import PageObject from './PageObject'
-import TextInput from '../shared-components/TextInput.vue'
+import TextInput from '@/app/shared-components/TextInput.vue'
 import DateTimeInput from '../shared-components/DateTimeInput.vue'
 import FormButton from '../shared-components/FormButton.vue'
 

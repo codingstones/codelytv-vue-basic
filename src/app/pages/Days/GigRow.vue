@@ -1,5 +1,5 @@
 <template>
-  <q-card @click="onClick(gig)">
+  <q-card @click.native="onClick(gig)">
     <q-item>
       <q-item-side :image="gig.image_url" />
       <q-item-main>

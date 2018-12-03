@@ -10,29 +10,18 @@ describe('New Gig Form', () => {
 
   let wrapper
   beforeEach(() => {
-    wrapper = mount(NewGig, { sync: false })
+    wrapper = mount(NewGig)
   })
 
   describe('shows validation error', () => {
 
-    it('when title is too short', async () => {
+    it('when title is too short', () => {
       let input = wrapper.find(TextInput).find('input')
 
       input.element.value = tooShortName()
       input.trigger('input')
-      await wait()
 
       expect(wrapper.text()).toContain('Minimum 5 characters.')
-    })
-
-    it('when datetime is in the past', async () => {
-      const PAST_DATETIME = '1900/10/27'
-      const datetimeInput = wrapper.find(DateTimeInput)
-
-      datetimeInput.vm.change(PAST_DATETIME)
-      await wait()
-
-      expect(wrapper.text()).toContain('You cannot set a gig in a past date :(')
     })
   })
 })

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
-import NewGigPage from '../../../../__page_objects__/NewGigPageObject'
+import NewGigPage from '@/app/__page_objects__/NewGigPageObject'
 import { createGig as createGigSpy } from '@/app/services//jota-api'
 import { createGigPayload } from '@/app/services/jota-payloads'
 jest.mock('@/app/services/jota-api')
@@ -11,10 +11,10 @@ describe('New Gig Form', () => {
   const FUTURE_DATETIME = '3000/10/27'
 
   let page, wrapper
-  beforeEach(() => {
-    // https://github.com/vuejs/vue/pull/8240
+  beforeEach(async () => {
     wrapper = mount(NewGig, { sync: false })
     page = new NewGigPage(wrapper)
+    await page.wait()
   })
 
   describe('shows validation error', () => {

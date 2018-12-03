@@ -1,28 +1,37 @@
 <template>
   <div id="q-app" class="row justify-center">
     <q-layout ref="layout">
-      <Toolbar slot="header" @drawerClick="clickDrawer()"></Toolbar>
-      <SideBar slot="left"></SideBar>
-      <q-transition
+      <q-layout-header>
+        <Toolbar @drawerClick="clickDrawer()"></Toolbar>
+      </q-layout-header>
+
+      <q-layout-drawer v-model="leftDrawerOpen"
+                       :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null">
+        <SideBar></SideBar>
+      </q-layout-drawer>
+      <transition
         leave="fadeOut"
         enter="fadeIn"
       >
-        <router-view class="layout-view"/>
-      </q-transition>
+        <q-page-container>
+          <router-view class="layout-view"/>
+        </q-page-container>
+      </transition>
    </q-layout>
   </div>
 </template>
 
 <script>
-import { registerGlobalComponents } from './app/GlobalComponentsLoader'
-// eslint-disable-next-line no-unused-vars
-import { NEW_GIG_PATH } from './router'
 
-registerGlobalComponents()
 export default {
+  data () {
+    return {
+      leftDrawerOpen: this.$q.platform.is.desktop
+    }
+  },
   methods: {
     clickDrawer() {
-      this.$refs.layout.toggleLeft()
+      this.leftDrawerOpen = !this.leftDrawerOpen
     }
   }
 }

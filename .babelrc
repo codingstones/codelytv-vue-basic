@@ -1,21 +1,51 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
-    }],
-    "stage-2"
-  ],
-  "plugins": ["transform-runtime", "dynamic-import-node"],
   "env": {
+    "dev": {
+      "presets": [    [
+        "@babel/preset-env", {
+          "modules": "commonjs",
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+      ]
+    },
     "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": [
-        ["module-resolver", {
-          "root": ["./src"]
-        }]]
+      "presets": [    [
+        "@babel/preset-env", {
+          "modules": "commonjs",
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+      ]
     }
-  }
+  },
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "modules": false,
+        "loose": false,
+        "useBuiltIns": "usage",
+        "exclude": [ "transform-classes" ]
+      }
+    ]
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "@babel/plugin-transform-runtime", {
+      "regenerator": false
+    }
+    ]
+  ],
+  "comments": false
 }

@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { mount as _mount, shallow as _shallow } from '@vue/test-utils'
 
@@ -55,3 +56,13 @@ export function Wrap(component) {
     return { propsData: this.props, slots: this.slots, router: this.router, store: this.store }
   }
 }
+
+export function silenceWatchers() {
+  Vue.config.silent = true
+}
+
+export function unSilenceWatchers() {
+  Vue.config.silent = false
+}
+
+

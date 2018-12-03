@@ -12,12 +12,11 @@ import {
   QAjaxBar,
   QIcon,
   QCard,
+  QCardActions,
   QCardSeparator,
   QCardMedia,
   QCardMain,
   QCardTitle,
-  QTransition,
-  QSideLink,
   QScrollArea,
   QItemSide,
   QItemMain,
@@ -25,9 +24,8 @@ import {
   QItemSeparator,
   QLayout,
   QSpinner,
-  QSpinnerMat,
-  QFixedPosition
-} from 'quasar-framework'
+  QSpinnerMat
+} from 'quasar'
 import LoadSpinner from '@/app/shared-components/LoadSpinner.vue'
 import FormButton from '@/app/shared-components/FormButton.vue'
 import BackToTopButton from '@/app/shared-components/BackToTopButton.vue'
@@ -38,41 +36,46 @@ import Day from '@/app/pages/Days/Day.vue'
 import TextInput from '@/app/shared-components/TextInput.vue'
 import DateTimeInput from '@/app/shared-components/DateTimeInput.vue'
 
+
+const components = {
+  LoadSpinner,
+  Day,
+  GigRow,
+  QList,
+  QListHeader,
+  QItem,
+  QIcon,
+  QBtn,
+  QToolbar,
+  QToolbarTitle,
+  QInput,
+  QField,
+  QDatetime,
+  QCard,
+  QCardActions,
+  QCardMedia,
+  QCardSeparator,
+  QCardMain,
+  QCardTitle,
+  QAjaxBar,
+  QScrollArea,
+  QItemSide,
+  QItemTile,
+  QItemMain,
+  QItemSeparator,
+  QLayout,
+  QSpinner,
+  QSpinnerMat,
+  FormButton,
+  BackToTopButton,
+  Toolbar,
+  SideBar,
+  TextInput,
+  DateTimeInput
+}
+
 export function registerGlobalComponents() {
-  Vue.component('LoadSpinner', LoadSpinner)
-  Vue.component('Day', Day)
-  Vue.component('GigRow', GigRow)
-  Vue.component('QList', QList)
-  Vue.component('QListHeader', QListHeader)
-  Vue.component('QItem', QItem)
-  Vue.component('QIcon', QIcon)
-  Vue.component('QBtn', QBtn)
-  Vue.component('QToolbar', QToolbar)
-  Vue.component('QToolbarTitle', QToolbarTitle)
-  Vue.component('QInput', QInput)
-  Vue.component('QField', QField)
-  Vue.component('QDatetime', QDatetime)
-  Vue.component('QCard', QCard)
-  Vue.component('QCardMedia', QCardMedia)
-  Vue.component('QCardSeparator', QCardSeparator)
-  Vue.component('QCardMain', QCardMain)
-  Vue.component('QCardTitle', QCardTitle)
-  Vue.component('QAjaxBar', QAjaxBar)
-  Vue.component('QTransition', QTransition)
-  Vue.component('QSideLink', QSideLink)
-  Vue.component('QScrollArea', QScrollArea)
-  Vue.component('QItemSide', QItemSide)
-  Vue.component('QItemTile', QItemTile)
-  Vue.component('QItemMain', QItemMain)
-  Vue.component('QItemSeparator', QItemSeparator)
-  Vue.component('QLayout', QLayout)
-  Vue.component('QSpinner', QSpinner)
-  Vue.component('QSpinnerMat', QSpinnerMat)
-  Vue.component('QFixedPosition', QFixedPosition)
-  Vue.component('FormButton', FormButton)
-  Vue.component('BackToTopButton', BackToTopButton)
-  Vue.component('Toolbar', Toolbar)
-  Vue.component('TextInput', TextInput)
-  Vue.component('DateTimeInput', DateTimeInput)
-  Vue.component('SideBar', SideBar)
+   Object.keys(components).forEach((componentName) => {
+    Vue.component(componentName, components[componentName])
+  })
 }
