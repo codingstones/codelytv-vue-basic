@@ -2,6 +2,10 @@
     <q-card>
       <div class="layout-padding">
         <h4>Add a New Gig to Jota JS!</h4>
+
+
+      <div data-testid='debug'>YOYOYOYOYOYO: {{$v}}</div>
+
         <TextInput
           label="Insert Gig Title"
           v-model="title"

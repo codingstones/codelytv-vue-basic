@@ -1,46 +1,46 @@
-import Vue from 'vue'
-import { mount } from '@vue/test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
-import TextInput from '@/app/shared-components/TextInput.vue'
-import DateTimeInput from '@/app/shared-components/DateTimeInput.vue'
-import FormButton from '@/app/shared-components/FormButton.vue'
 import { createGig as createGigSpy } from '@/app/services/jota-api'
 import { createGigPayload } from '@/app/services/jota-payloads'
+import { renderComponent, tomorrow, tomorrowDayOfMonth } from '@test/render-utils'
+import userEvent from '@testing-library/user-event'
 jest.mock('@/app/services/jota-api')
 
-describe('New Gig Form', () => {
-  const FUTURE_DATETIME = '3000/10/27'
+describe('When clicking save button', () => {
+  it('calls backend with appropriate command', async () => {
 
-  let wrapper
-  beforeEach(() => {
-    wrapper = mount(NewGig, { sync: false })
-  })
-
-  describe('When clicking save button', async () => {
-    beforeEach(async () => {
-      // Write valid title
-      let input = wrapper.find(TextInput)
-      input.vm.change(nameWithValidLength())
-
-      // Select valid datetime
-      const datetimeInput = wrapper.find(DateTimeInput)
-      datetimeInput.vm.change(FUTURE_DATETIME)
-
-      await wait()
-
-      // Click save button
-      wrapper.find(FormButton).trigger('click')
-
-      await wait()
-    })
-
-    it('calls backend with appropriate command', async () => {
-      // This will be also tested in happy path but in this integration tests we can check all strange cases
-      // faster and cheaper
-      expect(createGigSpy).toHaveBeenCalledWith(createGigPayload(nameWithValidLength(), FUTURE_DATETIME))
-    })
+      const {typeGigName, setGigDate,  findCreateGigButton} = await renderNewGig()
+        
+      typeGigName(nameWithValidLength())
+      await setGigDate(tomorrowDayOfMonth())
+      
+      userEvent.click(await findCreateGigButton())
+      expect(createGigSpy).toHaveBeenCalledWith(createGigPayload(nameWithValidLength(), tomorrow().toISOString()))
   })
 })
+
+async function renderNewGig() {
+  const {screen} = renderComponent(NewGig)
+  
+  //it would be much better to use a label but for now q-input does not bind label with input
+  // (we should modify q-input to force that binding or maybe using aria-label as a workaround)
+  const nameInput = (await screen.findAllByRole('textbox'))[0]
+  
+  const typeGigName = (name)=> {
+    userEvent.type(nameInput, name)
+  }
+  
+  const setGigDate = async (dayText) => {
+    userEvent.click(await screen.findByText(/Date and time/i))
+    userEvent.click(await screen.findByText(dayText))
+    userEvent.click(await screen.findByText(/set/i))
+    //Wait for date set and rendered 
+    await screen.findByText(/\//i)
+  }
+  
+  const findCreateGigButton = async ()=> (await screen.findByText(/Create Gig/i)).closest('button')
+
+  return {screen, typeGigName, setGigDate, findCreateGigButton}
+}
 
 function nameWithValidLength() {
   return nameWithLength(5)
@@ -48,10 +48,4 @@ function nameWithValidLength() {
 
 function nameWithLength(length) {
   return 'x'.repeat(length)
-}
-
-function wait() {
-  return new Promise(resolve => setImmediate(resolve))
-
-  // return Vue.nextTick()
 }

@@ -1,15 +1,15 @@
 import GigRow from '@/app/pages/Days/GigRow.vue'
-import { mount } from '@vue/test-utils'
+import { renderComponent } from '@test/render-utils'
+import {screen} from '@testing-library/vue'
 
 describe('GigRow', () => {
 
   it('renders gig content', async () => {
-
     const GIG = {id: 'an id', title: 'a title', place: 'a place'}
+    
+    renderComponent(GigRow, { props: {gig: GIG} })
 
-    const wrapper = mount(GigRow, { propsData: {gig: GIG} })
-
-    expect(wrapper.text()).toContain('a title')
-    expect(wrapper.text()).toContain('a place')
+    expect(await screen.findByText('a title')).toBeInTheDocument()
+    expect(await screen.findByText('a place')).toBeInTheDocument()
   })
 })

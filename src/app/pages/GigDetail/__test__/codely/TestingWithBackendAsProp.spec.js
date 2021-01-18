@@ -1,21 +1,19 @@
 import GigDetail from '@/app/pages/GigDetail/GigDetail.vue'
-import { mount } from '@vue/test-utils'
+import { renderComponent } from '@test/render-utils'
 import { createFakeGig } from '../../../../services/__mocks__/create-fake-gig'
 
-describe('Gig Detail', () => {
+test('renders details from a Gig', async () => {
+  const GIG = createFakeGig()
+  const retrieveAGigStub = jest.fn(() => Promise.resolve(GIG))
+  const router = {currentRoute : {params: {id: GIG.id}}}
 
-  it('renders details from a Gig', async () => {
-    const GIG = createFakeGig()
-    const retrieveAGigStub = jest.fn(() => Promise.resolve(GIG))
-
-    const wrapper = mount(GigDetail, { propsData: {retrieveAGig: retrieveAGigStub} })
-    await wait()
-
-    expect(wrapper.text()).toContain(GIG.title)
-    expect(wrapper.text()).toContain(GIG.place)
-  })
+  const {screen} = renderComponent(GigDetail, 
+    {
+      props: {retrieveAGig: retrieveAGigStub},
+      router
+    } )
+  
+  expect(await screen.findByText(GIG.title)).toBeInTheDocument()
+  expect(await screen.findByText(GIG.place)).toBeInTheDocument()
 })
 
-function wait() {
-  return new Promise(resolve => setImmediate(resolve))
-}

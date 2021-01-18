@@ -1,35 +1,32 @@
 import FormButton from '@/app/shared-components/FormButton.vue'
+import { renderComponent } from '@test/render-utils'
+import userEvent from '@testing-library/user-event'
+import { render } from '@testing-library/vue'
 import { mount } from '@vue/test-utils'
 
-describe('FormButton.vue', () => {
+describe('When clicking', () => {
 
-  describe('When clicking', () => {
-
-    let clickSpy
-    beforeEach(() => {
-      clickSpy = jest.fn()
+  it('calls callback if enabled', async () => {
+    
+    const clickSpy = jest.fn()
+    const utils = renderComponent(FormButton, {
+      props: {onClick: clickSpy},
+      slots: {default: 'Click Me'}
     })
-
-    it('calls callback if enabled', () => {
-
-      const wrapper = mount(FormButton, {
-        propsData: {onClick: clickSpy}
-      })
-
-      wrapper.trigger('click')
-
-      expect(clickSpy).toHaveBeenCalled()
+    
+    userEvent.click(await utils.findByText(/Click me/i))
+    
+    expect(clickSpy).toHaveBeenCalled()
+  })
+  
+  it('does not call callback if disabled', async () => {
+    
+    const clickSpy = jest.fn()
+    const utils = renderComponent(FormButton, {
+      props: {onClick: clickSpy, disabled: true},
+      slots: {default: 'Click Me'}
     })
-
-    it('does not call callback if disabled', () => {
-      const wrapper = mount(FormButton, {
-        propsData: { onClick: clickSpy, disabled: true }
-      })
-
-      wrapper.trigger('click')
-
-      expect(wrapper.html()).toContain('disable')
-      expect(clickSpy).not.toHaveBeenCalled()
-    })
+    
+    expect(clickSpy).not.toHaveBeenCalled()
   })
 })

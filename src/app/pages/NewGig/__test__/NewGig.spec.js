@@ -1,121 +1,151 @@
-import { mount } from '@vue/test-utils'
 import NewGig from '@/app/pages/NewGig/NewGig.vue'
-import NewGigPage from '../../../__page_objects__/NewGigPageObject'
+import userEvent from '@testing-library/user-event'
 import { createGig as createGigSpy } from '../../../services/jota-api'
 jest.mock('@/app/services/jota-api')
 import { createGigPayload } from '../../../services/jota-payloads'
+import { renderComponent, sleep, tomorrow, tomorrowDayOfMonth, yesterdayDayOfMonth } from '@test/render-utils'
+import { fireEvent } from '@testing-library/vue'
 
-describe('New Gig', () => {
-  const PAST_DATETIME = '1900/10/27'
-  const FUTURE_DATETIME = '3000/10/27'
+describe('shows validation error', () => {
 
-  let page, wrapper
-  beforeEach(() => {
-    // https://github.com/vuejs/vue/pull/8240
-    wrapper = mount(NewGig, { sync: false })
-    page = new NewGigPage(wrapper)
-  })
+  describe('when validating title', () => {
 
-  describe('shows validation error', () => {
+    xit('and title is cleared', async () => {
+      const {typeGigName, clearGigName, findByText, findAllByRole, findByTestId} = await renderNewGig()
+      typeGigName('a')
+      clearGigName()
+      sleep(1000)
+      // typeGigName({keyCode: '46'})
+      const input = (await findAllByRole('textbox'))[0]
+      
+      console.log('after clear', input)
+      console.log('after clear value', input.value)
 
-    describe('when validating title', () => {
+      // console.log(await (await findByTestId('debug')).innerHTML)
 
-      it('and title is cleared', async () => {
-        page.dirtyValidation()
-        await page.wait()
-        expect(page.text()).toContain('Name is required')
-      })
+      expect(await findByText('Name is required')).toBeInTheDocument()
+    })
+    
+    it('and title is too short', async() => {
+      const {typeGigName, screen} = await renderNewGig()
+      
+      typeGigName(tooShortName())
 
-      it('and title is too short (async)', async() => {
-        page.writeNameAsync(tooShortName())
-        await page.wait()
-        expect(page.text()).toContain('Minimum 5 characters.')
-      })
-
-      it('and title is too short', async () => {
-        page.writeName(tooShortName())
-        await page.wait()
-        expect(page.text()).toContain('Minimum 5 characters.')
-      })
-
-      it('and title is too long', async () => {
-        page.writeName(tooLongName())
-        await page.wait()
-        expect(page.text()).toContain('Maximum 20 characters.')
-      })
+      expect(await screen.findByText('Minimum 5 characters.')).toBeInTheDocument()
     })
 
-    describe('when validating datetime', () => {
-      it('and datetime is cleared', async () => {
-        page.dirtyValidation()
-        await page.wait()
-        expect(page.text()).toContain('Date and time of gig are required.')
-      })
+    it('and title is too long', async () => {
+      const {typeGigName, screen} = await renderNewGig()
+      
+      typeGigName(tooLongName())
 
-      it('and datetime is in the past', async () => {
-        page.writeDatetime(PAST_DATETIME)
-        await page.wait()
-        expect(page.text()).toContain('You cannot set a gig in a past date :(')
-      })
-    })
-
-    describe('does not show validation error', () => {
-      it('and datetime is in the future', async () => {
-        page.writeDatetime(FUTURE_DATETIME)
-        await page.wait()
-        expect(page.hasDatetimeError()).toBe(false)
-      })
-
-      it('and title has valid length', async() => {
-        page.writeNameAsync(nameWithValidLength())
-        await page.wait()
-        expect(page.hasNameError()).toBe(false)
-      })
+      expect(await screen.findByText('Maximum 20 characters.')).toBeInTheDocument()
     })
   })
 
-  describe('save button', () => {
-    it('is disabled by default', async () => {
-      expect(page.isSaveButtonDisabled()).toBe(true)
+  describe('when validating datetime', () => {
+    it('and datetime is cleared', async () => {
+  
+      const {screen, setGigDate, clearGigDate} = await renderNewGig()
+      
+      await setGigDate(tomorrowDayOfMonth())
+      
+      await clearGigDate()
+      
+      expect(await screen.findByText('Date and time of gig are required.')).toBeInTheDocument()
     })
-
-    it('is disabled when form not fully filled', async () => {
-      page.writeNameAsync(nameWithValidLength())
-      await page.wait()
-      expect(page.isSaveButtonDisabled()).toBe(true)
-    })
-
-    it('is disabled when form has errors', async () => {
-      page.writeNameAsync(tooShortName())
-      page.writeDatetime(PAST_DATETIME)
-      await page.wait()
-      expect(page.isSaveButtonDisabled()).toBe(true)
-    })
-
-    it('is enabled when form is fully filled without errors', async () => {
-      page.writeNameAsync(nameWithValidLength())
-      page.writeDatetime(FUTURE_DATETIME)
-      await page.wait()
-      expect(page.isSaveButtonDisabled()).toBe(false)
-    })
-  })
-
-  describe('When clicking save button', async () => {
-    beforeEach(async () => {
-      page.writeNameAsync(nameWithValidLength())
-      page.writeDatetime(FUTURE_DATETIME)
-      await page.wait()
-      page.clickSaveButton()
-      await page.wait()
-    })
-
-    it('calls backend with appropriate command', async () => {
-      // This will be also tested in happy path but in this integration tests we can check all strange cases
-      // faster and cheaper
-      expect(createGigSpy).toHaveBeenCalledWith(createGigPayload(nameWithValidLength(), FUTURE_DATETIME))
+    
+    it('and datetime is in the past', async () => {
+      
+      const {screen, setGigDate} = await renderNewGig()
+      
+      await setGigDate(yesterdayDayOfMonth())
+      
+      expect(await screen.findByText('You cannot set a gig in a past date :(')).toBeInTheDocument()
     })
   })
 })
+
+describe('Create Gig button', () => {
+  it('is disabled by default', async () => {
+  
+    const {findCreateGigButton} = await renderNewGig()
+
+    expect(await findCreateGigButton()).toHaveClass('disabled')
+  })
+  
+  it('is disabled when form not fully filled', async () => {
+    const {typeGigName, findCreateGigButton} = await renderNewGig()
+    
+    typeGigName(nameWithValidLength())
+    
+    expect(await findCreateGigButton()).toHaveClass('disabled')
+  })
+  
+  it('is disabled when form has errors', async () => {
+    const {typeGigName, findCreateGigButton} = await renderNewGig()
+    
+    typeGigName(tooShortName())
+    
+    expect(await findCreateGigButton()).toHaveClass('disabled')
+  })
+  
+  it('is enabled when form is fully filled without errors', async () => {
+    const {typeGigName, setGigDate,  findCreateGigButton} = await renderNewGig()
+    
+    typeGigName(nameWithValidLength())
+    await setGigDate(tomorrowDayOfMonth())
+    
+    expect(await findCreateGigButton()).not.toHaveClass('disabled');
+  })
+})
+
+describe('When clicking create gig button', () => {
+  it('calls backend with appropriate command', async () => {
+    const {typeGigName, setGigDate,  findCreateGigButton} = await renderNewGig()
+      
+    typeGigName(nameWithValidLength())
+    await setGigDate(tomorrowDayOfMonth())
+    
+    userEvent.click(await findCreateGigButton())
+    expect(createGigSpy).toHaveBeenCalledWith(createGigPayload(nameWithValidLength(), tomorrow().toISOString()))
+  })
+})
+
+async function renderNewGig() {
+  const {screen} = renderComponent(NewGig)
+  
+  //it would be much better to use a label but for now q-input does not bind label with input
+  // (we should modify q-input to force that binding or maybe using aria-label as a workaround)
+  const nameInput = (await screen.findAllByRole('textbox'))[0]
+  
+  const typeGigName = (name)=> {
+    userEvent.type(nameInput, name)
+  }
+  
+  const clearGigName = () => {
+    userEvent.clear(nameInput)
+    fireEvent.blur(nameInput)
+  }
+
+  const setGigDate = async (dayText) => {
+    userEvent.click(await screen.findByText(/Date and time/i))
+    userEvent.click(await screen.findByText(dayText))
+    userEvent.click(await screen.findByText(/set/i))
+    //Wait for date set and rendered 
+    // await findByText(/\//i)
+    await sleep(100)
+  }
+  
+  const clearGigDate = async ()=> {
+    userEvent.click(await screen.findByText(/\//i))
+    userEvent.click(await screen.findByText(/clear/i))
+  }
+
+  const findCreateGigButton = async ()=> (await screen.findByText(/Create Gig/i)).closest('button')
+
+  return {screen, typeGigName, clearGigName, setGigDate, clearGigDate, findCreateGigButton}
+}
 
 function nameWithValidLength() {
   return nameWithLength(5)

@@ -1,5 +1,5 @@
 import GigDetail from '@/app/pages/GigDetail/GigDetail.vue'
-import { mount } from '@vue/test-utils'
+import { renderComponent } from '@test/render-utils'
 import { FIRST_GIG } from '../../../services/__mocks__/gigs-sample'
 
 jest.mock('@/app/services/jota-api')
@@ -7,13 +7,11 @@ jest.mock('@/app/services/jota-api')
 describe('Gig Detail', () => {
 
   it('renders details from a Gig', async () => {
-    const wrapper = mount(GigDetail)
-    await wait()
-    expect(wrapper.text()).toContain(FIRST_GIG.title)
-    expect(wrapper.text()).toContain(FIRST_GIG.place)
+    const router = {currentRoute : {params: {id: FIRST_GIG.id}}}
+
+    const {findByText} = await renderComponent(GigDetail, {router})
+    
+    expect(await findByText(FIRST_GIG.title)).toBeInTheDocument()
+    expect(await findByText(FIRST_GIG.place)).toBeInTheDocument()
   })
 })
-
-function wait() {
-  return new Promise(resolve => setImmediate(resolve))
-}

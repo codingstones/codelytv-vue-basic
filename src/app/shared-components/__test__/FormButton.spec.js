@@ -1,41 +1,44 @@
 import FormButton from '@/app/shared-components/FormButton.vue'
-import { Wrap } from '../../../../test/helpers'
+import { renderComponent } from '@test/render-utils'
+import userEvent from '@testing-library/user-event'
 
 describe('FormButton.vue', () => {
 
-  it('renders label', () => {
+  const SLOT_CONTENT = 'click me'
 
-    const SLOT_CONTENT = '<p>Any text</p>'
-    const wrapper = Wrap(FormButton)
-      .withProps({label: 'SAVE'})
-      .withSlots({default: SLOT_CONTENT})
-      .mount()
+  it('renders label', async () => {
 
-    expect(wrapper.html()).toContain(SLOT_CONTENT)
+    const {findByText} = renderComponent(FormButton, {
+      props: {isLoading: false, disabled: false}, 
+      slots: {default: SLOT_CONTENT}
+    })
+
+    expect(await findByText(SLOT_CONTENT)).toBeInTheDocument()
   })
 
   describe('When clicking', () => {
 
-    let clickSpy
-    beforeEach(() => {
-      clickSpy = jest.fn()
-    })
+    it('calls callback if enabled', async () => {
+      const clickSpy = jest.fn()
+      const {findByText} = renderComponent(FormButton, {
+        props: {isLoading: false, disabled: false, onClick: clickSpy}, 
+        slots: {default: SLOT_CONTENT}
+      })
 
-    it('calls callback if enabled', () => {
-      const wrapper = Wrap(FormButton).withProps({onClick: clickSpy}).mount()
-
-      wrapper.trigger('click')
+     userEvent.click(await findByText(SLOT_CONTENT))
 
       expect(clickSpy).toHaveBeenCalled()
     })
 
-    it('does not call callback if disabled', () => {
-      const wrapper = Wrap(FormButton)
-        .withProps({disabled: true, onClick: clickSpy})
-        .mount()
-      wrapper.trigger('click')
+    it('does not call callback if disabled', async () => {
+      const clickSpy = jest.fn()
+      const {findByText} = renderComponent(FormButton, {
+        props: {isLoading: false, disabled: true, onClick: clickSpy}, 
+        slots: {default: SLOT_CONTENT}
+      })
 
-      expect(wrapper.html()).toContain('disable')
+     userEvent.click(await findByText(SLOT_CONTENT))
+
       expect(clickSpy).not.toHaveBeenCalled()
     })
   })

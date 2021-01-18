@@ -1,16 +1,14 @@
 import FormButton from '@/app/shared-components/FormButton.vue'
-import { mount } from '@vue/test-utils'
+import { renderComponent } from '@test/render-utils'
 
 describe('FormButton.vue', () => {
-
-  it('renders label inside slot', () => {
-
-    const SLOT_CONTENT = '<p>Any text</p>'
-    const wrapper = mount(FormButton, {
-      propsData: { label: 'SAVE' },
-      slots: { default: SLOT_CONTENT }
+  it('renders label inside slot', async () => {
+    
+    const utils = renderComponent(FormButton, {
+      slots: { default: '<span>CLICK ME</span>' }
     })
-
-    expect(wrapper.html()).toContain(SLOT_CONTENT)
+    
+    expect(await utils.findByText(/click me/i)).toBeInTheDocument()
+    
   })
 })

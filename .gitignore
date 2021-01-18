@@ -8,3 +8,4 @@ cordova/plugins
 .idea
 cordova
 .quasar
+/coverage
