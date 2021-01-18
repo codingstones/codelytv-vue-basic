@@ -4,6 +4,14 @@
 
 _Note that although all the videos and course contents are in Spanish, this repo is only available in English._
 
+## 🦎🦎🦎🦎🦎🦎🦎🦎🦎🦎 DISCLAIMER (Jan 2021) 🦎🦎🦎🦎🦎
+
+This project is very old and tests were a bit outdated 😓  
+
+We just migrated every test to Vue Testing Library and set `testing-library` as the default branch 🔥
+
+(You can always jump to `jotas` branch if you want to check the old fashioned tests).
+
 ## Getting Started!
 
 ``` bash
@@ -13,7 +21,19 @@ or
 $ npm install
 
 # run tests
-$ jest --watch
+$ yarn unit
+or
+$ npm run unit
+
+# run tests in watch mode
+$ yarn unit:watch
+or
+$ npm run unit:watch
+
+# run tests in with coverage
+$ yarn unit:coverage
+or
+$ npm run unit:coverage
 
 # serve with hot reload at localhost:8080
 $ yarn dev mat
